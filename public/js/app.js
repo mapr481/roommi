@@ -2065,6 +2065,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _mixins_auth__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../mixins/auth */ "./resources/js/components/mixins/auth.js");
+/* harmony import */ var _mixins_auth__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_mixins_auth__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -2112,10 +2114,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      user: '',
       drawer: false,
       items: [{
         title: 'Inicio',
@@ -2134,17 +2136,11 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   created: function created() {},
+  mixins: [_mixins_auth__WEBPACK_IMPORTED_MODULE_0___default.a],
   methods: {
     logout: function logout() {
       axios.post('/logout').then(function (response) {
         window.location.href = "login";
-      });
-    },
-    usuario: function usuario() {
-      var _this = this;
-
-      axios.get('./api/user').then(function (response) {
-        return _this.user = response.data;
       });
     }
   }
@@ -40407,7 +40403,9 @@ var render = function() {
             }
           }),
           _vm._v(" "),
-          _c("v-list-item-title", [_vm._v(_vm._s(_vm.user))])
+          _c("v-list-item-title", [
+            _vm._v(_vm._s(_vm.user.nombre + " " + _vm.user.apellido))
+          ])
         ],
         1
       ),
@@ -93646,6 +93644,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vuetify_loader_lib_loader_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_NavVertical_vue_vue_type_template_id_352381b6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/components/mixins/auth.js":
+/*!************************************************!*\
+  !*** ./resources/js/components/mixins/auth.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var _user = document.head.querySelector('meta[name="user"]');
+
+module.exports = {
+  computed: {
+    user: function user() {
+      return JSON.parse(_user.content);
+    }
+  }
+};
 
 /***/ }),
 

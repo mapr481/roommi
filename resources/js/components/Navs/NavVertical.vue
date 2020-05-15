@@ -6,7 +6,7 @@
          
       </v-app-bar-nav-icon>
 
-        <v-list-item-title>{{user}}</v-list-item-title>
+        <v-list-item-title>{{user.nombre + ' ' + user.apellido}}</v-list-item-title>
 
         
       </v-list-item>
@@ -47,13 +47,13 @@
 
 <script>
 
-
+import auth from '../mixins/auth'
 
 export default {
   
   data () {
       return {
-        user:'',
+        
         drawer: false,
         items: [
           { title: 'Inicio', icon: 'mdi-home-city' },
@@ -70,6 +70,8 @@ export default {
     created() {
       
     },
+    mixins: [auth],
+
       methods: {
         logout() {
           axios.post('/logout')
@@ -77,10 +79,7 @@ export default {
             window.location.href= "login"
           })
         },      
-        usuario (){
-          axios.get('./api/user')
-          .then( response => this.user = response.data);
-        },
+        
              
     },
 }
