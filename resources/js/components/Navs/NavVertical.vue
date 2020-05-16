@@ -1,12 +1,13 @@
-<template>
-  <v-navigation-drawer app v-model="drawer" :mini-variant.sync="mini"
+<template>  
+  
+  <v-navigation-drawer v-if="autenticado" app v-model="drawer" :mini-variant.sync="mini"
   permanent color="#00A69D" dark>
     <v-list-item class="px-2">
        <v-app-bar-nav-icon @click="mini = !mini">
          
       </v-app-bar-nav-icon>
 
-        <v-list-item-title>{{user.nombre + ' ' + user.apellido}}</v-list-item-title>
+        <v-list-item-title>Bienvenido, {{user.nombre + ' ' + user.apellido}}</v-list-item-title>
 
         
       </v-list-item>
@@ -43,11 +44,10 @@
         </v-list-item>
       </v-list>
   </v-navigation-drawer>
+
 </template>
 
 <script>
-
-import auth from '../mixins/auth'
 
 export default {
   
@@ -70,13 +70,12 @@ export default {
     created() {
       
     },
-    mixins: [auth],
-
+    
       methods: {
         logout() {
           axios.post('/logout')
           .then(response =>{
-            window.location.href= "login"
+            window.location.href= "/"
           })
         },      
         

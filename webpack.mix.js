@@ -24,3 +24,8 @@ const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
 
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css');
+
+mix.browserSync({
+    proxy: 'http://roommi.test',
+    open: false
+})

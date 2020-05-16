@@ -4,6 +4,12 @@ module.exports = {
     computed: {
         user(){
           return JSON.parse(user.content);
+        },
+        autenticado(){
+          return !! user.content;
         }
       },
+      guest(){
+        return ! this.autenticado
+      }
 }

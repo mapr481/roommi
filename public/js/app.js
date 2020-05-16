@@ -2045,12 +2045,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       collapseOnScroll: true,
       label: 'Buscar'
     };
+  },
+  methods: {
+    logout: function logout() {
+      axios.post('/logout').then(function (response) {
+        window.location.href = "/";
+      });
+    }
   }
 });
 
@@ -2065,8 +2079,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _mixins_auth__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../mixins/auth */ "./resources/js/components/mixins/auth.js");
-/* harmony import */ var _mixins_auth__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_mixins_auth__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -2114,7 +2126,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2136,11 +2149,10 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   created: function created() {},
-  mixins: [_mixins_auth__WEBPACK_IMPORTED_MODULE_0___default.a],
   methods: {
     logout: function logout() {
       axios.post('/logout').then(function (response) {
-        window.location.href = "login";
+        window.location.href = "/";
       });
     }
   }
@@ -40259,14 +40271,13 @@ var render = function() {
         "collapse-on-scroll": _vm.collapseOnScroll,
         app: "",
         color: "#00A69D",
-        dark: "",
-        "scroll-target": "#scrolling-techniques-6"
+        dark: ""
       }
     },
     [
       _c("v-toolbar-title", [_vm._v("Roommi")]),
       _vm._v(" "),
-      _vm.collapseOnScroll
+      _vm.collapseOnScroll | _vm.collapse
         ? _c("v-text-field", {
             staticClass: "inputField input-name p-2 styled-input",
             attrs: {
@@ -40285,37 +40296,74 @@ var render = function() {
       _vm._v(" "),
       _vm.collapseOnScroll
         ? _c(
-            "v-btn",
-            {
-              staticClass: "mr-3",
-              attrs: { color: "white", small: "", outlined: "", href: "login" }
-            },
+            "div",
             [
-              _vm._v("Login \n       \n       "),
-              _c("v-icon", { attrs: { dense: "", tag: "login" } }, [
-                _vm._v(" mdi-account")
-              ])
-            ],
-            1
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.collapseOnScroll
-        ? _c(
-            "v-btn",
-            {
-              attrs: {
-                color: "white",
-                small: "",
-                outlined: "",
-                href: "register"
-              }
-            },
-            [
-              _vm._v("Registrar\n       \n       "),
-              _c("v-icon", { attrs: { tag: "login" } }, [
-                _vm._v(" mdi-account-plus")
-              ])
+              _vm.autenticado
+                ? _c(
+                    "v-btn",
+                    {
+                      staticClass: "mr-3",
+                      attrs: { color: "white", small: "", outlined: "" },
+                      on: { click: _vm.logout }
+                    },
+                    [
+                      _vm._v("\n       Cerrar Sesión\n       "),
+                      _c("v-icon", [_vm._v("\n         mdi-account\n       ")])
+                    ],
+                    1
+                  )
+                : _c(
+                    "div",
+                    [
+                      _vm.collapseOnScroll
+                        ? _c(
+                            "v-btn",
+                            {
+                              staticClass: "mr-3",
+                              attrs: {
+                                color: "white",
+                                small: "",
+                                outlined: "",
+                                href: "login"
+                              }
+                            },
+                            [
+                              _vm._v("\n       Login           \n       "),
+                              _c("v-icon", { attrs: { dense: "" } }, [
+                                _vm._v("\n         mdi-account\n       ")
+                              ])
+                            ],
+                            1
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.collapseOnScroll
+                        ? _c(
+                            "v-btn",
+                            {
+                              attrs: {
+                                color: "white",
+                                small: "",
+                                outlined: "",
+                                href: "register"
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n         Registrar          \n         "
+                              ),
+                              _c("v-icon", [
+                                _vm._v(
+                                  "\n           mdi-account-plus\n         "
+                                )
+                              ])
+                            ],
+                            1
+                          )
+                        : _vm._e()
+                    ],
+                    1
+                  )
             ],
             1
           )
@@ -40364,101 +40412,110 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "v-navigation-drawer",
-    {
-      attrs: {
-        app: "",
-        "mini-variant": _vm.mini,
-        permanent: "",
-        color: "#00A69D",
-        dark: ""
-      },
-      on: {
-        "update:miniVariant": function($event) {
-          _vm.mini = $event
-        },
-        "update:mini-variant": function($event) {
-          _vm.mini = $event
-        }
-      },
-      model: {
-        value: _vm.drawer,
-        callback: function($$v) {
-          _vm.drawer = $$v
-        },
-        expression: "drawer"
-      }
-    },
-    [
-      _c(
-        "v-list-item",
-        { staticClass: "px-2" },
-        [
-          _c("v-app-bar-nav-icon", {
-            on: {
-              click: function($event) {
-                _vm.mini = !_vm.mini
-              }
+  return _vm.autenticado
+    ? _c(
+        "v-navigation-drawer",
+        {
+          attrs: {
+            app: "",
+            "mini-variant": _vm.mini,
+            permanent: "",
+            color: "#00A69D",
+            dark: ""
+          },
+          on: {
+            "update:miniVariant": function($event) {
+              _vm.mini = $event
+            },
+            "update:mini-variant": function($event) {
+              _vm.mini = $event
             }
-          }),
-          _vm._v(" "),
-          _c("v-list-item-title", [
-            _vm._v(_vm._s(_vm.user.nombre + " " + _vm.user.apellido))
-          ])
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("v-divider"),
-      _vm._v(" "),
-      _c(
-        "v-list",
-        { attrs: { dense: "" } },
+          },
+          model: {
+            value: _vm.drawer,
+            callback: function($$v) {
+              _vm.drawer = $$v
+            },
+            expression: "drawer"
+          }
+        },
         [
-          _vm._l(_vm.items, function(item) {
-            return _c(
-              "v-list-item",
-              { key: item.title, attrs: { link: "" } },
-              [
-                _c(
-                  "v-list-item-icon",
-                  [_c("v-icon", [_vm._v(_vm._s(item.icon))])],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "v-list-item-content",
-                  [_c("v-list-item-title", [_vm._v(_vm._s(item.title))])],
-                  1
+          _c(
+            "v-list-item",
+            { staticClass: "px-2" },
+            [
+              _c("v-app-bar-nav-icon", {
+                on: {
+                  click: function($event) {
+                    _vm.mini = !_vm.mini
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("v-list-item-title", [
+                _vm._v(
+                  "Bienvenido, " +
+                    _vm._s(_vm.user.nombre + " " + _vm.user.apellido)
                 )
-              ],
-              1
-            )
-          }),
+              ])
+            ],
+            1
+          ),
           _vm._v(" "),
           _c("v-divider"),
           _vm._v(" "),
           _c(
-            "v-list-item",
-            { attrs: { link: "" }, on: { click: _vm.logout } },
+            "v-list",
+            { attrs: { dense: "" } },
             [
-              _c("v-list-item-icon", [_c("v-icon", [_vm._v("mdi-power")])], 1),
+              _vm._l(_vm.items, function(item) {
+                return _c(
+                  "v-list-item",
+                  { key: item.title, attrs: { link: "" } },
+                  [
+                    _c(
+                      "v-list-item-icon",
+                      [_c("v-icon", [_vm._v(_vm._s(item.icon))])],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "v-list-item-content",
+                      [_c("v-list-item-title", [_vm._v(_vm._s(item.title))])],
+                      1
+                    )
+                  ],
+                  1
+                )
+              }),
+              _vm._v(" "),
+              _c("v-divider"),
               _vm._v(" "),
               _c(
-                "v-list-item-content",
-                [_c("v-list-item-title", [_vm._v("Cerrar Sesión")])],
+                "v-list-item",
+                { attrs: { link: "" }, on: { click: _vm.logout } },
+                [
+                  _c(
+                    "v-list-item-icon",
+                    [_c("v-icon", [_vm._v("mdi-power")])],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-list-item-content",
+                    [_c("v-list-item-title", [_vm._v("Cerrar Sesión")])],
+                    1
+                  )
+                ],
                 1
               )
             ],
-            1
+            2
           )
         ],
-        2
+        1
       )
-    ],
-    1
-  )
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -93372,6 +93429,8 @@ module.exports = function(module) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _plugins_vuetify__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../plugins/vuetify */ "./resources/plugins/vuetify.js");
+/* harmony import */ var _components_mixins_auth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/mixins/auth */ "./resources/js/components/mixins/auth.js");
+/* harmony import */ var _components_mixins_auth__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_components_mixins_auth__WEBPACK_IMPORTED_MODULE_1__);
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -93391,14 +93450,16 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('barra-superior', __webpack_require__(/*! ./components/Navs/BarraSuperior.vue */ "./resources/js/components/Navs/BarraSuperior.vue")["default"]);
-Vue.component('nav-vertical', __webpack_require__(/*! ./components/Navs/NavVertical.vue */ "./resources/js/components/Navs/NavVertical.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+Vue.component('barra-superior', __webpack_require__(/*! ./components/Navs/BarraSuperior.vue */ "./resources/js/components/Navs/BarraSuperior.vue")["default"]);
+Vue.component('nav-vertical', __webpack_require__(/*! ./components/Navs/NavVertical.vue */ "./resources/js/components/Navs/NavVertical.vue")["default"]);
+
+Vue.mixin(_components_mixins_auth__WEBPACK_IMPORTED_MODULE_1___default.a);
 var app = new Vue({
   vuetify: _plugins_vuetify__WEBPACK_IMPORTED_MODULE_0__["default"],
   el: '#app'
@@ -93660,7 +93721,13 @@ module.exports = {
   computed: {
     user: function user() {
       return JSON.parse(_user.content);
+    },
+    autenticado: function autenticado() {
+      return !!_user.content;
     }
+  },
+  guest: function guest() {
+    return !this.autenticado;
   }
 };
 

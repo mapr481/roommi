@@ -6,8 +6,8 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <meta name="user" content="{{ Auth::user() }}">
+    <title>{{ config('app.name', 'Roommi') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -19,9 +19,11 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
+<body>   
     <div id="app">
-        
-    </div>
+        <barra-superior></barra-superior>
+        <nav-vertical></nav-vertical>
+     </div>
+
 </body>
 </html>
