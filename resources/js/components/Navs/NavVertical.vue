@@ -56,7 +56,7 @@ export default {
         
         drawer: false,
         items: [
-          { title: 'Inicio', icon: 'mdi-home-city' },
+          { title: 'Inicio', icon: 'mdi-home' },
           { title: 'Mi cuenta', icon: 'mdi-account' },
           { title: 'Crear Pulbicación', icon: 'mdi-folder-plus' },
           {title: 'Mis Publicaciones', icon: 'mdi-folder-account'},

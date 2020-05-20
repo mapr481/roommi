@@ -1,22 +1,25 @@
 <template>
 
  <v-app-bar
-      :collapse="!collapseOnScroll"
-      :collapse-on-scroll="collapseOnScroll"
+      fixed
+      :collapse="!collapseOn"
+      :collapse-on-scroll="collapseOnl"
       app color="#00A69D" dark>
 
      
         
       <v-toolbar-title >Roommi</v-toolbar-title>
   
-    
-      <v-text-field v-if="collapseOnScroll | collapse" dense class = "inputField input-name p-2 styled-input"
+      
+
+      
+      <v-text-field v-if="collapseOn"  dense class = "inputField input-name p-2 styled-input"
       label="Buscar" outlined rounded append-icon="mdi-magnify">
         
       </v-text-field>
      <v-spacer></v-spacer>
     <v-spacer></v-spacer>
-    <div v-if="collapseOnScroll">
+    <div v-if="collapseOn">
       <v-btn v-if="autenticado" color="white" class="mr-3" small outlined @click="logout" >
         Cerrar Sesión
         <v-icon>
@@ -25,14 +28,14 @@
       </v-btn>
 
     <div v-else>
-      <v-btn  color="white"  v-if="collapseOnScroll"  class="mr-3" small outlined href="login" >
+      <v-btn  color="white"  v-if="collapseOn"  class="mr-3" small outlined href="login" >
         Login           
         <v-icon dense >
           mdi-account
         </v-icon>        
       </v-btn>
 
-      <v-btn v-if="collapseOnScroll" color="white" small outlined href="register" >
+      <v-btn v-if="collapseOn" color="white" small outlined href="register" >
           Registrar          
           <v-icon >
             mdi-account-plus
@@ -40,16 +43,16 @@
         </v-btn>
       </div>
   </div>
-      
+    
       
 
      
 
-   <v-btn icon color="white" @click="collapseOnScroll = !collapseOnScroll"
+   <v-btn icon color="white" @click="collapseOn = !collapseOn"
    
    hide-details >
        
-        <v-icon v-if="!collapseOnScroll">mdi-chevron-right</v-icon>
+        <v-icon v-if="!collapseOn">mdi-chevron-right</v-icon>
         <v-icon v-else>mdi-chevron-left</v-icon>
       </v-btn>
       
@@ -63,7 +66,8 @@
 export default {
   data() {
     return {
-      collapseOnScroll: true,
+      collapseOn: true,
+      
       label: 'Buscar'
     }
   },

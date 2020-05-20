@@ -16,6 +16,7 @@ class CreateCharacteristicRoomsTable extends Migration
         Schema::create('characteristic_rooms', function (Blueprint $table) {
             $table->id();
             $table->foreignId('characteristic')->constrained();
+            $table->foreignId('room_option_id')->constrained();
             $table->foreignId('room_id')->constrained();
             $table->timestamps();
         });

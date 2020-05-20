@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\publication;
+use App\roomOption;
 use Illuminate\Http\Request;
 
-class PublicationController extends Controller
+class RoomOptionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class PublicationController extends Controller
      */
     public function index()
     {
-        echo "Hola";
+        //
     }
 
     /**
@@ -24,7 +24,7 @@ class PublicationController extends Controller
      */
     public function create()
     {
-        return view("Dashboard.publication-create");
+        //
     }
 
     /**
@@ -35,16 +35,16 @@ class PublicationController extends Controller
      */
     public function store(Request $request)
     {
-        echo "Hola Mundo";
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\publication  $publication
+     * @param  \App\roomOption  $roomOption
      * @return \Illuminate\Http\Response
      */
-    public function show(publication $publication)
+    public function show(roomOption $roomOption)
     {
         //
     }
@@ -52,10 +52,10 @@ class PublicationController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\publication  $publication
+     * @param  \App\roomOption  $roomOption
      * @return \Illuminate\Http\Response
      */
-    public function edit(publication $publication)
+    public function edit(roomOption $roomOption)
     {
         //
     }
@@ -64,10 +64,10 @@ class PublicationController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\publication  $publication
+     * @param  \App\roomOption  $roomOption
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, publication $publication)
+    public function update(Request $request, roomOption $roomOption)
     {
         //
     }
@@ -75,10 +75,10 @@ class PublicationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\publication  $publication
+     * @param  \App\roomOption  $roomOption
      * @return \Illuminate\Http\Response
      */
-    public function destroy(publication $publication)
+    public function destroy(roomOption $roomOption)
     {
         //
     }

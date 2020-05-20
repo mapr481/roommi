@@ -15,7 +15,8 @@ class CreatePublicationsTable extends Migration
     {
         Schema::create('publications', function (Blueprint $table) {
             $table->id();
-            $table->boolean('disponible');
+            $table->boolean('disponible');            
+            $table->text('detalles', 2000);
             $table->foreignId('user_id')->constrained();
             $table->foreignId('room')->constrained();
             $table->timestamps();
