@@ -15,9 +15,14 @@ class CreateServiceRoomsTable extends Migration
     {
         Schema::create('service_rooms', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('service_id')->constrained();
-            $table->foreignId('room_id')->constrained();
+            $table->foreignId('service_id');
+            $table->foreignId('room_id');
             $table->timestamps();
+        });
+
+        Schema::table('service_rooms', function($table){
+            $table->foreign('service_id')->references('id')->on('services');
+            $table->foreign('room_id')->references('id')->on('rooms');
         });
     }
 
