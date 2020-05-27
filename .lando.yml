@@ -1,0 +1,22 @@
+name: roommi
+recipe: laravel
+config:
+  php: '7.3'
+  via: nginx
+  webroot: public
+  xdebug: false
+  cache: redis
+  database: mariadb
+
+services:
+  database:
+    type: mariadb
+    user: mariadb
+    password: mariadb
+    database: roommi
+    portforward: 33066
+
+    creds:
+      user: mariadb
+      password: mariadb
+      database: roommi

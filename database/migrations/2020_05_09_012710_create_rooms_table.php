@@ -19,9 +19,14 @@ class CreateRoomsTable extends Migration
             $table->string('slug')->unique();
             $table->string('direccion');
             $table->string('precio');
-            $table->foreignId('type_Room_id')->constrained();
-            $table->foreignId('gender_id')->constrained();
+            $table->foreignId('type_room_id');
+            $table->foreignId('gender_id');
             $table->timestamps();
+        });
+
+      Schema::table('rooms', function($table){
+            $table->foreign('type_room_id')->references('id')->on('type_rooms');
+            $table->foreign('gender_id')->references('id')->on('genders');
         });
     }
 

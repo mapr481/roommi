@@ -18,7 +18,7 @@ class CreateRoomOptionsTable extends Migration
             $table->string('bañoTipo');
             $table->string('cuartoTipo');
             $table->string('residenciaTipo');
-            
+
             $table->timestamps();
         });
     }
