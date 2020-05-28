@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePublicationsTable extends Migration
+class CreateServiceRoomsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreatePublicationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('publications', function (Blueprint $table) {
+        Schema::create('service_rooms', function (Blueprint $table) {
             $table->id();
-            $table->boolean('disponible');
-            $table->text('detalles', 2000);
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('service_id')->constrained();
             $table->foreignId('room_id')->constrained();
             $table->timestamps();
         });
+
+        
     }
 
     /**
@@ -30,6 +30,6 @@ class CreatePublicationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('publications');
+        Schema::dropIfExists('service_rooms');
     }
 }

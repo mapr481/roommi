@@ -10,7 +10,10 @@ class Room extends Model
         'titulo',
         'slug',
         'direccion',
+        'disponible',
+        'detalles',
         'precio',
+        'user_id',               
         'type_room_id',
         'gender_id',
     ];
@@ -42,5 +45,9 @@ class Room extends Model
     public function options()
     {
         return $this->belongsToMany(RoomOption::class);
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

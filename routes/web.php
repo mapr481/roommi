@@ -14,13 +14,14 @@ use App\Models\Room;
 |
 */
 
-Route::get('/', function () {
-    dd(Room::with('typeRoom')->get()[0]->typeRoom);
+Route::get('/', function () { 
+    
     return view('index');
+   
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('publication', 'PublicationController');
+Route::resource('Room', 'RoomController');

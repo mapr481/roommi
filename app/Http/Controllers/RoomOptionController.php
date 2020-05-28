@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\roomOption;
+use App\Models\RoomOption;
 use Illuminate\Http\Request;
 
 class RoomOptionController extends Controller
@@ -24,7 +24,7 @@ class RoomOptionController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.publication-create');
     }
 
     /**

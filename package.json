@@ -33,6 +33,7 @@
     },
     "dependencies": {
         "node-sass": "^4.14.1",
+        "npm-install-webpack-plugin": "^4.0.5",
         "vuetify": "^2.2.27",
         "vuetify-loader": "^1.4.3",
         "webpack": "^4.43.0"

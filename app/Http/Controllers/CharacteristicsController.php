@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\characteristics;
+use App\Models\Characteristics;
 use Illuminate\Http\Request;
 
 class CharacteristicsController extends Controller

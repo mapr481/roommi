@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\typeRoom;
+use App\Models\TypeRoom;
 use Illuminate\Http\Request;
 
 class TypeRoomController extends Controller

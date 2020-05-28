@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\serviceRoom;
+use App\Models\ServiceRoom;
 use Illuminate\Http\Request;
 
 class ServiceRoomController extends Controller
