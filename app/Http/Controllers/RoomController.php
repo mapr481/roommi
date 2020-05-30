@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Room;
+use App\Models\ServiceRoom;
 use Illuminate\Http\Request;
 
 class RoomController extends Controller
@@ -24,7 +25,7 @@ class RoomController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.publication-create');
     }
 
     /**
@@ -35,7 +36,21 @@ class RoomController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = request()->validate([
+            'titulo' => 'required',
+            'slug' => 'required',
+            'direccion' => 'required',
+            'precio' => 'required'
+        ]);
+        Room::create([
+            'titulo' => $data['titulo'],
+            'direccion' => $data['direccion'],
+            'precio' => $data['precio'],
+            'detalles' => $data['detalles']
+        ]);
+        ServiceRoom::create([
+            
+        ]);
     }
 
     /**

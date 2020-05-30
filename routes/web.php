@@ -24,4 +24,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('Room', 'RoomController');
+Route::resource('/room', 'RoomController');

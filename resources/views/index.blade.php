@@ -23,8 +23,17 @@
 <body>   
     <div id="app">
         <barra-superior></barra-superior>
-        <nav-vertical></nav-vertical>
-     </div>
+        <nav-vertical></nav-vertical>               
+
+        <div class="color p-5">
+            <div class="container d-flex p-5  mt-5 text-white">
+                <h1>Buscar tu espacio no fue más sencillo</h1>
+            </div>            
+        </div>
+
+        <pie></pie>
+    </div>
+         
 
 </body>
 </html>

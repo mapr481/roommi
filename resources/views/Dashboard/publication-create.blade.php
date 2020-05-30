@@ -9,7 +9,7 @@
                     <div class="card-header">{{ __('Crear Post') }}</div>
                     <div class="card-body ">
 
-                        <form action="{{ route("publication.store") }}" method="POST">
+                        <form action="{{ route("room.store") }}" method="POST">
                             @csrf
                             <div class="form-group row col-md-6">
                                 <label for="titulo">Título: </label>                              
