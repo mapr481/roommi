@@ -13,19 +13,19 @@ class TypeRoomSeeder extends Seeder
     public function run()
     {
         DB::table('type_rooms')->insert([
-            'tipos' => 'anexo'
+            'tipo' => 'anexo'
         ]);
 
         DB::table('type_rooms')->insert([
-            'tipos' => 'casa'
+            'tipo' => 'casa'
         ]);
     
         DB::table('type_rooms')->insert([
-            'tipos' => 'apartamento'
+            'tipo' => 'apartamento'
         ]);
 
         DB::table('type_rooms')->insert([
-            'tipos' => 'dormitorio'
+            'tipo' => 'dormitorio'
         ]);
     }
 

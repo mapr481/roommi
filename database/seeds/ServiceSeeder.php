@@ -13,15 +13,15 @@ class ServiceSeeder extends Seeder
     public function run()
     {
         DB::table('services')->insert([
-            'service' => 'Internet'            
+            'servicio' => 'Internet'            
         ]);
 
         DB::table('services')->insert([
-            'service' => 'Cable'            
+            'servicio' => 'Cable'            
         ]);
 
         DB::table('services')->insert([
-            'service' => 'Telefono'            
+            'servicio' => 'Telefono'            
         ]);
     }
 }
