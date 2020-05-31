@@ -15,9 +15,9 @@ class CreateRoomOptionsTable extends Migration
     {
         Schema::create('room_options', function (Blueprint $table) {
             $table->id();
-            $table->string('bañoTipo');
-            $table->string('cuartoTipo');
-            $table->string('residenciaTipo');
+            $table->string('baño');
+            $table->string('cuarto');
+            $table->string('especificacion');
 
             $table->timestamps();
         });

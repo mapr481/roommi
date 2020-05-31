@@ -36,19 +36,19 @@
                             </div>
 
                             <div class="form-group form-check">
-                                <input type="checkbox" class="form-check-input" id="internet" name="servicio-1" value="internet">
+                                <input type="checkbox" class="form-check-input" id="internet" name="internet" value="internet">
                                 <label for="internet" class="form-check-label"> Internet</label><br>
-                                <input type="checkbox" class="form-check-input" id="cable" name="servicio-2" value="cable">
+                                <input type="checkbox" class="form-check-input" id="cable" name="cable" value="cable">
                                 <label for="cable" class="form-check-label"> Cable de televisión</label><br>
-                                <input type="checkbox" class="form-check-input" id="telefono" name="servicio-3" value="telefono">
+                                <input type="checkbox" class="form-check-input" id="telefono" name="telefono" value="telefono">
                                 <label for="telefono" class="form-check-label"> Teléfono</label><br> 
-                                <input type="checkbox" class="form-check-input" id="visitas" name="caracteristica-1" value="visitas">
+                                <input type="checkbox" class="form-check-input" id="visitas" name="visitas" value="visitas">
                                 <label for="visitas" class="form-check-label"> ¿Permite visitas?</label><br>
-                                <input type="checkbox" class="form-check-input" id="vehiculos" name="caracteristica-2" value="vehiculos">
+                                <input type="checkbox" class="form-check-input" id="vehiculos" name="vehiculos" value="vehiculos">
                                 <label for="vehiculos" class="form-check-label"> ¿Tiene espacio para vehículos?</label><br>
-                                <input type="checkbox" class="form-check-input" id="mascotas" name="caracteristica-3" value="mascotas">
+                                <input type="checkbox" class="form-check-input" id="mascotas" name="mascotas" value="mascotas">
                                 <label for="mascotas" class="form-check-label"> ¿Permite mascotas?</label><br>
-                                <input type="checkbox" class="form-check-input" id="cocina" name="caracteristica-4" value="cocina">
+                                <input type="checkbox" class="form-check-input" id="cocina" name="cocina" value="cocina">
                                 <label for="cocina" class="form-check-label"> ¿Posee cocina?</label><br>         
                             </div>
 
@@ -62,16 +62,16 @@
                             <div class="form-group">
                                 <input type="radio" id="individual" name="cuarto" value="individual">
                                 <label for="individual">Cuarto individual</label><br>
-                                <input type="radio" id="compañia" name="cuarto" value="compañia">
+                                <input type="radio" id="duplex" name="cuarto" value="duplex">
                                 <label for="compañia">Cuarto compartido</label><br>       
                             </div>
 
                             <div class="form-group">
-                                <input type="radio" id="estudiante" name="tipo" value="estudiante">
+                                <input type="radio" id="estudiante" name="especificacion" value="estudiante">
                                 <label for="estudiante">Residencia Estudiantil</label><br>
-                                <input type="radio" id="profesional" name="tipo" value="profesional">
+                                <input type="radio" id="profesional" name="especificacion" value="profesional">
                                 <label for="profesional">Residencia para Profesionales/Trabajadores</label><br>
-                                <input type="radio" id="ambos" name="tipo" value="ambos">
+                                <input type="radio" id="ambos" name="especificacion" value="ambos">
                                 <label for="ambos">Residencia para Profesionales y Estudiantes</label><br>  
 
                             </div>

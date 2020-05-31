@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Room;
 use App\Models\ServiceRoom;
+use App\Models\Gender;
+use App\Models\CharacteristicRoom;
+use App\Models\RoomOption;
+use App\Models\TypeRoom;
 use Illuminate\Http\Request;
 
 class RoomController extends Controller
@@ -40,7 +44,27 @@ class RoomController extends Controller
             'titulo' => 'required',
             'slug' => 'required',
             'direccion' => 'required',
-            'precio' => 'required'
+            'precio' => 'required',
+            'detalles' => '',
+            'internet' => '',
+            'cable' => '',
+            'telefono' => '',
+            'damas' => '',
+            'caballeros'=> '',
+            'unisex'=> '',
+            'visitas' =>'',
+            'vehiculos' => '',
+            'mascotas' => '',
+            'cocina' => '',
+            'baño' => '',
+            'cuarto' =>'',
+            'especificacion'=>'',
+            'anexo' => '',
+            'casa' => '',
+            'apartamento' => '',
+            'dormitorio' => ''
+
+
         ]);
         Room::create([
             'titulo' => $data['titulo'],
@@ -49,8 +73,41 @@ class RoomController extends Controller
             'detalles' => $data['detalles']
         ]);
         ServiceRoom::create([
-            
+            'internet' => $data ['internet'],
+            'cable' => $data ['cable'],
+            'telefono' => $data ['telefono']
         ]);
+
+        Gender::create([
+            'damas' => $data ['damas'],
+            'caballeros' => $data['caballeros'],
+            'unisex' => $data['unisex']
+        ]);
+        
+        CharacteristicRoom::create([
+
+            'visitas' => $data ['visitas'],
+            'vehiculos' => $data ['vehiculos'],
+            'mascotas' => $data ['mascotas'],
+            'cocina' => $data ['cocina']
+        ]);
+        
+        RoomOption::create([
+            'baño' => $data ['baño'],
+            'cuarto' => $data ['cuarto'],
+            'especificacion' => $data['especificacion']
+        ]);
+
+        TypeRoom::create([
+
+            'anexo' => $data['anexo'],
+            'casa' => $data ['casa'],
+            'apartamento' => $data ['apartamento'],
+            'dormitorio' => $data ['dormitorio']
+        ]);
+
+        
+
     }
 
     /**
