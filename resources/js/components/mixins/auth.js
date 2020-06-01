@@ -10,6 +10,10 @@ module.exports = {
         }
       },
       guest(){
-        return ! this.autenticado
+        return ! this.autenticado;
+      },
+
+      admin(){
+        return !! user.esAdmin;
       }
 }

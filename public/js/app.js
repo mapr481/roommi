@@ -93947,6 +93947,9 @@ module.exports = {
   },
   guest: function guest() {
     return !this.autenticado;
+  },
+  admin: function admin() {
+    return !!_user.esAdmin;
   }
 };
 
