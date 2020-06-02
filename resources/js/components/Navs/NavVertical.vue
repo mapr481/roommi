@@ -43,7 +43,7 @@
           </v-list-item-content>
         </v-list-item>
 
-        <v-list-item link v-if="user.esAdmin === 'si' ">
+        <v-list-item link v-if="user.esAdmin === 'si'" >
           <v-list-item-icon>
             <v-icon>
               mdi-account-supervisor

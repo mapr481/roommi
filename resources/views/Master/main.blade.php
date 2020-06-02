@@ -25,7 +25,7 @@
 
         <barra-superior></barra-superior>
         <nav-vertical></nav-vertical>
-        
+        <h1>admin</h1>
     </div>
 </body>
 
