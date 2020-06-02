@@ -20,7 +20,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
 </head>
-<body>   
+<body class="color">   
     <div id="app">
         <barra-superior></barra-superior>
         <nav-vertical></nav-vertical>               
