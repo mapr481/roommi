@@ -14,21 +14,75 @@
   
       <v-divider></v-divider>
 
+      
       <v-list dense>
-        <v-list-item
-          v-for="item in items"
-          :key="item.title"
-          link
-        >
+        
+        <v-list-item link>
           <v-list-item-icon>
-            <v-icon>{{ item.icon }}</v-icon>
+            <v-icon>
+              mdi-home
+            </v-icon>
           </v-list-item-icon>
-
           <v-list-item-content>
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
+            <v-list-item-title>
+              Inicio
+            </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        
+
+        <v-list-item link>
+          <v-list-item-icon>
+            <v-icon>
+              mdi-account
+            </v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title>
+              Mi cuenta
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+
+        <v-list-item link v-if="user.esAdmin === 'si' ">
+          <v-list-item-icon>
+            <v-icon>
+              mdi-account-supervisor
+            </v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title>
+              Usuarios
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+
+        <v-list-item link>
+          <v-list-item-icon>
+            <v-icon>
+              mdi-folder-plus
+            </v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title>
+              Crear Publicación
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+         
+
+         <v-list-item link>
+          <v-list-item-icon>
+            <v-icon>
+              mdi-folder-account
+            </v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title>
+              Mis Publicaciones
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+
       
       
         <v-divider></v-divider>
@@ -55,15 +109,7 @@ export default {
       return {
         
         drawer: false,
-        items: [
-          { title: 'Inicio', icon: 'mdi-home' },
-          { title: 'Mi cuenta', icon: 'mdi-account' },
-          { title: 'Crear Pulbicación', icon: 'mdi-folder-plus' },
-          {title: 'Mis Publicaciones', icon: 'mdi-folder-account'},
-          
-          
-        ],
-
+       
         mini: true,
       }
     },

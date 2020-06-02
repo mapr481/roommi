@@ -14,6 +14,6 @@ module.exports = {
       },
 
       admin(){
-        return !! user.esAdmin;
+        return  !! user.esAdmin == "si";
       }
 }

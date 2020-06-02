@@ -2186,23 +2186,64 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       drawer: false,
-      items: [{
-        title: 'Inicio',
-        icon: 'mdi-home'
-      }, {
-        title: 'Mi cuenta',
-        icon: 'mdi-account'
-      }, {
-        title: 'Crear Pulbicación',
-        icon: 'mdi-folder-plus'
-      }, {
-        title: 'Mis Publicaciones',
-        icon: 'mdi-folder-account'
-      }],
       mini: true
     };
   },
@@ -40598,26 +40639,144 @@ var render = function() {
             "v-list",
             { attrs: { dense: "" } },
             [
-              _vm._l(_vm.items, function(item) {
-                return _c(
-                  "v-list-item",
-                  { key: item.title, attrs: { link: "" } },
-                  [
-                    _c(
-                      "v-list-item-icon",
-                      [_c("v-icon", [_vm._v(_vm._s(item.icon))])],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "v-list-item-content",
-                      [_c("v-list-item-title", [_vm._v(_vm._s(item.title))])],
-                      1
-                    )
-                  ],
-                  1
-                )
-              }),
+              _c(
+                "v-list-item",
+                { attrs: { link: "" } },
+                [
+                  _c(
+                    "v-list-item-icon",
+                    [
+                      _c("v-icon", [
+                        _vm._v("\n            mdi-home\n          ")
+                      ])
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-list-item-content",
+                    [
+                      _c("v-list-item-title", [
+                        _vm._v("\n            Inicio\n          ")
+                      ])
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-list-item",
+                { attrs: { link: "" } },
+                [
+                  _c(
+                    "v-list-item-icon",
+                    [
+                      _c("v-icon", [
+                        _vm._v("\n            mdi-account\n          ")
+                      ])
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-list-item-content",
+                    [
+                      _c("v-list-item-title", [
+                        _vm._v("\n            Mi cuenta\n          ")
+                      ])
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _vm.user.esAdmin === "si"
+                ? _c(
+                    "v-list-item",
+                    { attrs: { link: "" } },
+                    [
+                      _c(
+                        "v-list-item-icon",
+                        [
+                          _c("v-icon", [
+                            _vm._v(
+                              "\n            mdi-account-supervisor\n          "
+                            )
+                          ])
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-list-item-content",
+                        [
+                          _c("v-list-item-title", [
+                            _vm._v("\n            Usuarios\n          ")
+                          ])
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _c(
+                "v-list-item",
+                { attrs: { link: "" } },
+                [
+                  _c(
+                    "v-list-item-icon",
+                    [
+                      _c("v-icon", [
+                        _vm._v("\n            mdi-folder-plus\n          ")
+                      ])
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-list-item-content",
+                    [
+                      _c("v-list-item-title", [
+                        _vm._v("\n            Crear Publicación\n          ")
+                      ])
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-list-item",
+                { attrs: { link: "" } },
+                [
+                  _c(
+                    "v-list-item-icon",
+                    [
+                      _c("v-icon", [
+                        _vm._v("\n            mdi-folder-account\n          ")
+                      ])
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-list-item-content",
+                    [
+                      _c("v-list-item-title", [
+                        _vm._v("\n            Mis Publicaciones\n          ")
+                      ])
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
               _vm._v(" "),
               _c("v-divider"),
               _vm._v(" "),
@@ -40640,7 +40799,7 @@ var render = function() {
                 1
               )
             ],
-            2
+            1
           )
         ],
         1
@@ -93949,7 +94108,7 @@ module.exports = {
     return !this.autenticado;
   },
   admin: function admin() {
-    return !!_user.esAdmin;
+    return !!_user.esAdmin == "si";
   }
 };
 
