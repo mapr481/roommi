@@ -29,7 +29,7 @@
 
         
             @yield('content')
-        
+        <pie></pie>
     </div>
 </body>
 </html>

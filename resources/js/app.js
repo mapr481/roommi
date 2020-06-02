@@ -31,6 +31,7 @@ import Vuetify from "../plugins/vuetify"
 Vue.component('barra-superior', require('./components/Navs/BarraSuperior.vue').default);
 Vue.component('nav-vertical', require('./components/Navs/NavVertical.vue').default);
 Vue.component('pie', require('./components/Navs/Footer.vue').default);
+Vue.component('carousel', require('./components/Carousel.vue').default);
 
 
  import auth from './components/mixins/auth';

@@ -21,11 +21,12 @@
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div class="app">
+    <div id="app">
 
         <barra-superior></barra-superior>
         <nav-vertical></nav-vertical>
-        <h1>admin</h1>
+        
+        <pie></pie>
     </div>
 </body>
 

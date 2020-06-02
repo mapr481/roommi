@@ -24,6 +24,8 @@
     <div id="app">
        <barra-superior></barra-superior>
        <nav-vertical></nav-vertical>
+
+       <pie></pie>
     </div>
 </body>
 </html>
