@@ -32,6 +32,7 @@ Vue.component('barra-superior', require('./components/Navs/BarraSuperior.vue').d
 Vue.component('nav-vertical', require('./components/Navs/NavVertical.vue').default);
 Vue.component('pie', require('./components/Navs/Footer.vue').default);
 Vue.component('carousel', require('./components/Carousel.vue').default);
+Vue.component('admin-selec', require('./components/Master/Card.vue').default);
 
 
  import auth from './components/mixins/auth';

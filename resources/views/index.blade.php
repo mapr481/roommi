@@ -27,7 +27,7 @@
 
         <div class="color p-5">
             <div class="container d-flex p-5  mt-5 text-white">
-                <h1>Buscar tu espacio no fue más sencillo</h1>
+                <h1 class="display-4">Buscar tu espacio no fue más sencillo</h1>
             </div>            
         </div>
 

@@ -25,7 +25,11 @@
 
         <barra-superior></barra-superior>
         <nav-vertical></nav-vertical>
-        
+        <div class="mt-5">
+                   
+         <admin-selec></admin-selec>
+        </div>   
+
         <pie></pie>
     </div>
 </body>

@@ -6,12 +6,14 @@
     app
   >
     <v-card
+      
+
       class="flex"
       flat
       tile
     >
       <v-card-title class="color">
-        <strong class="subheading">Siguenos en nuestras redes sociales</strong>
+        <strong class="subheading subtitle-1">Siguenos en nuestras redes sociales</strong>
 
         <v-spacer></v-spacer>
 

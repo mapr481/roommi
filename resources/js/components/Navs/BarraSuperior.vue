@@ -8,7 +8,7 @@
 
      
         
-      <v-toolbar-title >Roommi</v-toolbar-title>
+      <v-toolbar-title>Roommi</v-toolbar-title>
   
       
 
@@ -28,14 +28,14 @@
       </v-btn>
 
     <div v-else>
-      <v-btn  color="white"  v-if="collapseOn"  class="mr-3" small outlined href="login" >
+      <v-btn  color="white"  v-if="collapseOn"  class="mr-3" small outlined href="../login" >
         Login           
         <v-icon dense >
           mdi-account
         </v-icon>        
       </v-btn>
 
-      <v-btn v-if="collapseOn" color="white" small outlined href="register" >
+      <v-btn v-if="collapseOn" color="white" small outlined href="../register" >
           Registrar          
           <v-icon >
             mdi-account-plus

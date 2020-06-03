@@ -14,7 +14,12 @@ class AdminController extends Controller
 
     public function index()
     {
-        return view('Master.main');
+        return view('Master.Main');
+    }
+
+    public function users()
+    {
+        return view('Master.User');
     }
 
 }

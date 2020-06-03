@@ -1,3 +1,41 @@
 .color{
     background-color: #00A69D;
 }
+
+.boton{
+    border-color: #00A69D;
+    color: #00A69D;
+    text-align: center
+}
+
+.boton:hover{
+    background-color: #00A69D;
+    color: white;
+}
+
+.border-card{
+    border-color: #00A69D;
+    color: #00A69D;
+    
+}
+
+.titulo-size{
+    color: white;
+    background-color: #00A69D;
+    font-size: 24px;
+    text-align: center;
+}
+
+.input-size{
+    font-size: 18px;
+}
+
+.texto:hover{
+    border-color: #00A69D;
+    border-radius: 2px;
+
+}
+.texto:focus{
+    outline: 0;
+    box-shadow: 0 0 0 2px #00A69D;
+}

@@ -17,7 +17,7 @@
       
       <v-list dense>
         
-        <v-list-item link>
+        <v-list-item link href="../">
           <v-list-item-icon>
             <v-icon>
               mdi-home
@@ -30,7 +30,7 @@
           </v-list-item-content>
         </v-list-item>
 
-        <v-list-item link>
+        <v-list-item link href="../user">
           <v-list-item-icon>
             <v-icon>
               mdi-account
@@ -43,7 +43,7 @@
           </v-list-item-content>
         </v-list-item>
 
-        <v-list-item link v-if="user.esAdmin === 'si'" >
+        <v-list-item link v-if="user.esAdmin === 'si'" href="../admin/users" >
           <v-list-item-icon>
             <v-icon>
               mdi-account-supervisor
@@ -56,7 +56,20 @@
           </v-list-item-content>
         </v-list-item>
 
-        <v-list-item link>
+        <v-list-item link v-if="user.esAdmin === 'si'" href="../admin/publications">
+          <v-list-item-icon>
+            <v-icon>
+              mdi-folder
+            </v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title>
+              Publicaciones
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+
+        <v-list-item link href="../room/create">
           <v-list-item-icon>
             <v-icon>
               mdi-folder-plus
@@ -70,7 +83,7 @@
         </v-list-item>
          
 
-         <v-list-item link>
+         <v-list-item link href="../user/rooms">
           <v-list-item-icon>
             <v-icon>
               mdi-folder-account

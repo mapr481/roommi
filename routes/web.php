@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Room;
 
@@ -27,3 +28,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/room', 'RoomController');
 
 Route::get('/admin', 'AdminController@index')->name('admin');
+
