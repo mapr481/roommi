@@ -23,9 +23,19 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/room', 'RoomController');
 
+
+
+
 Route::get('/admin', 'AdminController@index')->name('admin');
+Route::get('/admin/users', 'AdminController@users')->name('users');
+Route::post('/admin/users/store','AdminController@store')->name('showUser');
+Route::post('/admin/users/edit/{id}','AdminController@edit')->name('editUser');
+Route::get('/admin/users/delete/{id}','AdminController@destroy')->name('deleteUser');
+Route::get('/admin/publications', 'AdminController@publications')->name('publications');
+Route::get('/admin/stats', 'AdminController@stats')->name('stats');
+Route::resource('admin', 'AdminController');
+
 

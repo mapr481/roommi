@@ -1,46 +1,21 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\User;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpKernel\Event\ViewEvent;
 
-class AdminController extends Controller
-{    
-    public function __construct()
-    {
-        $this->middleware('admin');
-    }
-     /**
+class UserController extends Controller
+{
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
     public function index()
     {
-        return view('Master.Main');
-    }
 
-    public function users()
-    {
-        $users = User::latest('id')->paginate(10);
-        return view('Master.User', compact('users'))->with('i',(request()->input('page', 1)- 1)* 10);
         
     }
-    public function publications()
-    {
-        return view('Master.Publication');
-    }
-    
-
-    public function stats()
-    {
-        return view('Master.stats');
-    }
-   
-    
 
     /**
      * Show the form for creating a new resource.
@@ -49,7 +24,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('Master.create');
+        //
     }
 
     /**
@@ -80,9 +55,9 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($id)
     {
-        return view('Master.Users.Edit');
+        //
     }
 
     /**
@@ -107,6 +82,4 @@ class AdminController extends Controller
     {
         //
     }
-
 }
-

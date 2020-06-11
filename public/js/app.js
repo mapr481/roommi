@@ -2186,7 +2186,7 @@ __webpack_require__.r(__webpack_exports__);
     logout: function logout() {
       axios.post('/logout').then(function (response) {
         window.location.href = "/";
-      });
+      }), localStorage.clear();
     }
   }
 });
@@ -2259,6 +2259,18 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -40769,7 +40781,6 @@ var render = function() {
       attrs: {
         fixed: "",
         collapse: !_vm.collapseOn,
-        "collapse-on-scroll": _vm.collapseOnl,
         app: "",
         color: "#00A69D",
         dark: ""
@@ -41207,6 +41218,35 @@ var render = function() {
                 ],
                 1
               ),
+              _vm._v(" "),
+              _vm.user.esAdmin === "si"
+                ? _c(
+                    "v-list-item",
+                    { attrs: { link: "", href: "../admin/stats" } },
+                    [
+                      _c(
+                        "v-list-item-icon",
+                        [
+                          _c("v-icon", [
+                            _vm._v("\n            mdi-chart-line\n          ")
+                          ])
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-list-item-content",
+                        [
+                          _c("v-list-item-title", [
+                            _vm._v("\n            Estadísticas\n          ")
+                          ])
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                : _vm._e(),
               _vm._v(" "),
               _c("v-divider"),
               _vm._v(" "),
@@ -94844,8 +94884,8 @@ var opts = {};
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\laragon\www\roommi\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\laragon\www\roommi\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\laragon\www\roommi1\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\laragon\www\roommi1\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

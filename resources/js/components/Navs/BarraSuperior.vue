@@ -3,7 +3,7 @@
  <v-app-bar
       fixed
       :collapse="!collapseOn"
-      :collapse-on-scroll="collapseOnl"
+      
       app color="#00A69D" dark>
 
      
@@ -73,11 +73,14 @@ export default {
   },
   methods: {
         logout() {
+          
           axios.post('/logout')
           .then(response =>{
             window.location.href= "/"
-          })
+          }),
+          localStorage.clear()
         },
+       
   }
     
 }

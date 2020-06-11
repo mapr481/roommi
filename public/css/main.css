@@ -39,3 +39,15 @@
     outline: 0;
     box-shadow: 0 0 0 2px #00A69D;
 }
+.borde{
+    border: #00A69D 3px solid;
+    
+}
+
+table thead{
+    color: white;
+    background-color: #00A69D;
+    border-color: #00A69D;    
+    font-size: 16px;
+    text-align: center;
+}

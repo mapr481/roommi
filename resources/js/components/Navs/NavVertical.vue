@@ -96,7 +96,18 @@
           </v-list-item-content>
         </v-list-item>
 
-      
+        <v-list-item link v-if="user.esAdmin === 'si'" href="../admin/stats">
+          <v-list-item-icon>
+            <v-icon>
+              mdi-chart-line
+            </v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title>
+              Estadísticas
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
       
         <v-divider></v-divider>
        
@@ -104,11 +115,12 @@
         <v-list-item-icon>
             <v-icon>mdi-power</v-icon>
           </v-list-item-icon>
-
           <v-list-item-content>
             <v-list-item-title>Cerrar Sesión</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+
+          
       </v-list>
   </v-navigation-drawer>
 

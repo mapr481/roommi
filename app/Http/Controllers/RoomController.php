@@ -46,6 +46,7 @@ class RoomController extends Controller
      */
     public function store(Request $request)
     {
+        
         $data = request()->validate([
             'titulo' => 'required',
             'slug' => 'required',
@@ -72,47 +73,48 @@ class RoomController extends Controller
 
 
         ]);
+        $room = new Room;
         Room::create([
-            'titulo' => $data['titulo'],
-            'direccion' => $data['direccion'],
-            'precio' => $data['precio'],
-            'detalles' => $data['detalles']
+            $room->titulo => $request->titulo,
+            $room->direccion => $request->direccion,
+            $room->precio => $request->precio,
+            $room->detalles => $request->detalles
         ]);
         ServiceRoom::create([
-            'internet' => $data ['internet'],
-            'cable' => $data ['cable'],
-            'telefono' => $data ['telefono']
+            $room->internet => $request->internet,
+            $room->cable => $request->cable,
+            $room->telefono => $request->telefono
         ]);
 
         Gender::create([
-            'damas' => $data ['damas'],
-            'caballeros' => $data['caballeros'],
-            'unisex' => $data['unisex']
+            $room->damas => $request->damas,
+            $room->caballeros => $request->caballeros,
+            $room->unisex =>  $request->unisex
         ]);
         
         CharacteristicRoom::create([
 
-            'visitas' => $data ['visitas'],
-            'vehiculos' => $data ['vehiculos'],
-            'mascotas' => $data ['mascotas'],
-            'cocina' => $data ['cocina']
+            $room->visitas =>  $request->visitas,
+            $room->vehiculos =>  $request->vehiculos,
+            $room->mascotas =>  $request->mascotas,
+            $room->cocina =>  $request->cocina
         ]);
         
         RoomOption::create([
-            'baño' => $data ['baño'],
-            'cuarto' => $data ['cuarto'],
-            'especificacion' => $data['especificacion']
+            $room->baño =>  $request->baño,
+            $room->cuarto =>  $request->cuarto,
+            $room->especificacion => $request->especificacion
         ]);
 
         TypeRoom::create([
 
-            'anexo' => $data['anexo'],
-            'casa' => $data ['casa'],
-            'apartamento' => $data ['apartamento'],
-            'dormitorio' => $data ['dormitorio']
+            $room->anexo =>  $request->anexo,
+            $room->casa =>  $request->casa,
+            $room->apartamento => $request->apartamento,
+            $room->dormitorio => $request->dormitorio
         ]);
 
-        
+        $room->save();
 
     }
 
