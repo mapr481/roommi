@@ -35,7 +35,7 @@ class RoomController extends Controller
      */
     public function create()
     {
-        return view('dashboard.publication-create');
+        return view('Dashboard/Publication-create');
     }
 
     /**
