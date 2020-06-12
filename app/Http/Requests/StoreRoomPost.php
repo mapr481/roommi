@@ -39,7 +39,7 @@ class StoreRoomPost extends FormRequest
             'detalles' => '',
             'internet' => '',
             'cable' => '',
-            'telefono' => '',            
+            'telefono' => '',
             'visitas' =>'',
             'vehiculos' => '',
             'mascotas' => '',
@@ -48,7 +48,7 @@ class StoreRoomPost extends FormRequest
             'cuarto' =>'',
             'especificacion'=>'',
             'type_room_id'=>'',
-            'gender_id'=>'',            
+            'gender_id'=>'',
         ];
     }
 }
