@@ -9,13 +9,14 @@ class Room extends Model
     protected $fillable = [
         'titulo',
         'slug',
-        'direccion',
-        'disponible',
+        'direccion',        
         'detalles',
         'precio',
         'user_id',               
         'type_room_id',
         'gender_id',
+        'service_room_id',
+        'characteristic_room_id'
     ];
 
     protected $hidden = [

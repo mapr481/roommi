@@ -28,10 +28,10 @@
 
                             <div class="form-group col-md-6">
                                 <label for="genero" class="input-size">Género</label>
-                                <select name="genero" id="genero" class="form-control texto input-size">           
-                                    <option value="damas">Damas</option>
-                                    <option value="caballeros">caballeros</option>
-                                    <option value="unisex">Unisex</option>
+                                <select name="gender_id" id="genero" class="form-control texto input-size">           
+                                    <option value="1">Damas</option>
+                                    <option value="2">caballeros</option>
+                                    <option value="3">Unisex</option>
                                 </select>
                             </div>
 
@@ -80,11 +80,11 @@
 
                             <div class="form-group col-md-6">
                                 <label for="tipos" class="input-size">Tipo de Residencia</label>
-                                <select name="tipos" id="tipos" class="form-control texto input-size">           
-                                    <option value="anexo">Anexo</option>
-                                    <option value="casa">Casa</option>
-                                    <option value="apartamento">Apartamento</option>
-                                    <option value="dormitorio">Dormitorio</option>
+                                <select name="type_room_id" id="tipos" class="form-control texto input-size">           
+                                    <option value="1">Anexo</option>
+                                    <option value="2">Casa</option>
+                                    <option value="3">Apartamento</option>
+                                    <option value="4">Dormitorio</option>
                                 </select>
                             </div>
 
