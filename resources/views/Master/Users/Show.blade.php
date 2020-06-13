@@ -84,12 +84,19 @@
                                     </div> 
 
                                     <div class="col-md-2 ">
-                                        <a href="" class="btn boton">Editar</a>
+                                        <a href="{{ route('editUser', $user->id) }}" class="btn boton">Editar</a>
                                     </div>
 
-                                    <div class="col-md-2 ">
-                                        <a href="" class="btn boton-danger">Eliminar</a>
-                                    </div>  
+                                    
+                                        <form method="POST" action="{{ route('deleteUser', $user->id) }}">
+                                            @method('DELETE')
+                                            @csrf
+                                            <div class="col-md-2 ">
+                                                <button type="submit" class="btn boton-danger">Eliminar</button>                                              
+                                            </div>  
+                                        </form>
+                                        
+                                    
 
                                 </div>                          
                             </div>

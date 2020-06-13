@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUserPost;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Event\ViewEvent;
@@ -69,9 +70,9 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show($id)
     {
-            
+        $user = User::findorfail($id);
         return view ('Master/Users/Show', ["user" => $user]);
         
         
@@ -83,9 +84,10 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($id)
     {
-        return view('Master/Users/Edit');
+        $user = User::findorfail($id);
+        return view('Master/Users/Edit',["user" =>$user]);
     }
 
     /**
@@ -95,9 +97,11 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(StoreUserPost $request, $id)
     {
-      
+        $user = User::findorfail($id);
+        $user->update($request->validated()); 
+        return back()->with('status', 'Usuario editado correctamente');
     }
 
     /**
@@ -108,7 +112,9 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::findorfail($id);
+        $user-> delete();
+        return back()->with('status', 'Usuario eliminado correctamente');
     }
 
 }

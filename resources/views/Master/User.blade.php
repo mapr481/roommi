@@ -67,7 +67,11 @@
                         <td>
                            <a href="{{ route('showUser', $user->id) }}" class="btn boton-success">Ver</a>
                            <a href="{{ route('editUser', $user->id) }}" class="btn boton">Editar</a>
-                           <a href="" class="btn boton-danger">Eliminar</a>
+                           <form method="POST" action="{{ route('deleteUser', $user->id) }}">
+                                @method('DELETE')
+                                @csrf                            
+                                <button type="submit" class="btn boton-danger">Eliminar</button>                                            
+                            </form>
                         </td>
                         </tr>
                         @endforeach
