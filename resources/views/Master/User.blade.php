@@ -60,12 +60,14 @@
                         
                         <tr>
                         <td>{{ ++$i }}</td>
-                        <td>{{ $user->nombre }} {{ $user->apellido }}</td>
+                        <td class="text-capitalize">{{ $user->nombre }} {{ $user->apellido }}</td>
                         <td>{{ $user->cedula }}</td>
                         <td>{{ $user->telefono }}</td>
                         <td>{{ $user->email }}</td>
                         <td>
-                           
+                           <a href="{{ route('showUser', $user->id) }}" class="btn boton-success">Ver</a>
+                           <a href="{{ route('editUser', $user->id) }}" class="btn boton">Editar</a>
+                           <a href="" class="btn boton-danger">Eliminar</a>
                         </td>
                         </tr>
                         @endforeach

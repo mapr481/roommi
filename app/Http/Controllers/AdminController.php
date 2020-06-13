@@ -31,13 +31,13 @@ class AdminController extends Controller
     }
     public function publications()
     {
-        return view('Master.Publication');
+        return view('Master/Publication');
     }
     
 
     public function stats()
     {
-        return view('Master.stats');
+        return view('Master/stats');
     }
    
     
@@ -49,7 +49,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('Master.create');
+        //
     }
 
     /**
@@ -69,9 +69,12 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        //
+            
+        return view ('Master/Users/Show', ["user" => $user]);
+        
+        
     }
 
     /**
@@ -82,7 +85,7 @@ class AdminController extends Controller
      */
     public function edit(User $user)
     {
-        return view('Master.Users.Edit');
+        return view('Master/Users/Edit');
     }
 
     /**
@@ -92,9 +95,9 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+      
     }
 
     /**

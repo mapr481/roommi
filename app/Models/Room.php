@@ -51,4 +51,12 @@ class Room extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function characteristicsRooms()
+    {
+        return $this->belongsToMany(CharacteristicRoom::class);
+    }
+    public function serviceRooms()
+    {
+        return $this->belongsToMany(serviceRooms::class);
+    } 
 }

@@ -59,7 +59,17 @@ class RoomController extends Controller
      */
     public function store(StoreRoomPost $request)
         {
-            Room::create($request->all());
+            
+            $room = Room::create($request->all());
+            
+
+            ServiceRoom::create($request->validated([
+                $room->service => $request->internet,
+                $room->service => $request->cable,
+                $room->service => $request->telefono
+                ]));
+           
+            
 
         // $room = new Room;
 
@@ -116,9 +126,9 @@ class RoomController extends Controller
      * @param  \App\room  $room
      * @return \Illuminate\Http\Response
      */
-    public function show(room $room)
+    public function show($id)
     {
-        //
+        $room = Room::find($id);
     }
 
     /**

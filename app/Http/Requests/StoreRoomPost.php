@@ -49,6 +49,8 @@ class StoreRoomPost extends FormRequest
             'especificacion'=>'',
             'type_room_id'=>'',
             'gender_id'=>'',
+            'characteristics_room_id'=>'',
+            'service_id'=>''
         ];
     }
 }

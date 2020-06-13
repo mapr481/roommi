@@ -31,8 +31,9 @@ Route::resource('/room', 'RoomController');
 
 Route::get('/admin', 'AdminController@index')->name('admin');
 Route::get('/admin/users', 'AdminController@users')->name('users');
-Route::post('/admin/users/store','AdminController@store')->name('showUser');
-Route::post('/admin/users/edit/{id}','AdminController@edit')->name('editUser');
+Route::get('/admin/users/{id}','AdminController@show')->name('showUser');
+Route::get('/admin/users/edit/{id}','AdminController@edit')->name('editUser');
+Route::get('/admin/users/update/{id}','AdminController@update')->name('updateUser');
 Route::get('/admin/users/delete/{id}','AdminController@destroy')->name('deleteUser');
 Route::get('/admin/publications', 'AdminController@publications')->name('publications');
 Route::get('/admin/stats', 'AdminController@stats')->name('stats');

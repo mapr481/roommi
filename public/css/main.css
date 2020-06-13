@@ -3,25 +3,50 @@
 }
 
 .boton{
-    border-color: #00A69D;
-    color: #00A69D;
+    border-color: #F2B705;
+    color: black;
     text-align: center
 }
 
 .boton:hover{
+    background-color: #F2B705;
+    color: black;
+    
+}
+
+.boton-success{
+    border-color: #00A69D;
+    color: black;
+    text-align: center
+}
+
+.boton-success:hover{
     background-color: #00A69D;
-    color: white;
+    color: black;
+    
+}
+
+.boton-danger{
+    border-color: #F7504A;
+    color: black;
+    text-align: center
+}
+
+.boton-danger:hover{
+    background-color: #F7504A;
+    color: black;
+    
 }
 
 .border-card{
-    border-color: #00A69D;
-    color: #00A69D;
+    border-color: #F2B705;
+    color: black;
     
 }
 
 .titulo-size{
-    color: white;
-    background-color: #00A69D;
+    color: black;
+    background-color: #F2B705;
     font-size: 24px;
     text-align: center;
 }
@@ -31,23 +56,104 @@
 }
 
 .texto:hover{
-    border-color: #00A69D;
+    border-color: #F2B705;
+    box-shadow: 0 0 0 2px #F2B705;   
     border-radius: 2px;
 
 }
+
 .texto:focus{
+    border-color: #F2B705;
+    box-shadow: 0 0 0 2px #F2B705;
     outline: 0;
-    box-shadow: 0 0 0 2px #00A69D;
 }
+
 .borde{
-    border: #00A69D 3px solid;
+    border: #F2B705 3px solid;
     
 }
 
 table thead{
-    color: white;
-    background-color: #00A69D;
-    border-color: #00A69D;    
+    color: black;
+    background-color: #F2B705;
+    border: #F2B705;    
     font-size: 16px;
     text-align: center;
 }
+
+.formulario h2 {
+    font-size: 18px;
+    color: #001F3F;
+    margin-bottom: 20px;
+    margin-left: 20px;
+}
+
+.formulario > div {
+    padding: 20px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.formulario .radio label,
+.formulario .checkbox label {
+    display: inline-block;
+    cursor: pointer;
+    color: black;
+    position: relative;
+    padding: 5px 15px 5px 51px;
+    font-size: 1em;
+    border-radius: 5px;
+    -webkit-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease; 
+}
+
+.formulario .radio label:hover,
+.formulario .checkbox label:hover {
+    background: rgba(242, 183, 5, 0.1); 
+}
+
+.formulario .radio label:before,
+.formulario .checkbox label:before {
+    content: "";
+    display: inline-block;
+    width: 17px;
+    height: 17px;
+    position: absolute;
+    left: 15px;
+    border-radius: 50%;
+    background: none;
+    border: 3px solid #F2B705; 
+}
+
+  .formulario input[type="radio"] {
+    display: none; 
+}
+
+.formulario input[type="radio"]:checked + label:before {
+    display: none; 
+}
+
+.formulario input[type="radio"]:checked + label {
+    padding: 5px 15px;
+    background: #F2B705;
+    border-radius: 2px;
+    color: #000000; 
+}
+
+.formulario .checkbox label:before {
+    border-radius: 3px; 
+}
+
+.formulario .checkbox input[type="checkbox"] {
+    display: none; 
+}
+
+.formulario .checkbox input[type="checkbox"]:checked + label:before {
+    display: none; 
+}
+
+.formulario .checkbox input[type="checkbox"]:checked + label {
+    background: #F2B705;
+    color: black;
+    padding: 5px 15px;
+ }
