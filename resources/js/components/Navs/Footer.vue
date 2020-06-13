@@ -13,7 +13,7 @@
       tile
     >
       <v-card-title class="color">
-        <strong class="subheading subtitle-1">Siguenos en nuestras redes sociales</strong>
+        <strong class="subheading subtitle-1">Síguenos en nuestras redes sociales</strong>
 
         <v-spacer></v-spacer>
 

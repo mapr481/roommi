@@ -17,7 +17,7 @@
       
       <v-list dense>
         
-        <v-list-item link href="../">
+        <v-list-item link href="/">
           <v-list-item-icon>
             <v-icon>
               mdi-home
@@ -30,7 +30,7 @@
           </v-list-item-content>
         </v-list-item>
 
-        <v-list-item link href="../user">
+        <v-list-item link href="/user">
           <v-list-item-icon>
             <v-icon>
               mdi-account
@@ -43,7 +43,7 @@
           </v-list-item-content>
         </v-list-item>
 
-        <v-list-item link v-if="user.esAdmin === 'si'" href="../admin/users" >
+        <v-list-item link v-if="user.esAdmin === 'si'" href="/admin/users" >
           <v-list-item-icon>
             <v-icon>
               mdi-account-supervisor
@@ -56,7 +56,7 @@
           </v-list-item-content>
         </v-list-item>
 
-        <v-list-item link v-if="user.esAdmin === 'si'" href="../admin/publications">
+        <v-list-item link v-if="user.esAdmin === 'si'" href="/admin/publications">
           <v-list-item-icon>
             <v-icon>
               mdi-folder
@@ -69,7 +69,7 @@
           </v-list-item-content>
         </v-list-item>
 
-        <v-list-item link href="../room/create">
+        <v-list-item link href="/room/create">
           <v-list-item-icon>
             <v-icon>
               mdi-folder-plus
@@ -77,13 +77,13 @@
           </v-list-item-icon>
           <v-list-item-content>
             <v-list-item-title>
-              Crear Publicación
+              Crear publicación
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
          
 
-         <v-list-item link href="../user/rooms">
+         <v-list-item link href="/user/rooms">
           <v-list-item-icon>
             <v-icon>
               mdi-folder-account
@@ -91,12 +91,12 @@
           </v-list-item-icon>
           <v-list-item-content>
             <v-list-item-title>
-              Mis Publicaciones
+              Mis publicaciones
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
 
-        <v-list-item link v-if="user.esAdmin === 'si'" href="../admin/stats">
+        <v-list-item link v-if="user.esAdmin === 'si'" href="/admin/stats">
           <v-list-item-icon>
             <v-icon>
               mdi-chart-line
@@ -116,7 +116,7 @@
             <v-icon>mdi-power</v-icon>
           </v-list-item-icon>
           <v-list-item-content>
-            <v-list-item-title>Cerrar Sesión</v-list-item-title>
+            <v-list-item-title>Cerrar sesión</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
 

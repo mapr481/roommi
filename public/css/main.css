@@ -81,20 +81,8 @@ table thead{
     text-align: center;
 }
 
-.formulario h2 {
-    font-size: 18px;
-    color: #001F3F;
-    margin-bottom: 20px;
-    margin-left: 20px;
-}
-
-.formulario > div {
-    padding: 20px 0;
-    border-bottom: 1px solid #ccc;
-}
-
-.formulario .radio label,
-.formulario .checkbox label {
+.radio label,
+.checkbox label {
     display: inline-block;
     cursor: pointer;
     color: black;
@@ -107,13 +95,13 @@ table thead{
     transition: all 0.3s ease; 
 }
 
-.formulario .radio label:hover,
-.formulario .checkbox label:hover {
+.radio label:hover,
+.checkbox label:hover {
     background: rgba(242, 183, 5, 0.1); 
 }
 
-.formulario .radio label:before,
-.formulario .checkbox label:before {
+.radio label:before,
+.checkbox label:before {
     content: "";
     display: inline-block;
     width: 17px;
@@ -125,34 +113,34 @@ table thead{
     border: 3px solid #F2B705; 
 }
 
-  .formulario input[type="radio"] {
+input[type="radio"] {
     display: none; 
 }
 
-.formulario input[type="radio"]:checked + label:before {
+input[type="radio"]:checked + label:before {
     display: none; 
 }
 
-.formulario input[type="radio"]:checked + label {
+input[type="radio"]:checked + label {
     padding: 5px 15px;
     background: #F2B705;
     border-radius: 2px;
     color: #000000; 
 }
 
-.formulario .checkbox label:before {
+.checkbox label:before {
     border-radius: 3px; 
 }
 
-.formulario .checkbox input[type="checkbox"] {
+.checkbox input[type="checkbox"] {
     display: none; 
 }
 
-.formulario .checkbox input[type="checkbox"]:checked + label:before {
+.checkbox input[type="checkbox"]:checked + label:before {
     display: none; 
 }
 
-.formulario .checkbox input[type="checkbox"]:checked + label {
+.checkbox input[type="checkbox"]:checked + label {
     background: #F2B705;
     color: black;
     padding: 5px 15px;

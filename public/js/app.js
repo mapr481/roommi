@@ -2175,6 +2175,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -40601,7 +40608,7 @@ var render = function() {
                           attrs: {
                             color: "#F2B705",
                             fixed: "",
-                            href: "../admin/users",
+                            href: "/admin/users",
                             shaped: ""
                           }
                         },
@@ -40630,7 +40637,7 @@ var render = function() {
                           attrs: {
                             color: "#F2B705",
                             fixed: "",
-                            href: "../admin/publications",
+                            href: "/admin/publications",
                             shaped: ""
                           }
                         },
@@ -40659,7 +40666,7 @@ var render = function() {
                           attrs: {
                             color: "#F2B705",
                             fixed: "",
-                            href: "../user/account",
+                            href: "/user/account",
                             shaped: ""
                           }
                         },
@@ -40688,7 +40695,7 @@ var render = function() {
                           attrs: {
                             color: "#F2B705",
                             fixed: "",
-                            href: "../user/publications",
+                            href: "/user/publications",
                             shaped: ""
                           }
                         },
@@ -40717,7 +40724,7 @@ var render = function() {
                           attrs: {
                             color: "#F2B705",
                             fixed: "",
-                            href: "../admin/stats",
+                            href: "/admin/stats",
                             shaped: ""
                           }
                         },
@@ -40787,7 +40794,21 @@ var render = function() {
       }
     },
     [
-      _c("v-toolbar-title", [_vm._v("Roommi")]),
+      _c("v-toolbar-title", [
+        _c(
+          "a",
+          { attrs: { href: "/", placeholder: "ROOMMI" } },
+          [
+            _c("v-img", {
+              attrs: {
+                src: "https://i.ibb.co/1mpt8VZ/logomiguel1.png",
+                "max-width": "130"
+              }
+            })
+          ],
+          1
+        )
+      ]),
       _vm._v(" "),
       _vm.collapseOn
         ? _c("v-text-field", {
@@ -40836,7 +40857,7 @@ var render = function() {
                                 color: "white",
                                 small: "",
                                 outlined: "",
-                                href: "../login"
+                                href: "/login"
                               }
                             },
                             [
@@ -40857,7 +40878,7 @@ var render = function() {
                                 color: "white",
                                 small: "",
                                 outlined: "",
-                                href: "../register"
+                                href: "/register"
                               }
                             },
                             [
@@ -40937,7 +40958,7 @@ var render = function() {
             { staticClass: "color" },
             [
               _c("strong", { staticClass: "subheading subtitle-1" }, [
-                _vm._v("Siguenos en nuestras redes sociales")
+                _vm._v("Síguenos en nuestras redes sociales")
               ]),
               _vm._v(" "),
               _c("v-spacer"),
@@ -41053,7 +41074,7 @@ var render = function() {
             [
               _c(
                 "v-list-item",
-                { attrs: { link: "", href: "../" } },
+                { attrs: { link: "", href: "/" } },
                 [
                   _c(
                     "v-list-item-icon",
@@ -41080,7 +41101,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "v-list-item",
-                { attrs: { link: "", href: "../user" } },
+                { attrs: { link: "", href: "/user" } },
                 [
                   _c(
                     "v-list-item-icon",
@@ -41108,7 +41129,7 @@ var render = function() {
               _vm.user.esAdmin === "si"
                 ? _c(
                     "v-list-item",
-                    { attrs: { link: "", href: "../admin/users" } },
+                    { attrs: { link: "", href: "/admin/users" } },
                     [
                       _c(
                         "v-list-item-icon",
@@ -41139,7 +41160,7 @@ var render = function() {
               _vm.user.esAdmin === "si"
                 ? _c(
                     "v-list-item",
-                    { attrs: { link: "", href: "../admin/publications" } },
+                    { attrs: { link: "", href: "/admin/publications" } },
                     [
                       _c(
                         "v-list-item-icon",
@@ -41167,7 +41188,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "v-list-item",
-                { attrs: { link: "", href: "../room/create" } },
+                { attrs: { link: "", href: "/room/create" } },
                 [
                   _c(
                     "v-list-item-icon",
@@ -41183,7 +41204,7 @@ var render = function() {
                     "v-list-item-content",
                     [
                       _c("v-list-item-title", [
-                        _vm._v("\n            Crear Publicación\n          ")
+                        _vm._v("\n            Crear publicación\n          ")
                       ])
                     ],
                     1
@@ -41194,7 +41215,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "v-list-item",
-                { attrs: { link: "", href: "../user/rooms" } },
+                { attrs: { link: "", href: "/user/rooms" } },
                 [
                   _c(
                     "v-list-item-icon",
@@ -41210,7 +41231,7 @@ var render = function() {
                     "v-list-item-content",
                     [
                       _c("v-list-item-title", [
-                        _vm._v("\n            Mis Publicaciones\n          ")
+                        _vm._v("\n            Mis publicaciones\n          ")
                       ])
                     ],
                     1
@@ -41222,7 +41243,7 @@ var render = function() {
               _vm.user.esAdmin === "si"
                 ? _c(
                     "v-list-item",
-                    { attrs: { link: "", href: "../admin/stats" } },
+                    { attrs: { link: "", href: "/admin/stats" } },
                     [
                       _c(
                         "v-list-item-icon",
@@ -41262,7 +41283,7 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "v-list-item-content",
-                    [_c("v-list-item-title", [_vm._v("Cerrar Sesión")])],
+                    [_c("v-list-item-title", [_vm._v("Cerrar sesión")])],
                     1
                   )
                 ],
@@ -94544,9 +94565,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuetify_lib_components_VAppBar__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuetify/lib/components/VAppBar */ "./node_modules/vuetify/lib/components/VAppBar/index.js");
 /* harmony import */ var vuetify_lib_components_VBtn__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuetify/lib/components/VBtn */ "./node_modules/vuetify/lib/components/VBtn/index.js");
 /* harmony import */ var vuetify_lib_components_VIcon__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vuetify/lib/components/VIcon */ "./node_modules/vuetify/lib/components/VIcon/index.js");
-/* harmony import */ var vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vuetify/lib/components/VGrid */ "./node_modules/vuetify/lib/components/VGrid/index.js");
-/* harmony import */ var vuetify_lib_components_VTextField__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vuetify/lib/components/VTextField */ "./node_modules/vuetify/lib/components/VTextField/index.js");
-/* harmony import */ var vuetify_lib_components_VToolbar__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! vuetify/lib/components/VToolbar */ "./node_modules/vuetify/lib/components/VToolbar/index.js");
+/* harmony import */ var vuetify_lib_components_VImg__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vuetify/lib/components/VImg */ "./node_modules/vuetify/lib/components/VImg/index.js");
+/* harmony import */ var vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vuetify/lib/components/VGrid */ "./node_modules/vuetify/lib/components/VGrid/index.js");
+/* harmony import */ var vuetify_lib_components_VTextField__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! vuetify/lib/components/VTextField */ "./node_modules/vuetify/lib/components/VTextField/index.js");
+/* harmony import */ var vuetify_lib_components_VToolbar__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! vuetify/lib/components/VToolbar */ "./node_modules/vuetify/lib/components/VToolbar/index.js");
 
 
 
@@ -94574,7 +94596,8 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 
 
-_node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_4___default()(component, {VAppBar: vuetify_lib_components_VAppBar__WEBPACK_IMPORTED_MODULE_5__["VAppBar"],VBtn: vuetify_lib_components_VBtn__WEBPACK_IMPORTED_MODULE_6__["VBtn"],VIcon: vuetify_lib_components_VIcon__WEBPACK_IMPORTED_MODULE_7__["VIcon"],VSpacer: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_8__["VSpacer"],VTextField: vuetify_lib_components_VTextField__WEBPACK_IMPORTED_MODULE_9__["VTextField"],VToolbarTitle: vuetify_lib_components_VToolbar__WEBPACK_IMPORTED_MODULE_10__["VToolbarTitle"]})
+
+_node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_4___default()(component, {VAppBar: vuetify_lib_components_VAppBar__WEBPACK_IMPORTED_MODULE_5__["VAppBar"],VBtn: vuetify_lib_components_VBtn__WEBPACK_IMPORTED_MODULE_6__["VBtn"],VIcon: vuetify_lib_components_VIcon__WEBPACK_IMPORTED_MODULE_7__["VIcon"],VImg: vuetify_lib_components_VImg__WEBPACK_IMPORTED_MODULE_8__["VImg"],VSpacer: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_9__["VSpacer"],VTextField: vuetify_lib_components_VTextField__WEBPACK_IMPORTED_MODULE_10__["VTextField"],VToolbarTitle: vuetify_lib_components_VToolbar__WEBPACK_IMPORTED_MODULE_11__["VToolbarTitle"]})
 
 
 /* hot reload */
