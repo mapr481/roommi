@@ -13,15 +13,15 @@ class GenderSeeder extends Seeder
     public function run()
     {
         DB::table('genders')->insert([
-            'genero'=> 'Damas'
+            'nombre'=> 'Damas'
         ]);
 
         DB::table('genders')->insert([
-            'genero'=> 'Caballeros'
+            'nombre'=> 'Caballeros'
         ]);
 
         DB::table('genders')->insert([
-            'genero'=> 'Unisex'
+            'nombre'=> 'Unisex'
         ]);
     }
 }

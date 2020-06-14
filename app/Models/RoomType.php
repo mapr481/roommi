@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TypeRoom extends Model
+class RoomType extends Model
 {
     protected $fillable = [
         'tipos',

@@ -9,23 +9,21 @@ class Room extends Model
     protected $fillable = [
         'titulo',
         'slug',
-        'direccion',        
+        'direccion',
         'detalles',
         'precio',
-        'user_id',               
-        'type_room_id',
+        'user_id',
+        'room_type_id',
         'gender_id',
-        'service_room_id',
-        'characteristic_room_id'
     ];
 
     protected $hidden = [
         ''
     ];
 
-    public function typeRoom()
+    public function roomtypes()
     {
-        return $this->belongsTo(TypeRoom::class);
+        return $this->belongsTo(RoomType::class, 'room_type_id');
     }
 
     public function gender()
@@ -35,17 +33,17 @@ class Room extends Model
 
     public function services()
     {
-        return $this->belongsToMany(Service::class);
+        return $this->belongsToMany(Service::class, 'room_services');
     }
 
     public function characteristics()
     {
-        return $this->belongsToMany(Characteristics::class);
+        return $this->belongsToMany(Characteristics::class, 'room_characteristics');
     }
 
     public function options()
     {
-        return $this->belongsToMany(RoomOption::class);
+        return $this->belongsToMany(Option::class, 'room_options');
     }
     public function user()
     {

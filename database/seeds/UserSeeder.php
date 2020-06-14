@@ -23,5 +23,16 @@ class UserSeeder extends Seeder
         'email' => 'mapr481@gmail.com',
         'password' =>bcrypt('23951208')
       ]);
+
+      DB::table('users')->insert([
+        'nombre' => 'migue',
+        'apellido' => 'c',
+        'cedula' => '1',
+        'nacimiento' =>'1995-08-04 00:00:00',
+        'telefono' => '1',
+        'esAdmin' => 'si',
+        'email' => 'mcabrera.dev@gmail.com',
+        'password' =>bcrypt('12341234')
+      ]);
     }
 }
