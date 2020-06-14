@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\RoomOption;
+use App\Models\RoomType;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -11,13 +13,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(UserSeeder::class);
-        $this->call('CharacteristicSeeder');
-        $this->call(ServiceSeeder::class);     
-        $this->call(RoomOptionSeeder::class);
-        $this->call(TypeRoomSeeder::class);
+        $this->call(CharacteristicSeeder::class);
         $this->call(GenderSeeder::class);
-        
-
+        $this->call(ServiceSeeder::class);
+        $this->call(RoomTypesSeeder::class);
+        $this->call(RoomOptionSeeder::class);
+        $this->call(UserSeeder::class);
     }
 }

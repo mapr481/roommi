@@ -21,13 +21,13 @@ class CreateRoomsTable extends Migration
             $table->string('direccion');
             $table->string('precio');
             $table->text('detalles', 2000);
-            $table->foreignId('type_room_id');
+            $table->foreignId('room_type_id');
             $table->foreignId('gender_id');
             $table->timestamps();
         });
 
       Schema::table('rooms', function($table){
-            $table->foreign('type_room_id')->references('id')->on('type_rooms');
+            $table->foreign('room_type_id')->references('id')->on('room_types');
             $table->foreign('gender_id')->references('id')->on('genders');
         });
     }

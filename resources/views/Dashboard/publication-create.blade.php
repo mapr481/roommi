@@ -31,7 +31,7 @@
                                 <select name="gender_id" id="genero" class="form-control texto input-size">
                                     <option value="">Seleccione Género</option>
                                     @foreach ($genders as $gender)
-                                        <option value="{{ $gender->id }}">{{ $gender->genero }}</option>
+                                        <option value="{{ $gender->id }}">{{ $gender->nombre }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -42,47 +42,55 @@
                                     <input
                                         type="checkbox"
                                         class="form-check-input texto"
-                                        id="{{ $service->servicio }}"
-                                        name="internet"
+                                        id="{{ $service->nombre }}"
+                                        name="services[]"
                                         value="{{ $service->id }}"/>
                                     <label
-                                        for="{{ $service->servicio }}"
-                                        class="form-check-label input-size"> {{ $service->servicio }}
+                                        for="{{ $service->nombre }}"
+                                        class="form-check-label input-size"> {{ $service->nombre }}
                                     </label><br>
                                 @endforeach
                             </div>
 
-                            <div class="form-group">
-                                <input type="radio" id="interno" name="baño" value="interno" class="texto">
-                                <label for="interno" class="input-size">Baño interno</label><br>
-                                <input type="radio" id="compartido" name="baño" value="compartido" class="texto">
-                                <label for="compartido" class="input-size">Baño compartido</label><br>
+                            <div class="form-group form-check">
+                                <label for="servicios" class="input-size">Caracteristicas:</label><br>
+                                @foreach ($characteristics as $characteristic)
+                                    <input
+                                        type="checkbox"
+                                        class="form-check-input texto"
+                                        id="{{ $service->servicio }}"
+                                        name="characteristics[]"
+                                        value="{{ $characteristic->id }}"/>
+                                    <label
+                                        for="{{ $characteristic->nombre }}"
+                                        class="form-check-label input-size"> {{ $characteristic->nombre }}
+                                    </label><br>
+                                @endforeach
                             </div>
 
-                            <div class="form-group">
-                                <input type="radio" id="individual" name="cuarto" value="individual" class="texto">
-                                <label for="individual" class="input-size">Cuarto individual</label><br>
-                                <input type="radio" id="duplex" name="cuarto" value="duplex" class="texto">
-                                <label for="duplex" class="input-size">Cuarto compartido</label><br>
-                            </div>
-
-                            <div class="form-group">
-                                <input type="radio" id="estudiante" name="especificacion" value="estudiante" class="texto">
-                                <label for="estudiante" class="input-size">Residencia Estudiantil</label><br>
-                                <input type="radio" id="profesional" name="especificacion" value="profesional" class="texto">
-                                <label for="profesional" class="input-size">Residencia para Profesionales/Trabajadores</label><br>
-                                <input type="radio" id="ambos" name="especificacion" value="ambos" class="texto">
-                                <label for="ambos" class="input-size">Residencia para Profesionales y Estudiantes</label><br>
-
+                            <div class="form-group form-check">
+                                <label for="servicios" class="input-size">Opciones:</label><br>
+                                @foreach ($options as $option)
+                                    <input
+                                        type="checkbox"
+                                        class="form-check-input texto"
+                                        id="{{ $option->nombre }}"
+                                        name="options[]"
+                                        value="{{ $option->id }}"/>
+                                    <label
+                                        for="{{ $option->nombre }}"
+                                        class="form-check-label input-size"> {{ $option->nombre }}
+                                    </label><br>
+                                @endforeach
                             </div>
 
 
                             <div class="form-group col-md-6">
                                 <label for="tipos" class="input-size">Tipo de Residencia:</label><br>
-                                <select name="type_room_id" id="tipos" class="form-control texto input-size">
+                                <select name="room_type_id" id="tipos" class="form-control texto input-size">
                                     <option value="">Seleccione</option>
-                                    @foreach ($typerooms as $type)
-                                        <option value="{{ $type->id }}">{{ $type->tipo }}</option>
+                                    @foreach ($types as $type)
+                                        <option value="{{ $type->id }}">{{ $type->nombre }}</option>
                                     @endforeach
                                 </select>
                             </div>

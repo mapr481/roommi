@@ -10,7 +10,7 @@ class StoreRoomPost extends FormRequest
     {
         $this->merge([
             'user_id' => auth()->id(),
-            'slug' => Str::slug($this->input('titulo'))
+            'slug' => Str::slug($this->input('titulo')). '-'.rand(1000,9999)
         ]);
     }
     /**
@@ -47,7 +47,7 @@ class StoreRoomPost extends FormRequest
             'baño' => '',
             'cuarto' =>'',
             'especificacion'=>'',
-            'type_room_id'=>'',
+            'room_type_id'=>'',
             'gender_id'=>'',
         ];
     }
