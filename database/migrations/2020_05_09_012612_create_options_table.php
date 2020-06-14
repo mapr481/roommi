@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRoomOptionsTable extends Migration
+class CreateOptionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateRoomOptionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('room_options', function (Blueprint $table) {
+        Schema::create('options', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('room_id')->constrained();
-            $table->foreignId('option_id')->constrained();
+            $table->string('nombre');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateRoomOptionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('room_options');
+        Schema::dropIfExists('options');
     }
 }

@@ -12,32 +12,32 @@ class RoomOptionSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('room_options')->insert([
-            'baño' => 'interno'
+        DB::table('options')->insert([
+            'nombre' => 'baño interno'
         ]);
 
-        DB::table('room_options')->insert([
-            'baño' => 'compartido'
+        DB::table('options')->insert([
+            'nombre' => 'baño compartido'
         ]);
 
-        DB::table('room_options')->insert([
-            'cuarto' => 'individual'
+        DB::table('options')->insert([
+            'nombre' => 'cuarto individual'
         ]);
 
-        DB::table('room_options')->insert([
-            'cuarto' => 'duplex'
+        DB::table('options')->insert([
+            'nombre' => 'cuarto duplex'
         ]);
 
-        DB::table('room_options')->insert([
-            'especificacion' => 'estudiante'
+        DB::table('options')->insert([
+            'nombre' => 'especificacion estudiante'
         ]);
 
-        DB::table('room_options')->insert([
-            'especificacion' => 'profesional'
+        DB::table('options')->insert([
+            'nombre' => 'especificacion profesional'
         ]);
 
-        DB::table('room_options')->insert([
-            'especificacion' => 'ambos'
-        ]);
+        DB::table('options')->insert([
+            'nombre' => 'especificacion ambos'
+     ]);
     }
 }

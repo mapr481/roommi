@@ -13,19 +13,19 @@ class CharacteristicSeeder extends Seeder
     public function run()
     {
         DB::table('characteristics')->insert([
-            'caracteristica' => 'visitas',
+            'nombre' => 'visitas',
         ]);
 
         DB::table('characteristics')->insert([
-            'caracteristica' => 'vehiculos',
+            'nombre' => 'vehiculos',
         ]);
 
         DB::table('characteristics')->insert([
-            'caracteristica' => 'mascotas',
+            'nombre' => 'mascotas',
         ]);
 
         DB::table('characteristics')->insert([
-            'caracteristica' => 'cocina',
+            'nombre' => 'cocina',
         ]);
 
     }

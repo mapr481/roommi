@@ -4,13 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreRoomPost;
 use App\Models\Room;
-use App\Models\ServiceRoom;
 use App\Models\Service;
 use App\Models\Gender;
 use App\Models\Characteristics;
-use App\Models\CharacteristicRoom;
-use App\Models\RoomOption;
-use App\Models\TypeRoom;
+use App\Models\Option;
+use App\Models\RoomType;
 use Illuminate\Http\Request;
 
 class RoomController extends Controller
@@ -41,13 +39,24 @@ class RoomController extends Controller
         $genders = Gender::all();
         $services = Service::all();
         $characteristics = Characteristics::all();
-        $typerooms = TypeRoom::all();
+        $types = RoomType::all();
+        $options = Option::all();
+
+        // dd(compact(
+        //     'genders',
+        //     'services',
+        //     'characteristics',
+        //     'types',
+        //     'options'
+        // ));
+
 
         return view('Dashboard/Publication-create', compact(
             'genders',
             'services',
             'characteristics',
-            'typerooms'
+            'types',
+            'options'
         ));
     }
 
@@ -59,65 +68,11 @@ class RoomController extends Controller
      */
     public function store(StoreRoomPost $request)
         {
-            
+
             $room = Room::create($request->all());
-            
-
-            ServiceRoom::create($request->validated([
-                $room->service => $request->internet,
-                $room->service => $request->cable,
-                $room->service => $request->telefono
-                ]));
-           
-            
-
-        // $room = new Room;
-
-        // Room::create($request->validated([
-        //     $room->titulo => $request->titulo,
-        //     $room->direccion => $request->direccion,
-        //     $room->precio => $request->precio,
-        //     $room->detalles => $request->detalles,
-        //     $room->user_id => $request->user_id
-        //     ]
-        // ));
-        // ServiceRoom::create($request->validated([
-        //     $room->internet => $request->internet,
-        //     $room->cable => $request->cable,
-        //     $room->telefono => $request->telefono
-        // ]));
-
-        // Gender::create($request->validated([
-        //     $room->damas => $request->damas,
-        //     $room->caballeros => $request->caballeros,
-        //     $room->unisex =>  $request->unisex
-        // ]));
-
-        // CharacteristicRoom::create($request->validated([
-
-        //     $room->visitas =>  $request->visitas,
-        //     $room->vehiculos =>  $request->vehiculos,
-        //     $room->mascotas =>  $request->mascotas,
-        //     $room->cocina =>  $request->cocina
-        // ]));
-
-        // RoomOption::create($request->validated([
-        //     $room->baño =>  $request->baño,
-        //     $room->cuarto =>  $request->cuarto,
-        //     $room->especificacion => $request->especificacion
-        // ]));
-
-        // TypeRoom::create($request->validated([
-
-        //     $room->anexo =>  $request->anexo,
-        //     $room->casa =>  $request->casa,
-        //     $room->apartamento => $request->apartamento,
-        //     $room->dormitorio => $request->dormitorio
-        // ]));
-
-
-        // $room->save();
-
+            $room->services()->attach($request->services);
+            $room->characteristics()->attach($request->characteristics);
+            $room->options()->attach($request->options);
     }
 
     /**
