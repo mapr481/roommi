@@ -7,7 +7,7 @@
          
       </v-app-bar-nav-icon>
 
-        <v-list-item-title>Bienvenido, {{user.nombre + ' ' + user.apellido}}</v-list-item-title>
+        <v-list-item-title>Bienvenido, {{ user.nombre }}</v-list-item-title>
 
         
       </v-list-item>
@@ -30,7 +30,7 @@
           </v-list-item-content>
         </v-list-item>
 
-        <v-list-item link href="/user">
+        <v-list-item link href="/user/show">
           <v-list-item-icon>
             <v-icon>
               mdi-account
@@ -133,6 +133,7 @@ export default {
   data () {
       return {
         
+       
         drawer: false,
        
         mini: true,

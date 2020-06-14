@@ -41057,10 +41057,7 @@ var render = function() {
               }),
               _vm._v(" "),
               _c("v-list-item-title", [
-                _vm._v(
-                  "Bienvenido, " +
-                    _vm._s(_vm.user.nombre + " " + _vm.user.apellido)
-                )
+                _vm._v("Bienvenido, " + _vm._s(_vm.user.nombre))
               ])
             ],
             1
@@ -41101,7 +41098,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "v-list-item",
-                { attrs: { link: "", href: "/user" } },
+                { attrs: { link: "", href: "/user/show" } },
                 [
                   _c(
                     "v-list-item-icon",

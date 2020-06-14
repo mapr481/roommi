@@ -26,7 +26,65 @@
             <barra-superior></barra-superior>
             <nav-vertical></nav-vertical>
 
+            <div class="container mt-5">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="card border-card">
+                            <div class="card-header titulo-size">{{ __('Ver usuario') }} </div>
+                            <div class="card-body">
+
+                                <div class="form-group row">
+                                    
+                                    
+                                    <div class="col-md-4">
+                                        <h4 class="input-size">Nombre: </h4>
+                                        <p color="black" class="text-capitalize">&nbsp; {{ $user->nombre }}</p>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <h4 class="input-size">Apellido: </h4>                                    
+                                        <p color="black" class="text-capitalize">&nbsp; {{ $user->apellido }}</p>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <h4 class="input-size">Cédula: </h4>                                    
+                                        <p color="black">&nbsp; {{ $user->cedula }}</p>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <h4 class="input-size">Número de teléfono: </h4>                                    
+                                        <p color="black">&nbsp; {{ $user->telefono }}</p>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <h4 class="input-size">Fecha de nacimiento: </h4>                                    
+                                        <p color="black">&nbsp; {{ $user->nacimiento }}</p>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <h4 class="input-size">Correo electrónico: </h4>                                    
+                                        <p color="black">&nbsp; {{ $user->email }}</p>
+                                    </div>                                
+                                
+                                    <div class="row justify-content-md-center">
+
+
+                                        <div class="col-md-3 ">
+                                            <a href="" class="btn boton-success">Ver Publicaciones</a>
+                                        </div> 
+
+                                        <div class="col-md-3 ">
+                                            <a href="{{ route('userEdit', $user->id) }}" class="btn boton">Modificar información</a>
+                                        </div>                        
+                                    </div> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>       
             <pie></pie>
+
         </div>
 
         

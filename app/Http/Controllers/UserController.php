@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -14,7 +15,7 @@ class UserController extends Controller
     public function index()
     {
 
-        
+      
     }
 
     /**
@@ -44,9 +45,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
+    public function show($id)    {   
+       
+        $user = Auth::user($id);  
+        return view('User/UserProfile', ["user" => $user]);
     }
 
     /**
@@ -57,7 +59,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = Auth::user($id);  
+        return view('User/EditUser', ["user" => $user]);
     }
 
     /**

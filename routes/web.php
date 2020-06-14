@@ -1,8 +1,7 @@
 <?php
 
-use App\Http\Controllers\AdminController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Models\Room;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +25,8 @@ Auth::routes();
 
 Route::resource('/room', 'RoomController');
 
-
+Route::get('/user/edit/{id}', 'UserController@edit')->name('userEdit');
+Route::resource('user', 'UserController');
 
 
 Route::get('/admin', 'AdminController@index')->name('admin');
