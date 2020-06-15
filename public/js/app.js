@@ -2247,6 +2247,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -40957,7 +40958,7 @@ var render = function() {
             "v-card-title",
             { staticClass: "color" },
             [
-              _c("strong", { staticClass: "subheading subtitle-1" }, [
+              _c("strong", { staticClass: "subheading subtitle-2" }, [
                 _vm._v("Síguenos en nuestras redes sociales")
               ]),
               _vm._v(" "),
@@ -40972,7 +40973,7 @@ var render = function() {
                     attrs: { dark: "", icon: "" }
                   },
                   [
-                    _c("v-icon", { attrs: { size: "24px" } }, [
+                    _c("v-icon", { attrs: { size: "20px" } }, [
                       _vm._v(_vm._s(icon))
                     ])
                   ],

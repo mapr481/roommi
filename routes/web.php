@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PublicationController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -22,8 +23,14 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/room/view/{slug}', 'RoomController@show')->name('RoomView');
-Route::resource('/room', 'RoomController');
+
+
+Route::get('/view/{slug}', 'PublicationController@show')->name('RoomView');
+Route::resource('view', 'PublicationController');
+
+
+Route::resource('room', 'RoomController');
+
 
 Route::get('/user/edit/{id}', 'UserController@edit')->name('userEdit');
 Route::resource('user', 'UserController');

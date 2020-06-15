@@ -1,6 +1,13 @@
 .color{
     background-color: #00A69D;
 }
+.color1{
+    background-color: #EEEEEE;
+}
+.margen{
+    margin-top: 100px;
+    margin-bottom:110px;
+}
 
 .boton{
     border-color: #F2B705;

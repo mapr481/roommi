@@ -84,9 +84,7 @@ class RoomController extends Controller
      */
     public function show($id)
     {
-         
-        $room = Room::findorfail($id);        
-        return view('Dashboard.Publication-view', ["room" =>$room]);
+      
     }
 
     /**
@@ -97,7 +95,7 @@ class RoomController extends Controller
      */
     public function edit(room $room)
     {
-        //
+        
     }
 
     /**
