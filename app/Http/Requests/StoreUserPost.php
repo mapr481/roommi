@@ -24,13 +24,13 @@ class StoreUserPost extends FormRequest
     public function rules()
     {
         return [
-            'nombre' => ['required', 'string', 'max:255'],
-            'apellido' => ['required', 'string', 'max:255'],
-            'cedula' => ['required', 'string', 'max:255', 'unique:users'],
-            'nacimiento' => ['required', 'string','date', 'max:255'],
-            'telefono' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],            
-            'esadmin'=> [''],
+            'nombre' => 'required', 'string', 'max:255',
+            'apellido' => 'required', 'string', 'max:255',
+            'cedula' => 'required', 'string', 'max:255', 'unique:users,cedula'.$this->user()->id,
+            'nacimiento' => 'required', 'string','date', 'max:255',
+            'telefono' => 'required', 'string', 'max:255',
+            'email' => 'required', 'email','unique:users,email'.$this->user()->id,           
+            'esAdmin'=> '',
         ];
     }
 }

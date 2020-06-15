@@ -42,13 +42,13 @@ class RoomController extends Controller
         $types = RoomType::all();
         $options = Option::all();
 
-        // dd(compact(
-        //     'genders',
-        //     'services',
-        //     'characteristics',
-        //     'types',
-        //     'options'
-        // ));
+        /*dd(compact(
+             'genders',
+             'services',
+             'characteristics',
+             'types',
+             'options'
+        ));*/
 
 
         return view('Dashboard/Publication-create', compact(
@@ -69,6 +69,7 @@ class RoomController extends Controller
     public function store(StoreRoomPost $request)
         {
 
+            //dd($request->services);
             $room = Room::create($request->all());
             $room->services()->attach($request->services);
             $room->characteristics()->attach($request->characteristics);
@@ -83,7 +84,9 @@ class RoomController extends Controller
      */
     public function show($id)
     {
-        $room = Room::find($id);
+         
+        $room = Room::findorfail($id);        
+        return view('Dashboard.Publication-view', ["room" =>$room]);
     }
 
     /**

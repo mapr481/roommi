@@ -119,7 +119,17 @@
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
-                                    </div>
+                                    </div>                     
+                                </div>
+                                <div class="for-group row">                                      
+                                    <label for="rol" class="col-md-2 col-form-label text-md-right input-size">Rol:</label> 
+                                    <div class="col-md-4">
+                                        <select name="esAdmin" id="rol" class="form-control texto input-size">                                            
+                                            <option value="">Seleccione modo</option>
+                                            <option value="si">Admin</option>
+                                            <option value="no">Usuario</option>                                               
+                                        </select>
+                                    </div>     
                                 </div>    
                                 
                                 <div class="form-group row mb-0">

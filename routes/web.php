@@ -22,7 +22,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-
+Route::get('/room/view/{slug}', 'RoomController@show')->name('RoomView');
 Route::resource('/room', 'RoomController');
 
 Route::get('/user/edit/{id}', 'UserController@edit')->name('userEdit');

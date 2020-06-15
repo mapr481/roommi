@@ -86,7 +86,7 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        $user = User::findorfail($id);
+        $user = User::findorfail($id);        
         return view('Master/Users/Edit',["user" =>$user]);
     }
 
