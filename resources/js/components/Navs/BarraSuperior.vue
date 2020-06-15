@@ -26,6 +26,12 @@
       </v-text-field>
      <v-spacer></v-spacer>
     <v-spacer></v-spacer>
+    <v-btn  color="white"  v-if="collapseOn"  class="mr-3" small outlined href="/view" >
+        Ver Publicaciones           
+        <v-icon dense >
+          mdi-aspect-ratio
+        </v-icon>
+       </v-btn>  
     <div v-if="collapseOn">
       <v-btn v-if="autenticado" color="white" class="mr-3" small outlined @click="logout" >
         Cerrar Sesión
@@ -49,12 +55,8 @@
           </v-icon>          
         </v-btn>
       </div>
-  </div>
-    
-      
-
-     
-
+  </div>   
+            
    <v-btn icon color="white" @click="collapseOn = !collapseOn"
    
    hide-details >

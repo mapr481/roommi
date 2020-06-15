@@ -2182,6 +2182,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -40827,6 +40829,23 @@ var render = function() {
       _c("v-spacer"),
       _vm._v(" "),
       _c("v-spacer"),
+      _vm._v(" "),
+      _vm.collapseOn
+        ? _c(
+            "v-btn",
+            {
+              staticClass: "mr-3",
+              attrs: { color: "white", small: "", outlined: "", href: "/view" }
+            },
+            [
+              _vm._v("\n       Ver Publicaciones           \n       "),
+              _c("v-icon", { attrs: { dense: "" } }, [
+                _vm._v("\n         mdi-aspect-ratio\n       ")
+              ])
+            ],
+            1
+          )
+        : _vm._e(),
       _vm._v(" "),
       _vm.collapseOn
         ? _c(
