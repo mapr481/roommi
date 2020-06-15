@@ -58,7 +58,7 @@ class PublicationController extends Controller
         
         $room = Room::where('slug', $slug)->first(); 
                 
-        return view('Dashboard.Publication-view', ["room" =>$room]);
+        return view('Dashboard/Publication-view', ["room" =>$room]);
     }
 
     /**
