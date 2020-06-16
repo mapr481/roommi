@@ -2400,6 +2400,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      link: ['1', '2'],
       drawer: false,
       mini: true
     };
@@ -41118,7 +41119,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "v-list-item",
-                { attrs: { link: "", href: "/user/show" } },
+                { attrs: { link: "", href: "/user/view" } },
                 [
                   _c(
                     "v-list-item-icon",
@@ -41232,7 +41233,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "v-list-item",
-                { attrs: { link: "", href: "/user/rooms" } },
+                { attrs: { link: "", href: "/view/" } },
                 [
                   _c(
                     "v-list-item-icon",

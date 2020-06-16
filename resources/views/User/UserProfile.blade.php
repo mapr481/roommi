@@ -70,7 +70,7 @@
 
 
                                         <div class="col-md-3 ">
-                                            <a href="" class="btn boton-success">Ver Publicaciones</a>
+                                            <a href="{{  route('viewUser', $user->id) }}" class="btn boton-success">Ver Publicaciones</a>
                                         </div> 
 
                                         <div class="col-md-3 ">

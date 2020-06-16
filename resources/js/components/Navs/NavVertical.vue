@@ -30,7 +30,7 @@
           </v-list-item-content>
         </v-list-item>
 
-        <v-list-item link href="/user/show">
+        <v-list-item link href="/user/view">
           <v-list-item-icon>
             <v-icon>
               mdi-account
@@ -83,7 +83,7 @@
         </v-list-item>
          
 
-         <v-list-item link href="/user/rooms">
+         <v-list-item link href="/view/">
           <v-list-item-icon>
             <v-icon>
               mdi-folder-account
@@ -133,7 +133,7 @@ export default {
   data () {
       return {
         
-       
+       link:['1', '2', ],
         drawer: false,
        
         mini: true,

@@ -74,6 +74,7 @@ class RoomController extends Controller
             $room->services()->attach($request->services);
             $room->characteristics()->attach($request->characteristics);
             $room->options()->attach($request->options);
+            return back()->with('status', 'Publicación creada correctamente');
     }
 
     /**

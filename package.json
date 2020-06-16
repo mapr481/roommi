@@ -41,11 +41,10 @@
         "npm-install-webpack-plugin": "^4.0.5",
         "python": "0.0.4",
         "python2": "0.0.1",
+        "vue-router": "^3.3.4",
         "vuetify": "^2.2.31",
         "vuetify-loader": "^1.4.3",
         "webpack": "^4.43.0",
         "webpack-plugin": "^1.0.5"
     }
-
-    
 }

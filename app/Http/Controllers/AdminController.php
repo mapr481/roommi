@@ -1,8 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\StoreRoomPost;
 use App\Http\Requests\StoreUserPost;
+use App\Models\Characteristics;
+use App\Models\Gender;
+use App\Models\Option;
+use App\Models\Room;
+use App\Models\RoomType;
+use App\Models\Service;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Event\ViewEvent;
@@ -116,6 +122,74 @@ class AdminController extends Controller
         $user-> delete();
         return back()->with('status', 'Usuario eliminado correctamente');
     }
+
+    /****************************************Publicaciones*****************************************/
+
+    public function showpub($slug)
+    {
+        $room = Room::where('slug', $slug)->first();      
+
+        return view ('Master/Publication/ShowRoom', ["room" => $room]);
+        
+        
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function editpub($slug)
+    { 
+        $room = Room::where('slug', $slug)->first();  
+       
+        $genders = Gender::all();
+        $services = Service::all();
+        $characteristics = Characteristics::all();
+        $types = RoomType::all();
+        $options = Option::all();
+        //dd($room);
+        return view('Master/Publication/EditRoom',compact('room',
+            'genders',
+            'services',
+            'characteristics',
+            'types',
+            'options'
+        ));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function updatepub(StoreRoomPost $request, $slug)
+    { 
+        
+        $room = Room::where('slug', $slug)->first();        
+        $room->update($request->all());
+        $room->services()->sync($request->services);
+        $room->characteristics()->sync($request->characteristics);
+        $room->options()->sync($request->options); 
+        return redirect('/')->with('status', 'Publicación editada correctamente');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroypub($slug)
+    {
+        $room = Room::where('slug', $slug)->first();
+        $room-> delete();
+        return back()->with('status', 'Usuario eliminado correctamente');
+    }
+
 
 }
 

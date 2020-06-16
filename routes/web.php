@@ -24,8 +24,8 @@ Route::get('/', function () {
 Auth::routes();
 
 
-
-Route::get('/view/{slug}', 'PublicationController@show')->name('RoomView');
+Route::get('/view/user/{id}', 'PublicationController@showByUser')->name('viewUser');
+Route::get('/view/{slug}', 'PublicationController@show')->name('roomView');
 Route::resource('view', 'PublicationController');
 
 
@@ -36,6 +36,10 @@ Route::get('/user/edit/{id}', 'UserController@edit')->name('userEdit');
 Route::resource('user', 'UserController');
 
 
+Route::get('/admin/view/{slug}','AdminController@showpub')->name('showPublication');
+Route::get('/admin/view/edit/{slug}','AdminController@editpub')->name('editPublication');
+Route::put('/admin/view/update/{slug}','AdminController@updatepub')->name('updatePublication');
+Route::delete('/admin/view/delete/{slug}','AdminController@destroypub')->name('deletePublication');
 Route::get('/admin', 'AdminController@index')->name('admin');
 Route::get('/admin/users', 'AdminController@users')->name('users');
 Route::get('/admin/users/{id}','AdminController@show')->name('showUser');
