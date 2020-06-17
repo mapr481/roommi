@@ -24,9 +24,16 @@ class RoomController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        
+        $room = Room::all();
+        
+        if ($request->ajax()){
+            return response()->json([ 
+                ['titulo'=> $room->titulo, 'detalles'=> $room->detalles]                            
+            ]);
+        }
     }
 
     /**

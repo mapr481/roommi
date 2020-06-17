@@ -46,7 +46,7 @@
                                 <div class="collapse-content">  
                                     <p class="card-text text-truncate d-inline-block" style="max-height: 100px; max-width: 450px;">{{ $room->detalles }}</p>
                                 </div> 
-                                <a class="btn boton-success" href="{{  route('showPublication', $room->slug) }}">Ver publicación</a> 
+                                <a class="btn boton-success" href="{{  route('showPub', $room->slug) }}">Ver publicación</a> 
                             </div>  
                         </div>                                               
                     @endforeach

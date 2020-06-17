@@ -15,7 +15,7 @@ class CreateRoomOptionsTable extends Migration
     {
         Schema::create('room_options', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('room_id')->constrained();
+            $table->foreignId('room_id')->constrained()->onDelete('cascade');
             $table->foreignId('option_id')->constrained();
             $table->timestamps();
         });

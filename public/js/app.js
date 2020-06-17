@@ -2026,8 +2026,15 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       colors: ['indigo', 'warning', 'pink darken-2', 'red lighten-1', 'deep-purple accent-4'],
-      slides: ['First', 'Second', 'Third', 'Fourth', 'Fifth']
+      slides: []
     };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get('http://localhost:3000/room').then(function (response) {
+      return _this.slides = response.data;
+    });
   }
 });
 
@@ -40550,7 +40557,7 @@ var render = function() {
                     },
                     [
                       _c("div", { staticClass: "display-1" }, [
-                        _vm._v(_vm._s(slide) + " Slide")
+                        _vm._v(_vm._s(_vm.slides))
                       ])
                     ]
                   )
@@ -41178,7 +41185,7 @@ var render = function() {
               _vm.user.esAdmin === "si"
                 ? _c(
                     "v-list-item",
-                    { attrs: { link: "", href: "/admin/publications" } },
+                    { attrs: { link: "", href: "/admin/view/list" } },
                     [
                       _c(
                         "v-list-item-icon",
@@ -41233,7 +41240,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "v-list-item",
-                { attrs: { link: "", href: "/view/" } },
+                { attrs: { link: "", href: "/user/publication" } },
                 [
                   _c(
                     "v-list-item-icon",

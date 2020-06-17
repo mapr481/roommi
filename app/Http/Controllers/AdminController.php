@@ -38,7 +38,10 @@ class AdminController extends Controller
     }
     public function publications()
     {
-        return view('Master/Publication');
+        $rooms = Room::latest('id')->paginate(5);        
+        return view('Master/Publication', compact('rooms'))->with('i',(request()->input('page', 1)- 1)* 5);
+        
+        
     }
     
 
@@ -49,33 +52,6 @@ class AdminController extends Controller
    
     
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         $user = User::findorfail($id);
@@ -120,7 +96,7 @@ class AdminController extends Controller
     {
         $user = User::findorfail($id);
         $user-> delete();
-        return back()->with('status', 'Usuario eliminado correctamente');
+        return back('publications')->with('status', 'Usuario eliminado correctamente');
     }
 
     /****************************************Publicaciones*****************************************/
@@ -159,13 +135,7 @@ class AdminController extends Controller
         ));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function updatepub(StoreRoomPost $request, $slug)
     { 
         
@@ -174,20 +144,16 @@ class AdminController extends Controller
         $room->services()->sync($request->services);
         $room->characteristics()->sync($request->characteristics);
         $room->options()->sync($request->options); 
-        return redirect('/')->with('status', 'Publicación editada correctamente');
+        return redirect('showPublication')->with('status', 'Publicación editada correctamente');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
+    
     public function destroypub($slug)
     {
         $room = Room::where('slug', $slug)->first();
         $room-> delete();
-        return back()->with('status', 'Usuario eliminado correctamente');
+        return redirect('/admin/view/list')->with('status', 'Usuario eliminado correctamente');
     }
 
 

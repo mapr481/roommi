@@ -19,7 +19,7 @@
             align="center"
             justify="center"
           >
-            <div class="display-1">{{ slide }} Slide</div>
+            <div class="display-1">{{ slides }}</div>
           </v-row>
         </v-sheet>
       </v-carousel-item>
@@ -38,14 +38,11 @@
           'red lighten-1',
           'deep-purple accent-4',
         ],
-        slides: [
-          'First',
-          'Second',
-          'Third',
-          'Fourth',
-          'Fifth',
-        ],
+        slides: [],
       }
+    },
+    mounted() {
+      axios.get('http://localhost:3000/room').then(response => (this.slides = response.data))
     },
   }
 </script>

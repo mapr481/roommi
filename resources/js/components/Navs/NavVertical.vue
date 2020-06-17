@@ -56,7 +56,7 @@
           </v-list-item-content>
         </v-list-item>
 
-        <v-list-item link v-if="user.esAdmin === 'si'" href="/admin/publications">
+        <v-list-item link v-if="user.esAdmin === 'si'" href="/admin/view/list">
           <v-list-item-icon>
             <v-icon>
               mdi-folder
@@ -83,7 +83,7 @@
         </v-list-item>
          
 
-         <v-list-item link href="/view/">
+         <v-list-item link href="/user/publication">
           <v-list-item-icon>
             <v-icon>
               mdi-folder-account

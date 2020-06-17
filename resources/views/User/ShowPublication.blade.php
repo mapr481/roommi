@@ -96,12 +96,13 @@
                 <div class="row">
                     <div class="col-md-6 text-right">
                         <h5>Precio: {{ $room->precio }}</h5>
-                    </div>
+                    </div>                   
+
                     
                     <div class="col-md-3 text-right">
-                        <a class="btn boton" href="{{ route('editPublication', $room->slug) }}">Editar</a>
+                        <a class="btn boton" href="{{ route('pubEdit', $room->slug) }}">Editar</a>
                     </div>
-                    <form method="POST" action="{{ route('deletePublication', $room->slug) }}">
+                    <form method="POST" action="{{ route('pubDelete', $room->slug) }}">
                         @method('DELETE')
                         @csrf
                         <div class="col-md-2 ">

@@ -15,7 +15,7 @@ class CreateRoomCharacteristicsTable extends Migration
     {
         Schema::create('room_characteristics', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('room_id')->constrained();
+            $table->foreignId('room_id')->constrained()->onDelete('cascade');
             $table->foreignId('characteristics_id')->constrained();
             $table->timestamps();
         });
