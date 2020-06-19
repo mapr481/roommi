@@ -67,7 +67,7 @@
                                 <div class="checkbox">
                                     @foreach ($characteristics as $characteristic)
                                         <input
-                                            type="checkbox" class="form-check-input texto checkbox" 
+                                            type="checkbox" class="form-check-input texto checkbox"
                                             id="{{ $characteristic->nombre }}"
                                             name="characteristics[]"
                                             value="{{ $characteristic->id }}"/>
@@ -79,7 +79,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group form-check ">                               
+                            <div class="form-group form-check ">
                                <div class="checkbox">
                                     @foreach ($options as $option)
                                         <input
@@ -93,7 +93,7 @@
                                             class="form-check-label input-size text-capitalize"> {{ $option->nombre }}
                                         </label><br>
                                     @endforeach
-                                </div>                          
+                                </div>
 
 
                             <div class="form-group">
@@ -111,7 +111,7 @@
                             <div class="form-group">
                                 <div class="col-md-6">
                                     <label for="imagen" class="input-size">Agregar Imágen</label>
-                                    <input type="file" name="imagen" id="imagen" class="form-control-file">
+                                    <input type="file" name="file" id="imagen" class="form-control-file">
                                 </div>
                             </div>
 
