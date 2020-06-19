@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+// use Illuminate\Support\Facades\Storage;
+
 use App\Http\Requests\StoreRoomPost;
 use App\Models\Room;
 
@@ -14,128 +16,118 @@ use Illuminate\Http\Request;
 
 class RoomController extends Controller
 {
-    
 
-    public function __construct()
-    {
-        $this->middleware('auth');
+
+  public function __construct()
+  {
+    $this->middleware('auth');
+  }
+  /**
+
+   * Display a listing of the resource.
+   *
+   * @return \Illuminate\Http\Response
+   */
+  public function index(Request $request)
+  {
+
+    $room = Room::all();
+
+    if ($request->ajax()) {
+      return response()->json([
+        ['titulo' => $room->titulo, 'detalles' => $room->detalles]
+      ]);
     }
-    /**
+  }
 
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index(Request $request)
-    {
-        
-        $room = Room::all();
-        
-        if ($request->ajax()){
-            return response()->json([ 
-                ['titulo'=> $room->titulo, 'detalles'=> $room->detalles]                            
-            ]);
-        }
-    }
+  /**
+   * Show the form for creating a new resource.
+   *
+   * @return \Illuminate\Http\Response
+   */
+  public function create()
+  {
+    $genders = Gender::all();
+    $services = Service::all();
+    $characteristics = Characteristics::all();
+    $types = RoomType::all();
+    $options = Option::all();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        $genders = Gender::all();
-        $services = Service::all();
-        $characteristics = Characteristics::all();
-        $types = RoomType::all();
-        $options = Option::all();
+    return view('Dashboard/Publication-create', compact(
+      'genders',
+      'services',
+      'characteristics',
+      'types',
+      'options'
+    ));
+  }
 
-        /*dd(compact(
-             'genders',
-             'services',
-             'characteristics',
-             'types',
-             'options'
-        ));*/
+  /**
+   * Store a newly created resource in storage.
+   *
+   * @param  \Illuminate\Http\Request  $request
+   * @return \Illuminate\Http\Response
+   */
+  public function store(StoreRoomPost $request)
+  {
 
+    $room = Room::create($request->all());
+    $room->services()->attach($request->services);
+    $room->characteristics()->attach($request->characteristics);
+    $room->options()->attach($request->options);
 
-        return view('Dashboard/Publication-create', compact(
-            'genders',
-            'services',
-            'characteristics',
-            'types',
-            'options'
-        ));
-    }
+    if ($request->hasfile('file')) {
+      $file = $request->file('file');
+      $name = time() . $file->getClientOriginalName();
+      \Storage::disk('local')->put($name, \File::get($file));
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreRoomPost $request)
-        {   
-            if($request->hasfile('imagen')){
-                $file = $request->file('imagen');
-                $name = time().$file->getClientOriginalName();
-                \Storage::disk('local')->put($name, \File::get($file));
-                
-                
-            }
-            
-            
-           
-            $room = Room::create($request->all());                       
-            $room->services()->attach($request->services);
-            $room->characteristics()->attach($request->characteristics);
-            $room->options()->attach($request->options);
-            return back()->with('status', 'Publicación creada correctamente');
+      $room->imagen = $name;
+      $room->save();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\room  $room
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-      
-    }
+    return back()->with('status', 'Publicación creada correctamente');
+  }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\room  $room
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(room $room)
-    {
-        
-    }
+  /**
+   * Display the specified resource.
+   *
+   * @param  \App\room  $room
+   * @return \Illuminate\Http\Response
+   */
+  public function show($id)
+  {
+  }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\room  $room
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, room $room)
-    {
-        //
-    }
+  /**
+   * Show the form for editing the specified resource.
+   *
+   * @param  \App\room  $room
+   * @return \Illuminate\Http\Response
+   */
+  public function edit(room $room)
+  {
+  }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\room  $room
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(room $room)
-    {
-        //
-    }
+  /**
+   * Update the specified resource in storage.
+   *
+   * @param  \Illuminate\Http\Request  $request
+   * @param  \App\room  $room
+   * @return \Illuminate\Http\Response
+   */
+  public function update(Request $request, room $room)
+  {
+    //
+  }
+
+  /**
+   * Remove the specified resource from storage.
+   *
+   * @param  \App\room  $room
+   * @return \Illuminate\Http\Response
+   */
+  public function destroy(room $room)
+  {
+    //
+  }
 }

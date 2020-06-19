@@ -19,7 +19,7 @@ class CreateRoomsTable extends Migration
             $table->string('slug')->unique();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('direccion');
-            $table->string('imagen');
+            $table->string('imagen')->default('noimage.jpg');
             $table->string('precio');
             $table->text('detalles', 2000);
             $table->foreignId('room_type_id');
