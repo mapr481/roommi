@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreRoomPost;
 use App\Models\Room;
+
 use App\Models\Service;
 use App\Models\Gender;
 use App\Models\Characteristics;
@@ -13,6 +14,7 @@ use Illuminate\Http\Request;
 
 class RoomController extends Controller
 {
+    
 
     public function __construct()
     {
@@ -74,10 +76,18 @@ class RoomController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(StoreRoomPost $request)
-        {
-
-            //dd($request->services);
-            $room = Room::create($request->all());
+        {   
+            if($request->hasfile('imagen')){
+                $file = $request->file('imagen');
+                $name = time().$file->getClientOriginalName();
+                \Storage::disk('local')->put($name, \File::get($file));
+                
+                
+            }
+            
+            
+           
+            $room = Room::create($request->all());                       
             $room->services()->attach($request->services);
             $room->characteristics()->attach($request->characteristics);
             $room->options()->attach($request->options);

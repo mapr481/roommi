@@ -40,7 +40,8 @@ class StoreRoomPost extends FormRequest
             'room_type_id'=>'',
             'gender_id'=>'',
             'characteristics_room_id'=>'',
-            'service_id'=>''
+            'service_id'=>'',
+            'imagen' => 'mimes:jpeg,bmp,png|max:5120'
         ];
     }
 }

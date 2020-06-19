@@ -47,7 +47,8 @@ class AdminController extends Controller
 
     public function stats()
     {
-        return view('Master/stats');
+        return view('Master/Stats');
+        
     }
    
     

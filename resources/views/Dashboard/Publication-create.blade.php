@@ -9,7 +9,7 @@
                     <div class="card-header titulo-size">{{ __('Crear post') }}</div>
                     <div class="card-body ">
 
-                        <form class="formulario" action="{{ route("room.store") }}" method="POST">
+                        <form class="formulario" action="{{ route("room.store") }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group row">
                                 <div class="col-md-6">
@@ -105,6 +105,13 @@
                                             <option value="{{ $type->id }}">{{ $type->nombre }}</option>
                                         @endforeach
                                     </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label for="imagen" class="input-size">Agregar Imágen</label>
+                                    <input type="file" name="imagen" id="imagen" class="form-control-file">
                                 </div>
                             </div>
 
