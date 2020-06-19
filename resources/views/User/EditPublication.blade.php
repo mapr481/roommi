@@ -111,6 +111,13 @@
 
                             <div class="form-group">
                                 <div class="col-md-6">
+                                    <label for="imagen" class="input-size">Editar Imágen</label>
+                                    <input type="file" name="file" id="imagen" class="form-control-file">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-6">
                                     <label for="precio" class="input-size">Precio</label>
                                     <input type="text" name="precio" id="precio" class="form-control texto" value="{{ old('precio', $room->precio) }}">
                                 </div>

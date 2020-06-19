@@ -60,14 +60,14 @@ class UserController extends Controller
     public function editpub($slug)
     { 
         $room = Room::where('slug', $slug)->first();  
-       
+        if (Auth::user()->id == $room->user_id){    
         $genders = Gender::all();
         $services = Service::all();
         $characteristics = Characteristics::all();
         $types = RoomType::all();
         $options = Option::all();
         //dd($room);
-        if (Auth::user()->id == $room->user_id){
+        
 
             return view('User/EditPublication',compact('room',
             'genders',
@@ -84,17 +84,24 @@ class UserController extends Controller
     public function updatepub(StoreRoomPost $request, $slug)
     { 
         
-        $room = Room::where('slug', $slug)->first();        
-        $room->update($request->all());
-        $room->services()->sync($request->services);
-        $room->characteristics()->sync($request->characteristics);
-        $room->options()->sync($request->options); 
+       
+        $room = Room::where('slug', $slug)->first();
+        if (Auth::user()->id == $room->user_id){                    
+            $room->update($request->all());
+            $room->services()->sync($request->services);
+            $room->characteristics()->sync($request->characteristics);
+            $room->options()->sync($request->options);
+            if ($request->hasfile('file')) {
+                $file = $request->file('file');
+                $name = time() . $file->getClientOriginalName();
+                \Storage::disk('local')->put($name, \File::get($file));
+          
+                $room->imagen = $name;
+                $room->save();
+                return redirect('user/publication')->with('status', 'Publicación editada correctamente');
 
-        if (Auth::user()->id == $room->user_id){
-
-            return redirect('user/publication')->with('status', 'Publicación editada correctamente');
-
-        }return redirect('/user/publication');
+            }return redirect('/user/publication');
+        }
                     
         
     }
