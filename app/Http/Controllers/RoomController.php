@@ -72,6 +72,7 @@ class RoomController extends Controller
   {
 
     $room = Room::create($request->all());
+    $room->location()->attach($request->location);
     $room->services()->attach($request->services);
     $room->characteristics()->attach($request->characteristics);
     $room->options()->attach($request->options);

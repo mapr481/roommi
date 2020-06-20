@@ -40648,7 +40648,7 @@ var render = function() {
                           attrs: {
                             color: "#F2B705",
                             fixed: "",
-                            href: "/admin/publications",
+                            href: "/admin/view/list",
                             shaped: ""
                           }
                         },
@@ -40677,7 +40677,7 @@ var render = function() {
                           attrs: {
                             color: "#F2B705",
                             fixed: "",
-                            href: "/user/account",
+                            href: "/user/view",
                             shaped: ""
                           }
                         },
@@ -40706,7 +40706,7 @@ var render = function() {
                           attrs: {
                             color: "#F2B705",
                             fixed: "",
-                            href: "/user/publications",
+                            href: "/user/publication",
                             shaped: ""
                           }
                         },

@@ -24,6 +24,7 @@
                                     <input type="text" name="direccion" id="direccion" class="form-control texto">
                                 </div>
                             </div>
+                           
 
                             <div class="form-group">
                                 <div class="col-md-6">
@@ -135,4 +136,6 @@
 
         </div>
     </div>
+    
+   
 @endsection

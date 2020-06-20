@@ -100,9 +100,9 @@
 
                     
                     <div class="col-md-3 text-right">
-                        <a class="btn boton" href="{{ route('pubEdit', $room->slug) }}">Editar</a>
+                        <a class="btn boton" href="{{ route('PubEdit', $room->slug) }}">Editar</a>
                     </div>
-                    <form method="POST" action="{{ route('pubDelete', $room->slug) }}">
+                    <form method="POST" action="{{ route('PubDelete', $room->slug) }}">
                         @method('DELETE')
                         @csrf
                         <div class="col-md-2 ">

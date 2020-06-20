@@ -27,13 +27,13 @@ class AdminController extends Controller
 
     public function index()
     {
-        return view('Master.Main');
+        return view('Master/Main');
     }
 
     public function users()
     {
         $users = User::latest('id')->paginate(10);
-        return view('Master.User', compact('users'))->with('i',(request()->input('page', 1)- 1)* 10);
+        return view('Master/User', compact('users'))->with('i',(request()->input('page', 1)- 1)* 10);
         
     }
     public function publications()
@@ -42,6 +42,13 @@ class AdminController extends Controller
         return view('Master/Publication', compact('rooms'))->with('i',(request()->input('page', 1)- 1)* 5);
         
         
+    }
+
+    public function showbyuser($id)
+    {             
+                  
+        $rooms = Room::where('user_id', $id)->get();            
+        return view('Master/Publication/Publication-User',["rooms" => $rooms]);
     }
     
 
@@ -97,7 +104,7 @@ class AdminController extends Controller
     {
         $user = User::findorfail($id);
         $user-> delete();
-        return back('publications')->with('status', 'Usuario eliminado correctamente');
+        return back('Publications')->with('status', 'Usuario eliminado correctamente');
     }
 
     /****************************************Publicaciones*****************************************/
@@ -145,7 +152,7 @@ class AdminController extends Controller
         $room->services()->sync($request->services);
         $room->characteristics()->sync($request->characteristics);
         $room->options()->sync($request->options); 
-        return redirect('showPublication')->with('status', 'Publicación editada correctamente');
+        return redirect('ShowPublication')->with('status', 'Publicación editada correctamente');
     }
 
 

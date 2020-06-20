@@ -76,19 +76,19 @@
                                 <div class="row">
 
                                     <div class="col-md-3 ">
-                                        <a href="{{ route ('users') }}" class="text-decoration-none">Volver</a>
+                                        <a href="{{ route ('Users') }}" class="text-decoration-none">Volver</a>
                                     </div> 
 
                                     <div class="col-md-3 ">
-                                        <a href="" class="btn boton-success">Ver Publicaciones</a>
+                                        <a href="{{ route('AdminUser',$user->id) }}" class="btn boton-success">Ver Publicaciones</a>
                                     </div> 
 
                                     <div class="col-md-2 ">
-                                        <a href="{{ route('editUser', $user->id) }}" class="btn boton">Editar</a>
+                                        <a href="{{ route('EditUser', $user->id) }}" class="btn boton">Editar</a>
                                     </div>
 
                                     
-                                        <form method="POST" action="{{ route('deleteUser', $user->id) }}">
+                                        <form method="POST" action="{{ route('DeleteUser', $user->id) }}">
                                             @method('DELETE')
                                             @csrf
                                             <div class="col-md-2 ">

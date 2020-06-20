@@ -34,7 +34,7 @@
                         <div class="card-body">
                             
                             
-                            <form method="POST" action="{{ route("updateUser", $user->id) }}">
+                            <form method="POST" action="{{ route("UpdateUser", $user->id) }}">
                                 @method('PUT')
                                 @csrf
     

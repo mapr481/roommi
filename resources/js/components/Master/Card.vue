@@ -16,7 +16,7 @@
                             </v-card-title>                    
                         </v-card >
 
-                        <v-card color="#F2B705" fixed href="/admin/publications" class="mt-3" shaped>        
+                        <v-card color="#F2B705" fixed href="/admin/view/list" class="mt-3" shaped>        
                             <v-card-title class="subtitle-1">                         
                                 Publicaciones
                                 <v-spacer></v-spacer>                     
@@ -24,7 +24,7 @@
                             </v-card-title>                    
                         </v-card >
 
-                        <v-card color="#F2B705" fixed href="/user/account" class="mt-3" shaped>        
+                        <v-card color="#F2B705" fixed href="/user/view" class="mt-3" shaped>        
                             <v-card-title class="subtitle-1">                         
                                 Mi cuenta
                                 <v-spacer></v-spacer>                     
@@ -32,7 +32,7 @@
                             </v-card-title>                    
                         </v-card >
 
-                        <v-card color="#F2B705" fixed href="/user/publications" class="mt-3" shaped>        
+                        <v-card color="#F2B705" fixed href="/user/publication" class="mt-3" shaped>        
                             <v-card-title class="subtitle-1">                         
                                 Mis publicaciones
                                 <v-spacer></v-spacer>                     

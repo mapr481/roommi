@@ -116,9 +116,10 @@ class UserController extends Controller
 
             return redirect('user/publication')->with('status', 'Publicación eliminada correctamente');
 
-        }return redirect('/user/publication');
-                    
+        }return redirect('/user/publication');                   
         
     }
+
+   
 }
 

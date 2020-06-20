@@ -15,7 +15,9 @@ class Room extends Model
         'user_id',
         'room_type_id',
         'gender_id',
-        'imagen'
+        'imagen',
+        'lat',
+        'lng'
     ];
 
     protected $hidden = [
@@ -58,4 +60,10 @@ class Room extends Model
     {
         return $this->belongsToMany(serviceRooms::class);
     } 
+
+    public function locations()
+    {
+        return $this->hasOne(Location::class);
+    }
+
 }

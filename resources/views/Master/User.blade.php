@@ -65,9 +65,9 @@
                         <td>{{ $user->telefono }}</td>
                         <td>{{ $user->email }}</td>
                         <td>
-                           <a href="{{ route('showUser', $user->id) }}" class="btn boton-success">Ver</a>
-                           <a href="{{ route('editUser', $user->id) }}" class="btn boton">Editar</a>
-                           <form method="POST" action="{{ route('deleteUser', $user->id) }}">
+                           <a href="{{ route('ShowUser', $user->id) }}" class="btn boton-success">Ver</a>
+                           <a href="{{ route('EditUser', $user->id) }}" class="btn boton">Editar</a>
+                           <form method="POST" action="{{ route('DeleteUser', $user->id) }}">
                                 @method('DELETE')
                                 @csrf                            
                                 <button type="submit" class="btn boton-danger">Eliminar</button>                                            

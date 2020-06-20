@@ -9,7 +9,7 @@
                     <div class="card-header titulo-size">{{ __('Editar publicación') }}</div>
                     <div class="card-body ">
 
-                        <form class="formulario" action="{{ route("pubUpdate", $room->slug) }}" method="POST">
+                        <form class="formulario" action="{{ route("PubUpdate", $room->slug) }}" method="POST">
                             @method('PUT')
                             @csrf
                             <div class="form-group row">
