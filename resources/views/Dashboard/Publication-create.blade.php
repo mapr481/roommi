@@ -2,6 +2,7 @@
 
 @section('content')
 
+
     <div class="container mt-5 mb-5">
         <div class="row justify-content-center">
             <div class="col-md-10">
@@ -23,9 +24,8 @@
                                     <label for="direccion" class="input-size">Dirección: </label>
                                     <input type="text" name="direccion" id="direccion" class="form-control texto">
                                 </div>
-                            </div>
-                           
-
+                            </div>                      
+                                                     
                             <div class="form-group">
                                 <div class="col-md-6">
                                     <label for="detalles" class="input-size">Detalles de la residencia:</label>
@@ -136,6 +136,6 @@
 
         </div>
     </div>
-    
-   
+          
 @endsection
+

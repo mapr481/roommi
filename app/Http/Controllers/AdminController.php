@@ -14,16 +14,12 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Event\ViewEvent;
 
 class AdminController extends Controller
-{    
+{  
     public function __construct()
     {
         $this->middleware('admin');
     }
-     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
 
     public function index()
     {
@@ -63,6 +59,7 @@ class AdminController extends Controller
     public function show($id)
     {
         $user = User::findorfail($id);
+        
         return view ('Master/Users/Show', ["user" => $user]);
         
         
