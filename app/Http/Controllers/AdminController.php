@@ -32,9 +32,16 @@ class AdminController extends Controller
         return view('Master/User', compact('users'))->with('i',(request()->input('page', 1)- 1)* 10);
         
     }
-    public function publications()
+    public function publications(Request $request )
     {
-        $rooms = Room::latest('id')->paginate(5);        
+        
+        $rooms = Room::latest('id')->paginate(5);
+        if ($request->ajax()) {
+      return response()->json([
+        ['titulo' => '', 'detalles' => '']
+      ]);
+    }   
+        
         return view('Master/Publication', compact('rooms'))->with('i',(request()->input('page', 1)- 1)* 5);
         
         
@@ -114,13 +121,7 @@ class AdminController extends Controller
         
         
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function editpub($slug)
     { 
         $room = Room::where('slug', $slug)->first();  
@@ -130,7 +131,7 @@ class AdminController extends Controller
         $characteristics = Characteristics::all();
         $types = RoomType::all();
         $options = Option::all();
-        //dd($room);
+        
         return view('Master/Publication/EditRoom',compact('room',
             'genders',
             'services',

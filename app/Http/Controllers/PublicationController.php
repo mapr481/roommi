@@ -38,6 +38,13 @@ class PublicationController extends Controller
         $user = User::findorfail($id);    
         return view('Dashboard/Publication-user', ["user" =>$user, "rooms" =>$user->rooms]);
     }
+
+    public function home(){
+
+        $rooms = Room::orderByRaw('rand()')->take(5)->get();
+        
+        return view('index', ["rooms" =>$rooms]);
+    }
     
     
     

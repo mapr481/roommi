@@ -84,7 +84,7 @@
                                     <label for="nacimiento" class="col-md-2 col-form-label text-md-right input-size">{{ __('Fecha de Nacimiento') }}</label>
     
                                     <div class="col-md-4">
-                                        <input id="nacimiento" type="date" class="form-control texto @error('nacimiento') is-invalid @enderror" name="nacimiento" value="{{ old('nacimiento', $user->nacimiento) }}" required autocomplete="nacimiento" autofocus>
+                                        <input id="nacimiento" type="date" class="form-control texto @error('nacimiento') is-invalid @enderror" name="nacimiento" value="{{ old('nacimiento', Carbon\Carbon::parse($user->nacimiento)->format('Y-m-d')) }}" required autocomplete="nacimiento" autofocus>
     
                                         @error('nacimiento')
                                             <span class="invalid-feedback" role="alert">

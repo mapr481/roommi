@@ -13,6 +13,7 @@ use App\Models\Characteristics;
 use App\Models\Option;
 use App\Models\RoomType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class RoomController extends Controller
 {
@@ -32,12 +33,8 @@ class RoomController extends Controller
   {
 
     $room = Room::all();
-
-    if ($request->ajax()) {
-      return response()->json([
-        ['titulo' => $room->titulo, 'detalles' => $room->detalles]
-      ]);
-    }
+    
+    
   }
 
   /**
@@ -70,9 +67,9 @@ class RoomController extends Controller
    */
   public function store(StoreRoomPost $request)
   {
-
+    
     $room = Room::create($request->all());
-    $room->location()->attach($request->location);
+    
     $room->services()->attach($request->services);
     $room->characteristics()->attach($request->characteristics);
     $room->options()->attach($request->options);

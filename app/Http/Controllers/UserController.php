@@ -24,8 +24,20 @@ class UserController extends Controller
     public function show()    {   
        
         $user = Auth::user();
-        
-        return view('User/UserProfile', ["user" => $user]);
+                  
+        $rooms = Room::where('user_id', $user->id)->get();           
+        $genders = Gender::all();
+        $services = Service::all();
+        $characteristics = Characteristics::all();
+        $types = RoomType::all();
+        $options = Option::all();
+        return view('User/UserProfile', compact('user','rooms',
+        'genders',
+        'services',
+        'characteristics',
+        'types',
+        'options'
+    ));
     }
 
     /**

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PublicationController;
+use App\Models\Room;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -15,14 +16,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () { 
-    
-    
-    return view('index');
+
    
-});
+
 
 Route::group(['middleware' => 'disablepreventback'],function(){
+
+    Route::get('/', 'PublicationController@home');
+    
 	Auth::routes();
     Route::resource('room', 'RoomController');
 

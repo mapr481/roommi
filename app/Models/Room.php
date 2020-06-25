@@ -61,9 +61,6 @@ class Room extends Model
         return $this->belongsToMany(serviceRooms::class);
     } 
 
-    public function locations()
-    {
-        return $this->hasOne(Location::class);
-    }
+    
 
 }

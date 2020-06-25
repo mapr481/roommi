@@ -58,7 +58,7 @@
 
                                     <div class="col-md-4">
                                         <h4 class="input-size">Fecha de nacimiento: </h4>                                    
-                                        <p color="black">&nbsp; {{ $user->nacimiento }}</p>
+                                        <p color="black">&nbsp; {{ Carbon\Carbon::parse($user->nacimiento)->format('d-m-Y') }}</p>
                                     </div>
 
                                     <div class="col-md-4">

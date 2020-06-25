@@ -25,7 +25,8 @@
 
         <barra-superior></barra-superior>
         <nav-vertical></nav-vertical>
-        <div class="margen">
+            <div class="margen">
+                <list-publication></list-publication>
             <div class="container"> 
                 <div class="row">  
                     @foreach ($rooms as $room)
@@ -53,6 +54,7 @@
                 </div>
             </div>
         </div>    
+        
         <pie></pie>
     </div>
 </body>

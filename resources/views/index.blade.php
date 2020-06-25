@@ -11,6 +11,8 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('vendor/owl.carousel/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('/vendor/scrollreveal/scrollreveal.min.js') }}"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -19,8 +21,10 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('/vendor/owl.carousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
 </head>
-<body class="color">   
+<body>   
     <div id="app">
         <barra-superior></barra-superior>
         <nav-vertical></nav-vertical>               
@@ -31,7 +35,34 @@
             </div>            
         </div>
 
-        <carousel></carousel>
+        <div class="intro intro-carousel ">
+            <div id="carousel" class="owl-carousel owl-theme">
+                @foreach ($rooms as $room)
+                
+                    <div class="carousel-item-a intro-item bg-image" style="background-image: url({{ asset("storage/app/$room->imagen") }})">
+                        <div class="overlay overlay-a"></div>
+                            <div class="intro-content display-table">
+                                <div class="table-cell">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-8">
+                                                <div class="intro-body">                                                 
+                                                    <p class="intro-title-top">{{ $room->titulo }}</p>
+                                                <h1 class="intro-title mb-4">
+                                                {{ $room->direccion }}</h1>
+                                                <p class="intro-subtitle intro-price">
+                                                    <a href="{{ route('RoomView', $room->slug) }}"><span class="price-a">Precio | {{ $room->precio }}</span></a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
 
         <pie></pie>
     </div>
