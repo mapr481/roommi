@@ -46,7 +46,7 @@ class PublicationController extends Controller
 
     public function home(){
         
-        $rooms = Room::orderByRaw('rand()')->limit(5)->get();
+        $rooms = Room::orderByRaw('random()')->take(5)->get();
         
         return view('index', ["rooms" =>$rooms ]);
     }
