@@ -66,8 +66,8 @@ class AdminController extends Controller
     public function show($id)
     {
         $user = User::findorfail($id);
-        
-        return view ('Master/Users/Show', ["user" => $user]);
+        $rooms = Room::where('user_id', $id)->get();
+        return view ('Master/Users/Show', ["user" => $user, "rooms"=> $rooms]);
         
         
     }

@@ -28,12 +28,10 @@ Route::group(['middleware' => 'disablepreventback'],function(){
     Route::resource('room', 'RoomController');
 
 
-    Route::get('/user/publication/show/{slug}', 'UserController@showpub')->name('ShowPub');
+    Route::get('/user/publication/{slug}', 'UserController@showpub')->name('ShowPub');    
+    Route::get('/user/view', 'UserController@show')->name('ShowUser');    
     Route::get('/user/publication', 'UserController@showbyuser')->name('PubUser');
-    Route::get('/user/view', 'UserController@show')->name('ShowUser');
-    Route::get('/user/publication/show/{slug}', 'UserController@showpub')->name('ShowPub');
-    Route::get('/user/publication', 'UserController@showbyuser')->name('PubUser');
-    Route::get('/user/view', 'UserController@show')->name('ShowUser');
+    
     Route::get('/logout', 'UserController@logout')->name('logout');
     Route::delete('/user/publication/delete/{slug}','UserController@destroypub')->name('PubDelete');
     Route::get('/user/publication/edit/{slug}','UserController@editpub')->name('PubEdit');
@@ -60,8 +58,8 @@ Route::group(['middleware' => 'disablepreventback'],function(){
 
 });
 
+Route::get('/view/user/{id}', 'PublicationController@showUser')->name('ViewUser');
 
-Route::get('/view/user/{id}', 'PublicationController@showByUser')->name('ViewUser');
 Route::get('/view/{slug}', 'PublicationController@show')->name('RoomView');
 Route::resource('view', 'PublicationController');
 

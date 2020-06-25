@@ -59,20 +59,13 @@
                                         <h4 class="titulo-size">Correo electrónico: </h4>                                    
                                         <p color="black input-size">&nbsp; {{ $user->email }}</p>
                                     </div>                                
-                                </div>
-
-                                <div class="row justify-content-md-center">
-                                    
-                                    <div class="col-md-5 ">
-                                        <a href="{{ route('UserEdit', $user->id) }}" class="btn boton">Modificar información</a>
-                                    </div>                        
-                                </div> 
+                                </div>                                
                             </div>
                         </div>
                     </section> 
 
                     <div class="form-group">
-                        <h1 class="title-single">Mis publicaciones</h1>   
+                        <h1 class="title-single">Publicaciones</h1>   
                     </div>    
                     <section class="property-grid grid">
                         <div class="container">
@@ -87,12 +80,12 @@
                                                 <div class="card-overlay-a-content">
                                                     <div class="card-header-a">
                                                         <h2 class="card-title-a">
-                                                            <a href="{{ route('ShowPub', $room->slug) }}">{{ $room->titulo }}</a>
+                                                            <a href="{{ route('RoomView', $room->slug) }}">{{ $room->titulo }}</a>
                                                         </h2>
                                                     </div>
                                                     <div class="card-body-a">
                                                         <div class="price-box d-flex">
-                                                            <a href="{{  route('ShowPub', $room->slug) }}" class="link-a">
+                                                            <a href="{{  route('RoomView', $room->slug) }}" class="link-a">
                                                                 <span class="price-a">{{ $room->precio }}</span>
                                                             </a>                                                    
                                                         </div>                                                

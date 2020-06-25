@@ -19,40 +19,80 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
 
         <barra-superior></barra-superior>
         <nav-vertical></nav-vertical>
+        
         <div class="margen">
-            <div class="container"> 
-                <div class="row">  
-                    @foreach ($rooms as $room)
-                           
-                        <div class="card col-md-5 ml-4 mb-4 borde">    
-                            <div class="card-body">                                         
-                                    <h4 class="card-title mb-2">{{  $room->titulo }}</h4>        
-                                    <p class="card-text">{{ $room->user->nombre }}</p>                                  
-                            </div> 
-                            <!--
-                            <div class="view overlay">
-                            <img class="card-img-top rounded-0" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/full page/2.jpg" alt="Card image cap">
-                            <a href="#!">
-                                <div class="mask rgba-white-slight"></div>
-                            </a>
-                            </div> -->            
-                            <div class="card-body">  
-                                <div class="collapse-content">  
-                                    <p class="card-text text-truncate d-inline-block" style="max-height: 100px; max-width: 450px;">{{ $room->detalles }}</p>
-                                </div> 
-                                <a class="btn boton-success" href="{{  route('ShowPub', $room->slug) }}">Ver publicación</a> 
-                            </div>  
-                        </div>                                               
-                    @endforeach
+            <section class="intro-single ml-5">
+                <div class="container ml-5">
+                    <div class="row">
+                        <div class="col-md-12 col-lg-8">
+                            <div class="title-single-box">
+                                <h1 class="title-single">Mis Publicaciones</h1>
+                                <span class="color-text-a">{{ Auth::user()->nombre }} {{ Auth::user()->apellido }}</span>
+                            </div>
+                        </div>                
+                    </div>
                 </div>
-            </div>
-        </div>    
+            </section>                       
+             
+            <section class="property-grid grid">
+                <div class="container">
+                    <div class="row">                     
+                        @foreach ($rooms as $room)                 
+                            <div class="col-md-4">
+                                <div class="card-box-a card-shadow">
+                                    <div class="img-box-a">
+                                        <img src="{{ asset("/images/$room->imagen") }}" alt="" class="img-a grande">
+                                    </div>
+                                    <div class="card-overlay">
+                                        <div class="card-overlay-a-content">
+                                            <div class="card-header-a">
+                                                <h2 class="card-title-a">
+                                                    <a href="{{ route('ShowPub', $room->slug) }}">{{ $room->titulo }}</a>
+                                                </h2>
+                                            </div>
+                                            <div class="card-body-a">
+                                                <div class="price-box d-flex">
+                                                    <a href="{{  route('ShowPub', $room->slug) }}" class="link-a">
+                                                        <span class="price-a">{{ $room->precio }}</span>
+                                                    </a>                                                    
+                                                </div>                                                
+                                            </div>
+
+                                            <div class="card-footer-a">
+                                                <ul class="card-info d-flex justify-content-around">
+                                                    <li>
+                                                        <h4 class="card-info-title">Tipo</h4>
+                                                        <span class="text-capitalize">{{ $room->roomtypes->nombre }}
+                                                        </span>
+                                                    </li>
+
+                                                    <li>
+                                                        <h4 class="card-info-title">Género</h4>
+                                                        <span>{{ $room->gender->nombre }}</span>
+                                                    </li>
+
+                                                    <li>
+                                                        <h4 class="card-info-title">Dirección</h4>                                                            
+                                                            <span>{{ $room->direccion }}</span>                                                                                         
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> 
+                        @endforeach
+                    </div>  
+                </div>                                                              
+            </section>
+        </div>        
         <pie></pie>
     </div>
 </body>

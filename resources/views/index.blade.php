@@ -39,7 +39,7 @@
             <div id="carousel" class="owl-carousel owl-theme">
                 @foreach ($rooms as $room)
                 
-                    <div class="carousel-item-a intro-item bg-image" style="background-image: url({{ asset("storage/app/$room->imagen") }})">
+                    <div class="carousel-item-a intro-item bg-image" style="background-image: url({{ asset("/images/$room->imagen") }})">
                         <div class="overlay overlay-a"></div>
                             <div class="intro-content display-table">
                                 <div class="table-cell">

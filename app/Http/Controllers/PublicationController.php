@@ -11,7 +11,7 @@ use App\Models\Characteristics;
 use App\Models\Option;
 use App\Models\RoomType;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Storage;
 
 class PublicationController extends Controller
 {
@@ -38,12 +38,17 @@ class PublicationController extends Controller
         $user = User::findorfail($id);    
         return view('Dashboard/Publication-user', ["user" =>$user, "rooms" =>$user->rooms]);
     }
+    public function showUser($id)
+    {
+        $user = User::findorfail($id);    
+        return view('Dashboard/User', ["user" =>$user, "rooms" =>$user->rooms]);
+    }
 
     public function home(){
-
+        
         $rooms = Room::orderByRaw('rand()')->take(5)->get();
         
-        return view('index', ["rooms" =>$rooms]);
+        return view('index', ["rooms" =>$rooms ]);
     }
     
     

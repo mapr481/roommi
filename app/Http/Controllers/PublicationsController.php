@@ -10,7 +10,7 @@ class PublicationsController extends Controller
         ->orderBy('id','DESC')
         ->get();
 
-        dd($rooms);
+        
     }
 
     public function findBySlug($slug) {

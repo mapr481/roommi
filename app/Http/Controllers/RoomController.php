@@ -77,7 +77,8 @@ class RoomController extends Controller
     if ($request->hasfile('file')) {
       $file = $request->file('file');
       $name = time() . $file->getClientOriginalName();
-      \Storage::disk('local')->put($name, \File::get($file));
+      $file->move(public_path().'/images/', $name);
+      //\Storage::disk('local')->put($name, \File::get($file));
 
       $room->imagen = $name;
       $room->save();

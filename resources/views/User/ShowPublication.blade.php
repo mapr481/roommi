@@ -11,6 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/convetidor.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -43,14 +44,15 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
-                        <img src="{{ Storage::url($room->imagen) }}" alt="">
+                        <img  class="ajustar-img" src="{{  asset("/images/$room->imagen")  }}" alt="">
                         <div class="row justify-content-between">
                             <div class="col-md-5 col-lg-4">
                                 <div class="property-price d-flex justify-content-center foo">
                                     <div class="card-header-c d-flex">
                                         <div class="card-box-ico">
-                                            <p class="ion-money titulo-size text-center">{{ $room->precio }}</p>
-                                            <p class="ion-money titulo-size">3.000.000,00</p>
+                                                                                   
+                                            <p class="ion-money titulo-size text-center" id="precio">{{ $room->precio }}</p>
+                                            <p class="ion-money titulo-size" id="precioSalida"></p>
                                         </div>                              
                                     </div>                            
                                 </div>
@@ -149,6 +151,9 @@
         <div class="margen"></div>         
         <pie></pie>
     </div>
+    <script type="text/javascript">
+        $('#coin-in, #coin-out').msDropDown();
+          </script>
 </body>
 
 </html>

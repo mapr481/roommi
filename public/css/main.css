@@ -8,8 +8,16 @@
     margin-top: 100px;
     margin-bottom:110px;
 }
-.centrado{
-  margin-left: 40%;
+.margen-left{
+  margin-left: 100px;
+}
+
+.grande{
+    width: 500px; height: 350px;
+  }
+
+.ajustar-img{
+    width: 1000px;
 }
 
 .boton{
