@@ -35,9 +35,6 @@ class RoomOptionSeeder extends Seeder
         DB::table('options')->insert([
             'nombre' => 'residencia para profesionales'
         ]);
-
-        DB::table('options')->insert([
-            'nombre' => 'residencia para profesionales y estudiantes'
-     ]);
+        
     }
 }

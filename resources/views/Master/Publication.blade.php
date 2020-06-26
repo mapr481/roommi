@@ -36,7 +36,7 @@
                     <div class="col-md-4">
                         <div class="card-box-a card-shadow">
                             <div class="img-box-a">
-                                <img src="assets/img/property-1.jpg" alt="" class="img-a img-fluid">
+                                <img src="{{ asset("/images/$room->imagen") }}" alt="" class="img-a img-fluid">
                             </div>
                             <div class="card-overlay">
                                 <div class="card-overlay-a-content">
@@ -48,6 +48,7 @@
                                 <div class="card-body-a">
                             <div class="price-box d-flex">
                                 <span class="price-a">{{ $room->precio }}</span>
+                                <span class="price-a">{{ $dolar }}</span>
                             </div>                            
                         </div>
                         <div class="card-footer-a">

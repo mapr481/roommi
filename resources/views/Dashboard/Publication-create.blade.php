@@ -6,13 +6,12 @@
     <div class="container mt-5 mb-5">
         <div class="row justify-content-center">
             <div class="col-md-10">
-                <div class="card border-card">
-                    <div class="card-header titulo-size">{{ __('Crear post') }}</div>
+                <div class="card border-card">                    
                     <div class="card-body ">
-
+                        <h3 class="text-center">Crear Publicación</h3>
                         <form class="formulario" action="{{ route("room.store") }}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            <div class="form-group row">
+                            <div class="form-group row ">
                                 <div class="col-md-6">
                                     <label for="titulo" class="input-size">Título: </label>
                                     <input type="text" name="titulo" id="titulo" class="form-control texto">
@@ -119,7 +118,7 @@
                             <div class="form-group">
                                 <div class="col-md-6">
                                     <label for="precio" class="input-size">Precio</label>
-                                    <input type="text" name="precio" id="precio" class="form-control texto">
+                                    <input type="number" name="precio" id="precio" class="form-control texto">
                                 </div>
                             </div>
 

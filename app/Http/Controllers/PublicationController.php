@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use GuzzleHttp\Client;
 use App\Http\Requests\StoreRoomPost;
 use App\Models\Room;
 use App\Models\User;
@@ -28,9 +28,20 @@ class PublicationController extends Controller
     public function show($slug)
     {
         
-        $room = Room::where('slug', $slug)->first(); 
-                
-        return view('Dashboard/Publication-view', ["room" =>$room]);
+
+        $client = new Client([    
+            'base_uri' => 'http://s3.amazonaws.com',            
+            'timeout'  => 20.0,
+        ]);        
+        $response = $client->request('GET', 'dolartoday/data.json');
+        $convertidor = json_decode($response->getBody()->getContents());       
+
+        $room = Room::where('slug', $slug)->first();
+        
+        $dolar = $convertidor->USD->promedio_real * $room->precio;
+        
+             
+        return view('Dashboard/Publication-view', ["room" =>$room, "dolar" => $dolar]);
     }
 
     public function showByUser($id)
