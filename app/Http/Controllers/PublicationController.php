@@ -71,7 +71,7 @@ class PublicationController extends Controller
         $convertidor = json_decode($response->getBody()->getContents());       
 
         
-        $rooms = Room::orderByRaw('rand()')->take(5)->get();
+        $rooms = Room::orderByRaw('random()')->take(5)->get();
         
         return view('index', ["rooms" =>$rooms, "convertidor"=>$convertidor]);
     }
