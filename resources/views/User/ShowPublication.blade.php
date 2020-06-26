@@ -51,8 +51,8 @@
                                     <div class="card-header-c d-flex">
                                         <div class="card-box-ico">
                                                                                    
-                                            <p class="ion-money titulo-size text-center" id="precio">{{ $room->precio }}</p>
-                                            <p class="ion-money titulo-size" id="precioSalida"></p>
+                                            <p class="ion-money titulo-size text-center" >{{ $room->precio }}$</p>
+                                            <p class="ion-money titulo-size">{{ $dolar }} Bs.</p>
                                         </div>                              
                                     </div>                            
                                 </div>

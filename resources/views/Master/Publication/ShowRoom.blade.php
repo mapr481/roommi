@@ -11,6 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/convetidor.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -19,85 +20,121 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 <body class="color1">
     <div id="app">
 
         <barra-superior></barra-superior>
         <nav-vertical></nav-vertical>
-        
-            <div class="container margen card col-md-8 borde">             
-                <h1 class="text-center text-capitalize">{{ $room->titulo }}</h1><br><br>
+        <section class="intro-single">
+            <div class="container">
                 <div class="row">
-                    <div class=" col-md-6">
-                        <h3>Dirección: </h3>
-                        <h4 class="text-capitalize">{{ $room->direccion }}</h4>
-                    </div>
-
-                    <div class="col-md-6 text-right">
-                        <h5>Detalles del usuario:</h5>
-                        <p><b>{{ $room->user->nombre }} {{ $room->user->apellido }} <br>  Teléfono {{ $room->user->telefono }} </b></p>
-                        <p><b>{{ $room->user->email }}</b></p>
-                    </div>
-
-            
+                    <div class="col-md-12 col-lg-8">
+                        <div class="title-single-box">
+                            <h1 class="title-single">{{ $room->titulo }}</h1>
+                            <span class="color-text-a">{{ $room->direccion }}</span>
+                        </div>
+                    </div>                
                 </div>
+            </div>
+        </section>
 
-                <div class="col-md-6">
-                    <h5>Residencia 
-                        @if ($room->gender->id === 3)
-                            {{ $room->gender->nombre }}                                                 
-                        @else
-                            para {{ $room->gender->nombre }}                      
-                        @endif                            
-                    </h5>
-                </div>
-                <div class="col-md-5">
-                    <h5 class="text-capitalize">{{ $room->roomtypes->nombre }}</h5>
-                </div>
-
-                <div class="col-md-12 text-justify">
-                    <p>{{ $room->detalles }}</p>
-                </div>
+        <section class="property-single nav-arrow-b">
+            <div class="container">
                 <div class="row">
-                    <div class="col-md-6">
-                        
-                        @foreach ($room->services as $service)
-                            
-                            <p>-{{ $service->nombre }}</p>
+                    <div class="col-sm-12">
+                        <img  class="ajustar-img" src="{{  asset("/images/$room->imagen")  }}" alt="">
+                        <div class="row justify-content-between">
+                            <div class="col-md-5 col-lg-4">
+                                <div class="property-price d-flex justify-content-center foo">
+                                    <div class="card-header-c d-flex">
+                                        <div class="card-box-ico">
+                                                                                   
+                                            <p class="ion-money titulo-size text-center" >{{ $room->precio }}$</p>
+                                            <p class="ion-money titulo-size">{{ $convertidor->USD->promedio_real * $room->precio }} Bs.</p>
+                                        </div>                              
+                                    </div>                            
+                                </div>
 
-                        @endforeach
-                    
+                                <div class="property-summary">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="title-box-d section-t4">
+                                                <h3 class="title-d">Información rápida:</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="summary-list">
+                                        <ul class="list">
+                                            <li class="d-flex justify-content-between">
+                                                <strong>Nombre del propietario:</strong>
+                                                <span>{{ $room->user->nombre }} {{ $room->user->apellido }}</span>
+                                            </li>
+
+                                            <li class="d-flex justify-content-between">
+                                                <strong>Correo electrónico:</strong>
+                                                <span>{{ $room->user->email }}</span>
+                                            </li>
+                                            <li class="d-flex justify-content-between">
+                                                <strong>Número de Teléfono:</strong>
+                                                <span>{{ $room->user->telefono }}</span>
+                                            </li>
+                                            <li class="d-flex justify-content-between">
+                                                <strong>Dirección:</strong>
+                                                <span>{{ $room->direccion }}</span>
+                                            </li>
+                                            <li class="d-flex justify-content-between">
+                                                <strong>Tipo de espacio:</strong>
+                                                <span class="text-capitalize">{{ $room->roomtypes->nombre }}</span>
+                                            </li>
+                                            <li class="d-flex justify-content-between">
+                                                <strong>Disponibilidad para:</strong>
+                                                <span>{{ $room->gender->nombre }}</span>
+                                            </li>                                
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-7 col-lg-7 section-md-t3">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="title-box-d">
+                                            <h3 class="title-d">Detalles de la residencia</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="property-description">
+                                    <p class="description color-text-a">
+                                        {{ $room->detalles }}
+                                    </p>
+                                </div>
+                                <div class="row section-t3">
+                                    <div class="col-sm-12">
+                                        <div class="title-box-d">
+                                            <h3 class="title-d">Servicios y Características</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="amenities-list color-text-a">
+                                    <ul class="list-a no-margin">
+                                        @foreach ($room->services as $service)
+                                            <li>{{ $service->nombre }}</li>
+                                        @endforeach
+
+                                        @foreach ($room->characteristics as $char)
+                                            
+                                        @endforeach
+
+                                        @foreach ($room->options as $options)
+                                            <li>{{ $options->nombre }}</li>                          
+                                        @endforeach                                  
+                                    </ul>
+                                </div>
+                            </div>                            
+                        </div>
                     </div>
-
-                
-                    <div class="col-md-6">
-                        
-                        @foreach ($room->characteristics as $char)
-                            
-                            <p class="text-capitalize">-{{ $char->nombre }}</p>
-
-                        @endforeach
-                    
-                    </div>
-
-                    <div class="col-md-6">
-                        
-                        @foreach ($room->options as $options)
-                            
-                            <p class="text-capitalize">-{{ $options->nombre }}</p>
-
-                        @endforeach
-                    
-                    </div>
-
-                   
-                </div> 
-                <div class="row">
-                    <div class="col-md-6 text-right">
-                        <h5>Precio: {{ $room->precio }}</h5>
-                    </div>
-                    
                     <div class="col-md-3 text-right">
                         <a class="btn boton" href="{{ route('EditPublication', $room->slug) }}">Editar</a>
                     </div>
@@ -107,13 +144,16 @@
                         <div class="col-md-2 ">
                             <button type="submit" class="btn boton-danger">Eliminar</button>                                              
                         </div>  
-                    </form>
+                    </form>                          
                 </div>                      
             </div>
-           
-
+        </section>
+        <div class="margen"></div>         
         <pie></pie>
     </div>
+    <script type="text/javascript">
+        $('#coin-in, #coin-out').msDropDown();
+          </script>
 </body>
 
 </html>

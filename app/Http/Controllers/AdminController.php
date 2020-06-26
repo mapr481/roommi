@@ -11,6 +11,7 @@ use App\Models\RoomType;
 use App\Models\Service;
 use App\Models\User;
 use Illuminate\Http\Request;
+use GuzzleHttp\Client;
 use Symfony\Component\HttpKernel\Event\ViewEvent;
 
 class AdminController extends Controller
@@ -34,24 +35,32 @@ class AdminController extends Controller
     }
     public function publications(Request $request )
     {
-        
+        $client = new Client([    
+            'base_uri' => 'http://s3.amazonaws.com',            
+            'timeout'  => 20.0,
+        ]);        
+        $response = $client->request('GET', 'dolartoday/data.json');
+        $convertidor = json_decode($response->getBody()->getContents());       
+
         $rooms = Room::latest('id')->paginate(5);
-        if ($request->ajax()) {
-      return response()->json([
-        ['titulo' => '', 'detalles' => '']
-      ]);
-    }   
         
-        return view('Master/Publication', compact('rooms'))->with('i',(request()->input('page', 1)- 1)* 5);
+      
+        return view('Master/Publication', compact('rooms', 'convertidor'))->with('i',(request()->input('page', 1)- 1)* 5);
         
         
     }
 
     public function showbyuser($id)
     {             
+        $client = new Client([    
+            'base_uri' => 'http://s3.amazonaws.com',            
+            'timeout'  => 20.0,
+        ]);        
+        $response = $client->request('GET', 'dolartoday/data.json');
+        $convertidor = json_decode($response->getBody()->getContents());    
                   
         $rooms = Room::where('user_id', $id)->get();            
-        return view('Master/Publication/Publication-User',["rooms" => $rooms]);
+        return view('Master/Publication/Publication-User',["rooms" => $rooms, "convertidor" => $convertidor]);
     }
     
 
@@ -65,9 +74,15 @@ class AdminController extends Controller
 
     public function show($id)
     {
+        $client = new Client([    
+            'base_uri' => 'http://s3.amazonaws.com',            
+            'timeout'  => 20.0,
+        ]);        
+        $response = $client->request('GET', 'dolartoday/data.json');
+        $convertidor = json_decode($response->getBody()->getContents());    
         $user = User::findorfail($id);
         $rooms = Room::where('user_id', $id)->get();
-        return view ('Master/Users/Show', ["user" => $user, "rooms"=> $rooms]);
+        return view ('Master/Users/Show', ["user" => $user, "rooms"=> $rooms, "convertidor" => $convertidor]);
         
         
     }
@@ -115,9 +130,15 @@ class AdminController extends Controller
 
     public function showpub($slug)
     {
+        $client = new Client([    
+            'base_uri' => 'http://s3.amazonaws.com',            
+            'timeout'  => 20.0,
+        ]);        
+        $response = $client->request('GET', 'dolartoday/data.json');
+        $convertidor = json_decode($response->getBody()->getContents());    
         $room = Room::where('slug', $slug)->first();      
 
-        return view ('Master/Publication/ShowRoom', ["room" => $room]);
+        return view ('Master/Publication/ShowRoom', ["room" => $room, "convertidor" => $convertidor]);
         
         
     }

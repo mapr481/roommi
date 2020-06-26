@@ -18,17 +18,21 @@ class PublicationController extends Controller
    
     public function index()
     {       
+        $client = new Client([    
+            'base_uri' => 'http://s3.amazonaws.com',            
+            'timeout'  => 20.0,
+        ]);        
+        $response = $client->request('GET', 'dolartoday/data.json');
+        $convertidor = json_decode($response->getBody()->getContents());   
+
         $rooms = Room::latest('id')->paginate(5);        
-        return view('Dashboard/Publication-list', compact('rooms'))->with('i',(request()->input('page', 1)- 1)* 5);
+        return view('Dashboard/Publication-list', compact('rooms', 'convertidor'))->with('i',(request()->input('page', 1)- 1)* 5);
         
     }
-
    
     
     public function show($slug)
-    {
-        
-
+    {      
         $client = new Client([    
             'base_uri' => 'http://s3.amazonaws.com',            
             'timeout'  => 20.0,
@@ -43,23 +47,33 @@ class PublicationController extends Controller
              
         return view('Dashboard/Publication-view', ["room" =>$room, "dolar" => $dolar]);
     }
-
-    public function showByUser($id)
-    {
-        $user = User::findorfail($id);    
-        return view('Dashboard/Publication-user', ["user" =>$user, "rooms" =>$user->rooms]);
-    }
+  
     public function showUser($id)
     {
+        $client = new Client([    
+            'base_uri' => 'http://s3.amazonaws.com',            
+            'timeout'  => 20.0,
+        ]);        
+        $response = $client->request('GET', 'dolartoday/data.json');
+        $convertidor = json_decode($response->getBody()->getContents());   
+
         $user = User::findorfail($id);    
-        return view('Dashboard/User', ["user" =>$user, "rooms" =>$user->rooms]);
+        return view('Dashboard/User', ["user" =>$user, "rooms" =>$user->rooms, "convertidor"=>$convertidor]);
     }
 
-    public function home(){
+    public function home()
+    {
+        $client = new Client([    
+            'base_uri' => 'http://s3.amazonaws.com',            
+            'timeout'  => 20.0,
+        ]);        
+        $response = $client->request('GET', 'dolartoday/data.json');
+        $convertidor = json_decode($response->getBody()->getContents());       
+
         
-        $rooms = Room::orderByRaw('random()')->take(5)->get();
+        $rooms = Room::orderByRaw('rand()')->take(5)->get();
         
-        return view('index', ["rooms" =>$rooms ]);
+        return view('index', ["rooms" =>$rooms, "convertidor"=>$convertidor]);
     }
     
     

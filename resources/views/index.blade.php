@@ -51,7 +51,8 @@
                                                 <h1 class="intro-title mb-4">
                                                 {{ $room->direccion }}</h1>
                                                 <p class="intro-subtitle intro-price">
-                                                    <a href="{{ route('RoomView', $room->slug) }}"><span class="price-a">Precio | {{ $room->precio }}</span></a>
+                                                    <a href="{{ route('RoomView', $room->slug) }}"><span class="price-a">{{ $room->precio }}$ |
+                                                    {{ $convertidor->USD->promedio_real * $room->precio }}Bs.</span></a>
                                                 </p>
                                             </div>
                                         </div>

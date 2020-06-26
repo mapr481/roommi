@@ -11,6 +11,7 @@ use App\Models\Service;
 use App\Http\Requests\StoreRoomPost;
 use App\Models\User;
 use Illuminate\Http\Request;
+use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
@@ -21,8 +22,14 @@ class UserController extends Controller
     }
 
     
-    public function show()    {   
-       
+    public function show()    
+    {   
+        $client = new Client([    
+            'base_uri' => 'http://s3.amazonaws.com',            
+            'timeout'  => 20.0,
+        ]);        
+        $response = $client->request('GET', 'dolartoday/data.json');
+        $convertidor = json_decode($response->getBody()->getContents());
         $user = Auth::user();
                   
         $rooms = Room::where('user_id', $user->id)->get();           
@@ -31,7 +38,7 @@ class UserController extends Controller
         $characteristics = Characteristics::all();
         $types = RoomType::all();
         $options = Option::all();
-        return view('User/UserProfile', compact('user','rooms',
+        return view('User/UserProfile', compact('user','rooms', 'convertidor',
         'genders',
         'services',
         'characteristics',
@@ -55,9 +62,16 @@ class UserController extends Controller
 
     public function showpub($slug)
     {
-        $room = Room::where('slug', $slug)->first();        
+        $client = new Client([    
+            'base_uri' => 'http://s3.amazonaws.com',            
+            'timeout'  => 20.0,
+        ]);        
+        $response = $client->request('GET', 'dolartoday/data.json');
+        $convertidor = json_decode($response->getBody()->getContents());
+        $room = Room::where('slug', $slug)->first(); 
+        $dolar = $convertidor->USD->promedio_real * $room->precio;       
            if (Auth::user()->id == $room->user_id){            
-            return view ('User/ShowPublication', ["room" => $room]);
+            return view ('User/ShowPublication', ["room" => $room, "dolar" => $dolar]);
             }return redirect('/user/publication');
             
     
@@ -67,10 +81,16 @@ class UserController extends Controller
         
     }
     public function showbyuser()
-    {             
+    { 
+        $client = new Client([    
+            'base_uri' => 'http://s3.amazonaws.com',            
+            'timeout'  => 20.0,
+        ]);        
+        $response = $client->request('GET', 'dolartoday/data.json');
+        $convertidor = json_decode($response->getBody()->getContents());                
         $id= Auth::user()->id;          
         $rooms = Room::where('user_id', $id)->get();            
-        return view('User/ListPublication',["rooms" => $rooms]);
+        return view('User/ListPublication',["rooms" => $rooms, "convertidor" => $convertidor]);
     }
 
 
@@ -111,7 +131,7 @@ class UserController extends Controller
             if ($request->hasfile('file')) {
                 $file = $request->file('file');
                 $name = time() . $file->getClientOriginalName();
-                \Storage::disk('local')->put($name, \File::get($file));
+                $file->move(public_path().'/images/', $name);
           
                 $room->imagen = $name;
                 $room->save();

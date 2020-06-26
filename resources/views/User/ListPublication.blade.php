@@ -60,7 +60,7 @@
                                             <div class="card-body-a">
                                                 <div class="price-box d-flex">
                                                     <a href="{{  route('ShowPub', $room->slug) }}" class="link-a">
-                                                        <span class="price-a">{{ $room->precio }}</span>
+                                                        <span class="price-a">Ver</span>
                                                     </a>                                                    
                                                 </div>                                                
                                             </div>
@@ -79,8 +79,8 @@
                                                     </li>
 
                                                     <li>
-                                                        <h4 class="card-info-title">Dirección</h4>                                                            
-                                                            <span>{{ $room->direccion }}</span>                                                                                         
+                                                        <h4 class="card-info-title">Precio</h4>                                                            
+                                                            <span>{{ $room->precio }} $ | {{ $convertidor->USD->promedio_real * $room->precio }}Bs.</span>                                                                                         
                                                     </li>
                                                 </ul>
                                             </div>

@@ -70,7 +70,7 @@
                                         <ul class="list">
                                             <li class="d-flex justify-content-between">
                                                 <strong>Nombre del propietario:</strong>
-                                                <span>{{ $room->user->nombre }} {{ $room->user->apellido }}</span>
+                                                <span><a href="{{ route('ViewUser',$room->user->id) }}">{{ $room->user->nombre }} {{ $room->user->apellido }}</a></span>
                                             </li>
 
                                             <li class="d-flex justify-content-between">

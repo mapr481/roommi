@@ -36,19 +36,20 @@
                     <div class="col-md-4">
                         <div class="card-box-a card-shadow">
                             <div class="img-box-a">
+                                
                                 <img src="{{ asset("/images/$room->imagen") }}" alt="" class="img-a img-fluid">
                             </div>
                             <div class="card-overlay">
                                 <div class="card-overlay-a-content">
                                     <div class="card-header-a">
                                         <h2 class="card-title-a">
-                                            <a href="{{ route('PubUser', $room->slug) }}">{{ $room->titulo }}</a>
+                                            <a href="{{ route('ShowPublication', $room->slug) }}">{{ $room->titulo }}</a>
                                         </h2>
                                     </div>
                                 <div class="card-body-a">
                             <div class="price-box d-flex">
-                                <span class="price-a">{{ $room->precio }}</span>
-                                <span class="price-a">{{ $dolar }}</span>
+                                <span><a class="price-a" href="{{  route('ShowPublication', $room->slug) }}">Ver</a></span>
+                                
                             </div>                            
                         </div>
                         <div class="card-footer-a">
@@ -66,12 +67,9 @@
                                 </li>
 
                                 <li>
-                                    <h4 class="card-info-title">Servicios</h4>
-                                    @foreach ($room->services as $service)
-                                        <span>{{ $service->nombre }}</span> <br>
-                                    @endforeach                                
+                                    <h4 class="card-info-title">Precio</h4>                                                            
+                                        <span>{{ $room->precio }} $ | {{ $convertidor->USD->promedio_real * $room->precio }}Bs.</span>                                                                                         
                                 </li>
-
                             </ul>
                         </div>
                     </div>               

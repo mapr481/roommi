@@ -11,6 +11,12 @@
 .margen-left{
   margin-left: 100px;
 }
+textarea {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
 
 .grande{
     width: 500px; height: 350px;
