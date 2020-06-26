@@ -7,7 +7,13 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card border-card">
-                <div class="card-header titulo-size">{{ __('Iniciar sesión') }}</div>
+                <div class="row section-t3 ml-5">
+                    <div class="col-sm-12">
+                        <div class="title-box-d">
+                            <label for="precio" class="title-d">Iniciar sesión</label>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">

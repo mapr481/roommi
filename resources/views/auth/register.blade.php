@@ -20,6 +20,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet"
 </head>
 <body>
     <div id="app">
@@ -34,8 +35,13 @@
             <div class="row justify-content-center">
                 <div class="col-md-10">
                     <div class="card border-card">
-                        <div class="card-header titulo-size center-justify">{{ __('Registro') }}</div>
-
+                        <div class="row section-t3 ml-5">
+                            <div class="col-sm-12">
+                                <div class="title-box-d">
+                                    <label for="precio" class="title-d">Iniciar sesión</label>
+                                </div>
+                            </div>
+                        </div>
                         <div class="card-body">
                             
                             

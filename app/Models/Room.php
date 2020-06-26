@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+
 use Illuminate\Database\Eloquent\Model;
 
 class Room extends Model
@@ -60,7 +61,10 @@ class Room extends Model
     {
         return $this->belongsToMany(serviceRooms::class);
     } 
-
+    public function review()
+    {
+        return $this->hasMany(Review::class);
+    }
     
 
 }
