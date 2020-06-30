@@ -87,52 +87,57 @@
                     <div class="form-group">
                         <h1 class="title-single">Publicaciones</h1>   
                     </div>    
-                    @foreach ($rooms as $room)
-                        <div class="col-md-4">
-                            <div class="card-box-a card-shadow">
-                                <div class="img-box-a">
-                                    <img src="assets/img/property-1.jpg" alt="" class="img-a img-fluid">
-                                </div>
-                                <div class="card-overlay">
-                                    <div class="card-overlay-a-content">
-                                        <div class="card-header-a">
-                                            <h2 class="card-title-a">
-                                                <a href="{{ route('PubUser', $room->slug) }}">{{ $room->titulo }}</a>
-                                            </h2>
+                    <section class="property-grid grid">
+                        <div class="container">
+                            <div class="row">                     
+                                @foreach ($rooms as $room)                 
+                                    <div class="col-md-4">
+                                        <div class="card-box-a card-shadow">
+                                            <div class="img-box-a">
+                                                <img src="{{ asset("/images/$room->imagen") }}" alt="" class="img-a grande">
+                                            </div>
+                                            <div class="card-overlay">
+                                                <div class="card-overlay-a-content">
+                                                    <div class="card-header-a">
+                                                        <h2 class="card-title-a">
+                                                            <a href="{{ route('RoomView', $room->slug) }}">{{ $room->titulo }}</a>
+                                                        </h2>
+                                                    </div>
+                                                    <div class="card-body-a">
+                                                        <div class="price-box d-flex">
+                                                            <a href="{{  route('RoomView', $room->slug) }}" class="link-a">
+                                                                <span class="price-a">Ver detalles</span>
+                                                            </a>                                                    
+                                                        </div>                                                
+                                                    </div>
+        
+                                                    <div class="card-footer-a">
+                                                        <ul class="card-info d-flex justify-content-around">
+                                                            <li>
+                                                                <h4 class="card-info-title">Tipo</h4>
+                                                                <span class="text-capitalize">{{ $room->roomtypes->nombre }}
+                                                                </span>
+                                                            </li>
+        
+                                                            <li>
+                                                                <h4 class="card-info-title">Género</h4>
+                                                                <span>{{ $room->gender->nombre }}</span>
+                                                            </li>
+        
+                                                            <li>
+                                                                <h4 class="card-info-title">Precio</h4>                                                            
+                                                                    <span>{{ $room->precio }} $ | {{ $convertidor * $room->precio }}Bs.</span>                                                                                         
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="card-body-a">
-                                            <div class="price-box d-flex">
-                                                <span class="price-a">{{ $room->precio }}</span>
-                                            </div>                                
-                                        </div>
-                                        <div class="card-footer-a">
-                                            <ul class="card-info d-flex justify-content-around">
-
-                                                <li>
-                                                    <h4 class="card-info-title">Tipo</h4>
-                                                    <span class="text-capitalize">{{ $room->roomtypes->nombre }}
-                                                    </span>
-                                                </li>
-
-                                                <li>
-                                                    <h4 class="card-info-title">Género</h4>
-                                                    <span>{{ $room->gender->nombre }}</span>
-                                                </li>
-
-                                                <li>
-                                                    <h4 class="card-info-title">Servicios</h4>
-                                                    @foreach ($room->services as $service)
-                                                    <span>{{ $service->nombre }}</span> <br>
-                                                    @endforeach                                                    
-                                                </li>
-                                  
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach             
+                                    </div> 
+                                @endforeach
+                            </div>  
+                        </div>                                                              
+                    </section>           
                 </div> 
             </div>       
             <pie></pie>

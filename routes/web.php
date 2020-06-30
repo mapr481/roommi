@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+//'middleware' => 'verified'
    
 
 
@@ -24,9 +24,10 @@ Route::group(['middleware' => 'disablepreventback'],function(){
 
     Route::get('/', 'PublicationController@home');
     
-	Auth::routes();
+	Auth::routes(['verify' => true]);
     Route::resource('room', 'RoomController');
 
+    Route::resource('mail', 'MailController');
 
     Route::get('/user/publication/{slug}', 'UserController@showpub')->name('ShowPub');    
     Route::get('/user/view', 'UserController@show')->name('ShowUser');    
@@ -54,14 +55,14 @@ Route::group(['middleware' => 'disablepreventback'],function(){
     Route::get('/admin/stats', 'AdminController@stats')->name('Stats');
     Route::resource('admin', 'AdminController');
 
+    Route::get('/view/user/{id}', 'PublicationController@showUser')->name('ViewUser');
+    Route::get('/view/{slug}', 'PublicationController@show')->name('RoomView');
+    Route::resource('view', 'PublicationController');
+
     
 
 });
 
-Route::get('/view/user/{id}', 'PublicationController@showUser')->name('ViewUser');
-
-Route::get('/view/{slug}', 'PublicationController@show')->name('RoomView');
-Route::resource('view', 'PublicationController');
 
 
 

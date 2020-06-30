@@ -35,12 +35,19 @@ return [
 
     'mailers' => [
         'smtp' => [
+            'stream' => [
+                'ssl' => [
+                   'allow_self_signed' => true,
+                   'verify_peer' => false,
+                   'verify_peer_name' => false,
+                ],
+             ],
             'transport' => 'smtp',
-            'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
-            'port' => env('MAIL_PORT', 587),
-            'encryption' => env('MAIL_ENCRYPTION', 'tls'),
-            'username' => env('MAIL_USERNAME'),
-            'password' => env('MAIL_PASSWORD'),
+            'host' => env('MAIL_HOST', 'smtp.yandex.com'),
+            'port' => env('MAIL_PORT', 465  ),
+            'encryption' => env('MAIL_ENCRYPTION', 'ssl'),
+            'username' => env('pinto.miguel@yandex.com'),
+            'password' => env('Miguel-22'),
             'timeout' => null,
             'auth_mode' => null,
         ],

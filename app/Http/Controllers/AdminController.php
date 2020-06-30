@@ -35,12 +35,17 @@ class AdminController extends Controller
     }
     public function publications(Request $request )
     {
-        $client = new Client([    
-            'base_uri' => 'http://s3.amazonaws.com',            
+       /*$client = new Client([    
+            'base_uri' => 'https://s3.amazonaws.com',            
             'timeout'  => 20.0,
         ]);        
         $response = $client->request('GET', 'dolartoday/data.json');
-        $convertidor = json_decode($response->getBody()->getContents());       
+        $utf8 = utf8_decode($response, true);  
+        $convertidor = json_decode($utf8->getBody()->getContents()); */
+        $json = file_get_contents("https://s3.amazonaws.com/dolartoday/data.json", 'jsonp');
+        $utf8 = utf8_decode($json); //decode UTF-8
+        $data = json_decode($utf8, true);        
+        $convertidor = $data['USD']['promedio_real'];       
 
         $rooms = Room::latest('id')->paginate(5);
         
@@ -52,12 +57,17 @@ class AdminController extends Controller
 
     public function showbyuser($id)
     {             
-        $client = new Client([    
-            'base_uri' => 'http://s3.amazonaws.com',            
+       /*$client = new Client([    
+            'base_uri' => 'https://s3.amazonaws.com',            
             'timeout'  => 20.0,
         ]);        
         $response = $client->request('GET', 'dolartoday/data.json');
-        $convertidor = json_decode($response->getBody()->getContents());    
+        $utf8 = utf8_decode($response, true);  
+        $convertidor = json_decode($utf8->getBody()->getContents()); */
+        $json = file_get_contents("https://s3.amazonaws.com/dolartoday/data.json", 'jsonp');
+        $utf8 = utf8_decode($json); //decode UTF-8
+        $data = json_decode($utf8, true);        
+        $convertidor = $data['USD']['promedio_real'];   
                   
         $rooms = Room::where('user_id', $id)->get();            
         return view('Master/Publication/Publication-User',["rooms" => $rooms, "convertidor" => $convertidor]);
@@ -74,12 +84,18 @@ class AdminController extends Controller
 
     public function show($id)
     {
-        $client = new Client([    
-            'base_uri' => 'http://s3.amazonaws.com',            
+       /*$client = new Client([    
+            'base_uri' => 'https://s3.amazonaws.com',            
             'timeout'  => 20.0,
         ]);        
         $response = $client->request('GET', 'dolartoday/data.json');
-        $convertidor = json_decode($response->getBody()->getContents());    
+        $utf8 = utf8_decode($response, true);  
+        $convertidor = json_decode($utf8->getBody()->getContents()); */
+        $json = file_get_contents("https://s3.amazonaws.com/dolartoday/data.json", 'jsonp');
+        $utf8 = utf8_decode($json); //decode UTF-8
+        $data = json_decode($utf8, true);        
+        $convertidor = $data['USD']['promedio_real'];
+        
         $user = User::findorfail($id);
         $rooms = Room::where('user_id', $id)->get();
         return view ('Master/Users/Show', ["user" => $user, "rooms"=> $rooms, "convertidor" => $convertidor]);
@@ -130,12 +146,18 @@ class AdminController extends Controller
 
     public function showpub($slug)
     {
-        $client = new Client([    
-            'base_uri' => 'http://s3.amazonaws.com',            
+         /*$client = new Client([    
+            'base_uri' => 'https://s3.amazonaws.com',            
             'timeout'  => 20.0,
         ]);        
         $response = $client->request('GET', 'dolartoday/data.json');
-        $convertidor = json_decode($response->getBody()->getContents());    
+        $utf8 = utf8_decode($response, true);  
+        $convertidor = json_decode($utf8->getBody()->getContents()); */
+        $json = file_get_contents("https://s3.amazonaws.com/dolartoday/data.json", 'jsonp');
+        $utf8 = utf8_decode($json); //decode UTF-8
+        $data = json_decode($utf8, true);        
+        $convertidor = $data['USD']['promedio_real'];
+           
         $room = Room::where('slug', $slug)->first();      
 
         return view ('Master/Publication/ShowRoom', ["room" => $room, "convertidor" => $convertidor]);

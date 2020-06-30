@@ -11,6 +11,7 @@
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -26,65 +27,102 @@
             <barra-superior></barra-superior>
             <nav-vertical></nav-vertical>
 
-            <div class="container mt-5"> 
-                <div class="mt-5">               
-                    <table class="table table-bordered table-hover borde">
-                    <thead>
-                    <tr>
-                        <td>N°</td>
-                    <td>
-                        Nombre y apellido:    
-                    </td>
-
-                    <td>
-                        Cédula:    
-                    </td> 
-
-                    <td>
-                        Teléfono:    
-                    </td>
-
-                    <td>
-                        Correo electrónico:    
-                    </td>
-
-                    <td>
-                        Acciones:    
-                    </td>
-
-                    </tr>    
-                    </thead>    
-                    <tbody align="center">
-                        @foreach ($users as $user )
-                            
-                        
-                        <tr>
-                        <td>{{ ++$i }}</td>
-                        <td class="text-capitalize">{{ $user->nombre }} {{ $user->apellido }}</td>
-                        <td>{{ $user->cedula }}</td>
-                        <td>{{ $user->telefono }}</td>
-                        <td>{{ $user->email }}</td>
-                        <td>
-                           <a href="{{ route('ShowUser', $user->id) }}" class="btn boton-success">Ver</a>
-                           <a href="{{ route('EditUser', $user->id) }}" class="btn boton">Editar</a>
-                           <form method="POST" action="{{ route('DeleteUser', $user->id) }}">
-                                @method('DELETE')
-                                @csrf                            
-                                <button type="submit" class="btn boton-danger">Eliminar</button>                                            
-                            </form>
-                        </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                    </table> 
-                    {!! $users->links() !!}  
-
-                    
-                </div>    
-            </div>
-
+            <div class="container margen ">
+                <div class="row justify-content-center">                    
+                    <div class="col-md-10">
+                        <table class="table table-list-search">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Nombre y Apellido</th>
+                                    <th>Cédula</th>
+                                    <th>Número de teléfono</th>
+                                    <th>Correo Electrónico</th>
+                                    <th>
+                                        <div class="">                                            
+                                            <div class="input-group">                                                
+                                                <input class="form-control" id="system-search" name="q" placeholder="Filtrar" required>                                                    
+                                            </div>                                            
+                                        </div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody align="center">
+                                @foreach ($users as $user )                                       
+                                    <tr>
+                                        <td>{{ ++$i }}</td>
+                                        <td class="text-capitalize">{{ $user->nombre }} {{ $user->apellido }}</td>
+                                        <td>{{ $user->cedula }}</td>
+                                        <td>{{ $user->telefono }}</td>
+                                        <td>{{ $user->email }}</td>
+                                        <td class="row">
+                                        <a href="{{ route('ShowUser', $user->id) }}" class="btn boton-success ml-4">Ver</a>
+                                        <a href="{{ route('EditUser', $user->id) }}" class="btn boton ml-4">Editar</a>&nbsp;
+                                        <form method="POST" action="{{ route('DeleteUser', $user->id) }}" class="ml-4">
+                                                @method('DELETE')
+                                                @csrf                            
+                                                <button type="submit" class="btn boton-danger">Eliminar</button>                                            
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                        {!! $users->links() !!}
+                    </div>
+                </div>                  
+            </div>  
             <pie></pie>
         </div>
+
+        <script>
+            $(document).ready(function() {
+                var activeSystemClass = $('.list-group-item.active');
+
+                //something is entered in search form
+                $('#system-search').keyup( function() {
+                var that = this;
+                    // affect all table rows on in systems table
+                    var tableBody = $('.table-list-search tbody');
+                    var tableRowsClass = $('.table-list-search tbody tr');
+                    $('.search-sf').remove();
+                    tableRowsClass.each( function(i, val) {
+                    
+                        //Lower text for case insensitive
+                        var rowText = $(val).text().toLowerCase();
+                        var inputText = $(that).val().toLowerCase();
+                        if(inputText != '')
+                        {
+                            $('.search-query-sf').remove();
+                            tableBody.prepend('<tr class="search-query-sf"><td colspan="6"><strong>Filtrando búsqueda: "'
+                                + $(that).val()
+                                + '"</strong></td></tr>');
+                        }
+                        else
+                        {
+                            $('.search-query-sf').remove();
+                        }
+
+                        if( rowText.indexOf( inputText ) == -1 )
+                        {
+                            //hide rows
+                            tableRowsClass.eq(i).hide();
+                            
+                        }
+                        else
+                        {
+                            $('.search-sf').remove();
+                            tableRowsClass.eq(i).show();
+                        }
+                    });
+                    //all tr elements are hidden
+                    if(tableRowsClass.children(':visible').length == 0)
+                    {
+                        tableBody.append('<tr class="search-sf"><td class="text-muted" colspan="6">No encontrado.</td></tr>');
+                    }
+                });
+            });
+        </script>
 
         
     </body>

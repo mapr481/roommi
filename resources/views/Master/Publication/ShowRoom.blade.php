@@ -52,7 +52,7 @@
                                         <div class="card-box-ico">
                                                                                    
                                             <p class="ion-money titulo-size text-center" >{{ $room->precio }}$</p>
-                                            <p class="ion-money titulo-size">{{ $convertidor->USD->promedio_real * $room->precio }} Bs.</p>
+                                            <p class="ion-money titulo-size">{{ $convertidor * $room->precio }} Bs.</p>
                                         </div>                              
                                     </div>                            
                                 </div>

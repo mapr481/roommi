@@ -26,56 +26,73 @@
 
         <barra-superior></barra-superior>
         <nav-vertical></nav-vertical>
-
-        <div class="container">                                   
-            <div class="form-group ml-5 margen">
-                <div class="form-group">
-                    <h1 class="title-single">Publicaciones</h1>   
-                </div>    
-                @foreach ($rooms as $room)
-                    <div class="col-md-4">
-                        <div class="card-box-a card-shadow">
-                            <div class="img-box-a">
+        
+        <div class="margen">
+            <section class="intro-single ml-5">
+                <div class="container ml-5">
+                    <div class="row">
+                        <div class="col-md-12 col-lg-8">
+                            <div class="title-single-box">
+                                <h1 class="title-single">Publicaciones</h1>
                                 
-                                <img src="{{ asset("/images/$room->imagen") }}" alt="" class="img-a img-fluid">
                             </div>
-                            <div class="card-overlay">
-                                <div class="card-overlay-a-content">
-                                    <div class="card-header-a">
-                                        <h2 class="card-title-a">
-                                            <a href="{{ route('ShowPublication', $room->slug) }}">{{ $room->titulo }}</a>
-                                        </h2>
+                        </div>                
+                    </div>
+                </div>
+            </section>                       
+             
+            <section class="property-grid grid">
+                <div class="container">
+                    <div class="row">                     
+                        @foreach ($rooms as $room)                 
+                            <div class="col-md-4">
+                                <div class="card-box-a card-shadow">
+                                    <div class="img-box-a">
+                                        <img src="{{ asset("/images/$room->imagen") }}" alt="" class="img-a grande">
                                     </div>
-                                <div class="card-body-a">
-                            <div class="price-box d-flex">
-                                <span><a class="price-a" href="{{  route('ShowPublication', $room->slug) }}">Ver</a></span>
-                                
-                            </div>                            
-                        </div>
-                        <div class="card-footer-a">
-                            <ul class="card-info d-flex justify-content-around">
+                                    <div class="card-overlay">
+                                        <div class="card-overlay-a-content">
+                                            <div class="card-header-a">
+                                                <h2 class="card-title-a">
+                                                    <a href="{{ route('ShowPub', $room->slug) }}">{{ $room->titulo }}</a>
+                                                </h2>
+                                            </div>
+                                            <div class="card-body-a">
+                                                <div class="price-box d-flex">
+                                                    <a href="{{  route('ShowPublication', $room->slug) }}" class="link-a">
+                                                        <span class="price-a">Ver</span>
+                                                    </a>                                                    
+                                                </div>                                                
+                                            </div>
 
-                                <li>
-                                    <h4 class="card-info-title">Tipo</h4>
-                                    <span class="text-capitalize">{{ $room->roomtypes->nombre }}
-                                    </span>
-                                </li>
+                                            <div class="card-footer-a">
+                                                <ul class="card-info d-flex justify-content-around">
+                                                    <li>
+                                                        <h4 class="card-info-title">Tipo</h4>
+                                                        <span class="text-capitalize">{{ $room->roomtypes->nombre }}
+                                                        </span>
+                                                    </li>
 
-                                <li>
-                                    <h4 class="card-info-title">Género</h4>
-                                    <span>{{ $room->gender->nombre }}</span>
-                                </li>
+                                                    <li>
+                                                        <h4 class="card-info-title">Género</h4>
+                                                        <span>{{ $room->gender->nombre }}</span>
+                                                    </li>
 
-                                <li>
-                                    <h4 class="card-info-title">Precio</h4>                                                            
-                                        <span>{{ $room->precio }} $ | {{ $convertidor->USD->promedio_real * $room->precio }}Bs.</span>                                                                                         
-                                </li>
-                            </ul>
-                        </div>
-                    </div>               
-                @endforeach   
-            </div>
-        </div>    
+                                                    <li>
+                                                        <h4 class="card-info-title">Precio</h4>                                                            
+                                                            <span>{{ $room->precio }} $ | {{ $convertidor * $room->precio }}Bs.</span>                                                                                         
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> 
+                        @endforeach
+                    </div>  
+                </div>                                                              
+            </section>
+        </div>        
         <pie></pie>
     </div>
 </body>

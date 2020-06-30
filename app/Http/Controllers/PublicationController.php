@@ -18,12 +18,17 @@ class PublicationController extends Controller
    
     public function index()
     {       
-        $client = new Client([    
-            'base_uri' => 'http://s3.amazonaws.com',            
+        /*$client = new Client([    
+            'base_uri' => 'https://s3.amazonaws.com',            
             'timeout'  => 20.0,
         ]);        
         $response = $client->request('GET', 'dolartoday/data.json');
-        $convertidor = json_decode($response->getBody()->getContents());   
+        $utf8 = utf8_decode($response, true);  
+        $convertidor = json_decode($utf8->getBody()->getContents()); */
+        $json = file_get_contents("https://s3.amazonaws.com/dolartoday/data.json", 'jsonp');
+        $utf8 = utf8_decode($json); //decode UTF-8
+        $data = json_decode($utf8, true);        
+        $convertidor = $data['USD']['promedio_real'];
 
         $rooms = Room::latest('id')->paginate(5);        
         return view('Dashboard/Publication-list', compact('rooms', 'convertidor'))->with('i',(request()->input('page', 1)- 1)* 5);
@@ -33,29 +38,40 @@ class PublicationController extends Controller
     
     public function show($slug)
     {      
-        $client = new Client([    
-            'base_uri' => 'http://s3.amazonaws.com',            
+        /*$client = new Client([    
+            'base_uri' => 'https://s3.amazonaws.com',            
             'timeout'  => 20.0,
         ]);        
         $response = $client->request('GET', 'dolartoday/data.json');
-        $convertidor = json_decode($response->getBody()->getContents());       
-
+        $utf8 = utf8_decode($response, true);  
+        $convertidor = json_decode($utf8->getBody()->getContents()); */
+        $json = file_get_contents("https://s3.amazonaws.com/dolartoday/data.json", 'jsonp');
+        $utf8 = utf8_decode($json); //decode UTF-8
+        $data = json_decode($utf8, true);        
+        $convertidor = $data['USD']['promedio_real'];       
+        
         $room = Room::where('slug', $slug)->first();
         
-        $dolar = $convertidor->USD->promedio_real * $room->precio;
-        
+        $dolar = $convertidor * $room->precio;
+       
+    
              
         return view('Dashboard/Publication-view', ["room" =>$room, "dolar" => $dolar]);
     }
   
     public function showUser($id)
     {
-        $client = new Client([    
-            'base_uri' => 'http://s3.amazonaws.com',            
+         /*$client = new Client([    
+            'base_uri' => 'https://s3.amazonaws.com',            
             'timeout'  => 20.0,
         ]);        
         $response = $client->request('GET', 'dolartoday/data.json');
-        $convertidor = json_decode($response->getBody()->getContents());   
+        $utf8 = utf8_decode($response, true);  
+        $convertidor = json_decode($utf8->getBody()->getContents()); */
+        $json = file_get_contents("https://s3.amazonaws.com/dolartoday/data.json", 'jsonp');
+        $utf8 = utf8_decode($json); //decode UTF-8
+        $data = json_decode($utf8, true);        
+        $convertidor = $data['USD']['promedio_real'];  
 
         $user = User::findorfail($id);    
         return view('Dashboard/User', ["user" =>$user, "rooms" =>$user->rooms, "convertidor"=>$convertidor]);
@@ -63,12 +79,17 @@ class PublicationController extends Controller
 
     public function home()
     {
-        $client = new Client([    
-            'base_uri' => 'http://s3.amazonaws.com',            
+        /*$client = new Client([    
+            'base_uri' => 'https://s3.amazonaws.com',            
             'timeout'  => 20.0,
         ]);        
         $response = $client->request('GET', 'dolartoday/data.json');
-        $convertidor = json_decode($response->getBody()->getContents());       
+        $utf8 = utf8_decode($response, true);  
+        $convertidor = json_decode($utf8->getBody()->getContents()); */
+        $json = file_get_contents("https://s3.amazonaws.com/dolartoday/data.json", 'jsonp');
+        $utf8 = utf8_decode($json); //decode UTF-8
+        $data = json_decode($utf8, true);        
+        $convertidor = $data['USD']['promedio_real'];      
 
         
         $rooms = Room::orderByRaw('random()')->take(5)->get();

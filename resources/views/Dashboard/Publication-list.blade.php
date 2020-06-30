@@ -69,7 +69,7 @@
 
                                                     <li>
                                                         <h4 class="card-info-title">Precio</h4>                                                            
-                                                            <span>{{ $room->precio }} $ | {{ $convertidor->USD->promedio_real * $room->precio }}Bs.</span>                                                                                         
+                                                            <span>{{ $room->precio }} $ | {{ $convertidor * $room->precio }} Bs.</span>                                                                                         
                                                     </li>
                                                 </ul>
                                             </div>

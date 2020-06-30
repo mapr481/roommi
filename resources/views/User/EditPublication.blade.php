@@ -2,40 +2,75 @@
 
 @section('content')
 
+
     <div class="container mt-5 mb-5">
         <div class="row justify-content-center">
             <div class="col-md-10">
-                <div class="card border-card">
-                    <div class="card-header titulo-size">{{ __('Editar publicación') }}</div>
+                <div class="card border-card">                    
                     <div class="card-body ">
-
-                        <form class="formulario" action="{{ route("PubUpdate", $room->slug) }}" method="POST">
+                        <section class="intro-single">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12 col-lg-8">
+                                        <div class="title-single-box">
+                                            <h1 class="title-single">Editar Publicación</h1>                                            
+                                        </div>
+                                    </div>                
+                                </div>
+                            </div>
+                        </section>
+                        <form class="formulario" action="{{ route("PubUpdate", $room->slug) }}" method="POST" enctype="multipart/form-data">
                             @method('PUT')
                             @csrf
-                            <div class="form-group row">
-                                <div class="col-md-6">
-                                    <label for="titulo" class="input-size">Título: </label>
-                                    <input type="text" name="titulo" id="titulo" class="form-control texto" value="{{ old('titulo', $room->titulo) }}">
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <div class="col-md-6">
-                                    <label for="direccion" class="input-size">Dirección: </label>
-                                    <input type="text" name="direccion" id="direccion" class="form-control texto" value="{{ old('direccion', $room->direccion) }}">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-6">
-                                    <label for="detalles" class="input-size">Detalles de la residencia:</label>
-                                <textarea name="detalles" id="detalles" cols="30" rows="10" class="form-control texto">{{ $room->detalles }}</textarea>
+                            <div class="form-group ">
+                                <div class="col-md-8">
+                                    <div class="row section-t3">
+                                        <div class="col-sm-12">
+                                            <div class="title-box-d">
+                                                <label for="titulo" class="title-d">Título </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <input type="text" name="titulo" id="titulo" class="form-control form-control-lg texto" value="{{ old('titulo', $room->titulo) }}">
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <div class="col-md-6">
-                                    <label for="genero" class="input-size">Género:</label>
+                                <div class="col-md-8">
+                                    <div class="row section-t3">
+                                        <div class="col-sm-12">
+                                            <div class="title-box-d">
+                                                <label for="direccion" class="title-d">Dirección </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="text" name="direccion" id="direccion" class="form-control form-control-lg texto" value="{{ old('direccion', $room->direccion) }}">
+                                </div>
+                            </div>                      
+                                                     
+                            <div class="form-group">
+                                <div class="col-md-8">
+                                    <div class="row section-t3">
+                                        <div class="col-sm-12">
+                                            <div class="title-box-d">
+                                                <label for="detalles" class="title-d">Detalles de la residencia </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <textarea name="detalles" id="detalles" cols="30" rows="10" class="form-control form-control-lg texto">{{ $room->detalles }}</textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-8">
+                                    <div class="row section-t3">
+                                        <div class="col-sm-12">
+                                            <div class="title-box-d">
+                                                <label for="genero" class="title-d">Género </label>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <select name="gender_id" id="genero" class="form-control texto input-size">
                                         <option value="">Seleccione género</option>
                                         @foreach ($genders as $gender)
@@ -43,10 +78,33 @@
                                         @endforeach
                                     </select>
                                 </div>
+                                <div class="col-md-8">
+                                    <div class="row section-t3">
+                                        <div class="col-sm-12">
+                                            <div class="title-box-d">
+                                                <label for="tipos" class="title-d">Tipo de residencia</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <select name="room_type_id" id="tipos" class="form-control texto input-size">
+                                        <option value="">Seleccione</option>
+                                        @foreach ($types as $type)
+                                            <option value="{{ $type->id }}">{{ $type->nombre }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
 
-                            <div class="form-group form-check ">
-                                <label for="service_id" class="input-size">Servicios:</label><br>
+                            <div class="row section-t3">
+                                <div class="col-sm-12">
+                                    <div class="title-box-d">
+                                        <h3 class="title-d">Servicios y Características</h3>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-check">
+                                
                                <div class="checkbox">
                                     @foreach ($services as $service)
                                         <input
@@ -58,29 +116,25 @@
                                         <label
                                             for="{{ $service->nombre }}"
                                             class="form-check-label input-size text-capitalize"> {{ $service->nombre }}
-                                        </label><br>
+                                        </label> <br>
                                     @endforeach
                                 </div>
-                            </div>
-
-                              <div class="form-group form-check">
-                                <label for="characteristics_id" class="input-size">Características:</label><br>
-                                <div class="checkbox">
+                            
+                                               
+                                <div class="checkbox ">
                                     @foreach ($characteristics as $characteristic)
                                         <input
-                                            type="checkbox" class="form-check-input texto checkbox" 
+                                            type="checkbox" class="form-check-input texto checkbox"
                                             id="{{ $characteristic->nombre }}"
                                             name="characteristics[]"
                                             value="{{ $characteristic->id }}"/>
                                         <label
                                             for="{{ $characteristic->nombre }}"
                                             class="form-check-label input-size text-capitalize"> {{ $characteristic->nombre }}
-                                        </label><br>
+                                        </label> <br>
                                     @endforeach
-                                </div>
-                            </div>
-
-                            <div class="form-group form-check ">                               
+                                </div>                          
+                            
                                <div class="checkbox">
                                     @foreach ($options as $option)
                                         <input
@@ -92,39 +146,43 @@
                                         <label
                                             for="{{ $option->nombre }}"
                                             class="form-check-label input-size text-capitalize"> {{ $option->nombre }}
-                                        </label><br>
+                                        </label> <br>
                                     @endforeach
-                                </div>                          
-
-
-                            <div class="form-group">
-                                <div class="col-md-6">
-                                <label for="tipos" class="input-size">Tipo de Residencia:</label><br>
-                                    <select name="room_type_id" id="tipos" class="form-control texto input-size">
-                                        <option value="">Seleccione</option>
-                                        @foreach ($types as $type)
-                                            <option value="{{ $type->id }}">{{ $type->nombre }}</option>
-                                        @endforeach
-                                    </select>
                                 </div>
                             </div>
 
+
+                           
+
                             <div class="form-group">
-                                <div class="col-md-6">
-                                    <label for="imagen" class="input-size">Editar Imágen</label>
+                                <div class="col-md-8">
+                                    <div class="row section-t3">
+                                        <div class="col-sm-12">
+                                            <div class="title-box-d">
+                                                <label for="imagen" class="title-d">Agregar Imágen</label>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <input type="file" name="file" id="imagen" class="form-control-file">
-                                </div>
-                            </div>
+                                </div> 
+                            </div>  
 
                             <div class="form-group">
-                                <div class="col-md-6">
-                                    <label for="precio" class="input-size">Precio</label>
-                                    <input type="text" name="precio" id="precio" class="form-control texto" value="{{ old('precio', $room->precio) }}">
+                                <div class="col-md-8">
+                                     <div class="row section-t3">
+                                        <div class="col-sm-12">
+                                            <div class="title-box-d">
+                                                <label for="precio" class="title-d">Precio </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="number" name="precio" id="precio" placeholder="Valor en dólares" class="form-control texto" value="{{ old('precio', $room->precio) }}">
+                                    
                                 </div>
                             </div>
 
-                            <div class="row justify-content-md-center">
-                                <input type="submit" value="Enviar" class="btn boton">
+                            <div class="row justify-content-center">
+                                <input type="submit" value="Enviar" class="btn boton titulo-size">
                             </div>
 
                         </form>
@@ -136,4 +194,5 @@
 
         </div>
     </div>
+          
 @endsection

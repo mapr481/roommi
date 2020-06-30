@@ -124,7 +124,7 @@
                                         @endforeach
 
                                         @foreach ($room->characteristics as $char)
-                                            
+                                            <li>{{ $char->nombre }}</li>
                                         @endforeach
 
                                         @foreach ($room->options as $options)
