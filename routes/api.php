@@ -22,7 +22,8 @@ Route::group(['middleware' => 'disablepreventback'],function()
     
     
 
-
+    Route::get('search', 'SearchController@buscar')->name('search');
+    Route::resource('publication', 'PublicationController');
     Route::get('user', 'UserController@index');
     Route::get('admin', 'AdminController@index');
     Route::get('room', 'RoomController@index');

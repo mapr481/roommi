@@ -18,12 +18,13 @@
       </v-toolbar-title>
   
       
+      <v-form action="./api/search" @submit="buscar()" v-if="collapseOn">
+        <v-text-field label="Buscar" class="mt-4 p-2" name="buscar" v-model="buscar">
 
+        </v-text-field>
+      </v-form>
       
-      <v-text-field v-if="collapseOn"  dense class = "inputField input-name p-2 styled-input"
-      label="Buscar" outlined rounded append-icon="mdi-magnify">
-        
-      </v-text-field>
+      
      <v-spacer></v-spacer>
     <v-spacer></v-spacer>
     <v-btn  color="white"  v-if="collapseOn"  class="mr-3" small outlined href="/view" >
@@ -76,7 +77,7 @@ export default {
   data() {
     return {
       collapseOn: true,
-      
+      buscar: '',
       label: 'Buscar'
     }
   },
@@ -89,6 +90,13 @@ export default {
           }),
           localStorage.clear()
         },
+
+        buscar(){
+          
+          axios.post('api/search/', {
+            buscar: this.buscar
+          })
+        }
        
   }
     

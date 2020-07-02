@@ -11,9 +11,10 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/main.js') }}" defer></script>
     <script src="{{ asset('vendor/owl.carousel/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('/vendor/scrollreveal/scrollreveal.min.js') }}"></script>
-
+    <script src="{{ asset('vendor/scrollreveal/scrollreveal.min.js') }}"></script>
+   
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -22,7 +23,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <link href="{{ asset('/vendor/owl.carousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/owl.carousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
 </head>
 <body>   
     <div id="app">
@@ -37,22 +38,26 @@
 
         <div class="intro intro-carousel ">
             <div id="carousel" class="owl-carousel owl-theme">
+
                 @foreach ($rooms as $room)
                 
                     <div class="carousel-item-a intro-item bg-image" style="background-image: url({{ asset("/images/$room->imagen") }})">
                         <div class="overlay overlay-a"></div>
-                            <div class="intro-content display-table">
-                                <div class="table-cell">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-lg-8">
-                                                <div class="intro-body">                                                 
-                                                    <p class="intro-title-top">{{ $room->titulo }}</p>
+                        <div class="intro-content display-table">
+                            <div class="table-cell">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-8">
+                                            <div class="intro-body">                                                 
+                                                <p class="intro-title-top">{{ $room->titulo }}</p>
                                                 <h1 class="intro-title mb-4">
-                                                {{ $room->direccion }}</h1>
+                                                    {{ $room->direccion }}
+                                                </h1>
                                                 <p class="intro-subtitle intro-price">
-                                                    <a href="{{ route('RoomView', $room->slug) }}"><span class="price-a">{{ $room->precio }}$ |
-                                                    {{ $convertidor * $room->precio }}Bs.</span></a>
+                                                    <a href="{{ route('RoomView', $room->slug) }}">
+                                                        <span class="price-a">{{ $room->precio }}$ |
+                                                        {{ $convertidor * $room->precio }}Bs.</span>
+                                                    </a>
                                                 </p>
                                             </div>
                                         </div>
@@ -60,7 +65,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>                
                 @endforeach
             </div>
         </div>

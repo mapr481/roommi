@@ -92,11 +92,11 @@ class PublicationController extends Controller
         $convertidor = $data['USD']['promedio_real'];      
 
         
-        $rooms = Room::orderByRaw('random()')->take(5)->get();
+        $rooms = Room::orderByRaw('rand()')->take(3)->get();
         
         return view('index', ["rooms" =>$rooms, "convertidor"=>$convertidor]);
     }
     
-    
+  
     
 }

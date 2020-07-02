@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 // use Illuminate\Support\Facades\Storage;
 
 use App\Http\Requests\StoreRoomPost;
-use App\Models\Room;
 
+use App\Models\Room;
 use App\Models\Service;
 use App\Models\Gender;
 use App\Models\Characteristics;
