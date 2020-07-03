@@ -31,7 +31,7 @@
 
 
 
-        <div class="container justify-center mt-5 mb-5">
+        <div class="container justify-center margen">
             <div class="row justify-content-center">
                 <div class="col-md-10">
                     <div class="card border-card">

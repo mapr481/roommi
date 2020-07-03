@@ -3,7 +3,8 @@
 @section('content')
 
 
-    <div class="container mt-5 mb-5">
+    <div class="container margen">
+        
         <div class="row justify-content-center">
             <div class="col-md-10">
                 <div class="card border-card">                    
@@ -30,8 +31,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
-                                    <input type="text" name="titulo" id="titulo" class="form-control form-control-lg texto">
+                                    @error('titulo')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
+                                    <input type="text" name="titulo" id="titulo" class="form-control form-control-lg texto" value="{{ old('titulo') }}">
+                                  
                                 </div>
                             </div>
 
@@ -44,7 +48,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <input type="text" name="direccion" id="direccion" class="form-control form-control-lg texto">
+                                    @error('direccion')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
+                                    <input type="text" name="direccion" id="direccion" class="form-control form-control-lg texto" value="{{ old('direccion') }}">
                                 </div>
                             </div>                      
                                                      
@@ -57,7 +64,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <textarea name="detalles" id="detalles" cols="30" rows="10" class="form-control form-control-lg texto"></textarea>
+                                    @error('detalles')
+                                    <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                                    <textarea name="detalles" id="detalles" cols="30" rows="10" class="form-control form-control-lg texto">{{ old('detalles') }}</textarea>
                                 </div>
                             </div>
 
@@ -70,6 +80,9 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @error('gender_id')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                     <select name="gender_id" id="genero" class="form-control texto input-size">
                                         <option value="">Seleccione género</option>
                                         @foreach ($genders as $gender)
@@ -85,10 +98,13 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @error('room_type_id')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                     <select name="room_type_id" id="tipos" class="form-control texto input-size">
                                         <option value="">Seleccione</option>
                                         @foreach ($types as $type)
-                                            <option value="{{ $type->id }}">{{ $type->nombre }}</option>
+                                            <option class="text-capitalize" value="{{ $type->id }}">{{ $type->nombre }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -103,7 +119,8 @@
                             </div>
 
                             <div class="form-group form-check">
-                                
+                               
+                                    
                                <div class="checkbox">
                                     @foreach ($services as $service)
                                         <input
@@ -148,6 +165,7 @@
                                         </label> <br>
                                     @endforeach
                                 </div>
+                                
                             </div>
 
 
@@ -162,6 +180,9 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @error('imagen')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                     <input type="file" name="file" id="imagen" class="form-control-file">
                                 </div> 
                             </div>  
@@ -175,13 +196,16 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <input type="number" name="precio" id="precio" placeholder="Valor en dólares" class="form-control texto">
+                                    @error('precio')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
+                                    <input type="number" name="precio" id="precio" placeholder="Valor en dólares" class="form-control texto" value="{{ old('precio') }}" min="0"  oninput="validity.valid||(value='');">
                                     
                                 </div>
                             </div>
 
                             <div class="row justify-content-center">
-                                <input type="submit" value="Enviar" class="btn boton titulo-size">
+                                <input type="submit" value="Enviar" class="btn boton titulo-size" pattern="^[0-9]+">
                             </div>
 
                         </form>
@@ -193,6 +217,32 @@
 
         </div>
     </div>
-          
-@endsection
+         
+    <script>
+        const campoNumerico = document.getElementById('precio');
 
+campoNumerico.addEventListener('keydown', function(evento) {
+  const teclaPresionada = evento.key;
+  const teclaPresionadaEsUnNumero =
+    Number.isInteger(parseInt(teclaPresionada));
+
+  const sePresionoUnaTeclaNoAdmitida = 
+    teclaPresionada != 'ArrowDown' &&
+    teclaPresionada != 'ArrowUp' &&
+    teclaPresionada != 'ArrowLeft' &&
+    teclaPresionada != 'ArrowRight' &&
+    teclaPresionada != 'Backspace' &&
+    teclaPresionada != 'Delete' &&
+    teclaPresionada != 'Enter' &&
+    !teclaPresionadaEsUnNumero;
+  const comienzaPorCero = 
+    campoNumerico.value.length === 0 &&
+    teclaPresionada == 0;
+
+  if (sePresionoUnaTeclaNoAdmitida || comienzaPorCero) {
+    evento.preventDefault(); 
+  }
+
+});
+    </script>
+@endsection

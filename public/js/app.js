@@ -2099,14 +2099,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -2283,18 +2275,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -40733,35 +40713,6 @@ var render = function() {
                           )
                         ],
                         1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-card",
-                        {
-                          staticClass: "mt-3",
-                          attrs: {
-                            color: "#F2B705",
-                            fixed: "",
-                            href: "/admin/stats",
-                            shaped: ""
-                          }
-                        },
-                        [
-                          _c(
-                            "v-card-title",
-                            { staticClass: "subtitle-1" },
-                            [
-                              _vm._v(
-                                "                         \n                            Estadísticas de la página\n                            "
-                              ),
-                              _c("v-spacer"),
-                              _vm._v(" "),
-                              _c("v-icon", [_vm._v("mdi-chevron-right")])
-                            ],
-                            1
-                          )
-                        ],
-                        1
                       )
                     ],
                     1
@@ -40832,7 +40783,7 @@ var render = function() {
         ? _c(
             "v-form",
             {
-              attrs: { action: "./api/search" },
+              attrs: { action: "/api/search" },
               on: {
                 submit: function($event) {
                   return _vm.buscar()
@@ -41286,35 +41237,6 @@ var render = function() {
                 ],
                 1
               ),
-              _vm._v(" "),
-              _vm.user.esAdmin === "si"
-                ? _c(
-                    "v-list-item",
-                    { attrs: { link: "", href: "/admin/stats" } },
-                    [
-                      _c(
-                        "v-list-item-icon",
-                        [
-                          _c("v-icon", [
-                            _vm._v("\n            mdi-chart-line\n          ")
-                          ])
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-list-item-content",
-                        [
-                          _c("v-list-item-title", [
-                            _vm._v("\n            Estadísticas\n          ")
-                          ])
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                : _vm._e(),
               _vm._v(" "),
               _c("v-divider"),
               _vm._v(" "),

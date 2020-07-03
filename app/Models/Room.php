@@ -59,39 +59,6 @@ class Room extends Model
     public function serviceRooms()
     {
         return $this->belongsToMany(serviceRooms::class);
-    } 
-    public function review()
-    {
-        return $this->hasMany(Review::class);
-    }
-
-    ///////////////// Scopes /////////////////////
-    
-    public function scopeSearch($query, $buscar)
-    {
-        if($buscar)
-            return $query->where('search', 'LIKE', "%$buscar%");
-    }  
-    
-    public function scopeOptions($query, $option)
-    {
-        if($option)
-            return $query->where('optionSearch', 'LIKE', "%$option%");
-    }
-    public function scopeCharacteristics($query, $characteristics)
-    {
-        if($characteristics)
-            return $query->where('characteristicsSearch', 'LIKE', "%$characteristics%");
-    }
-    public function scopeServices($query, $service)
-    {
-        if($service)
-            return $query->where('serviceSearch', 'LIKE', "%$service%");
-    }
-
-    public function scopeGenders ($query, $gender)
-    {
-        if($gender)
-            return $query->where('serviceSearch', 'LIKE', "%$gender%");
-    }
+    }    
+     
 }

@@ -40,14 +40,6 @@
                             </v-card-title>                    
                         </v-card >
 
-                        <v-card color="#F2B705" fixed href="/admin/stats" class="mt-3" shaped>        
-                            <v-card-title class="subtitle-1">                         
-                                Estadísticas de la página
-                                <v-spacer></v-spacer>                     
-                                <v-icon>mdi-chevron-right</v-icon>                                        
-                            </v-card-title>                    
-                        </v-card >
-
                     </v-col>     
                 </v-row>                     
             </v-container> 

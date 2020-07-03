@@ -31,8 +31,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
+                                    @error('titulo')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                     <input type="text" name="titulo" id="titulo" class="form-control form-control-lg texto" value="{{ old('titulo', $room->titulo) }}">
+                                  
                                 </div>
                             </div>
 
@@ -45,6 +48,9 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @error('direccion')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                     <input type="text" name="direccion" id="direccion" class="form-control form-control-lg texto" value="{{ old('direccion', $room->direccion) }}">
                                 </div>
                             </div>                      
@@ -58,7 +64,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <textarea name="detalles" id="detalles" cols="30" rows="10" class="form-control form-control-lg texto">{{ $room->detalles }}</textarea>
+                                    @error('detalles')
+                                    <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                                    <textarea name="detalles" id="detalles" cols="30" rows="10" class="form-control form-control-lg texto">{{ old('detalles', $room->detalles) }}</textarea>
                                 </div>
                             </div>
 
@@ -71,6 +80,9 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @error('gender_id')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                     <select name="gender_id" id="genero" class="form-control texto input-size">
                                         <option value="">Seleccione género</option>
                                         @foreach ($genders as $gender)
@@ -86,10 +98,13 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @error('room_type_id')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                     <select name="room_type_id" id="tipos" class="form-control texto input-size">
                                         <option value="">Seleccione</option>
                                         @foreach ($types as $type)
-                                            <option value="{{ $type->id }}">{{ $type->nombre }}</option>
+                                            <option class="text-capitalize" value="{{ $type->id }}">{{ $type->nombre }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -104,7 +119,8 @@
                             </div>
 
                             <div class="form-group form-check">
-                                
+                               
+                                    
                                <div class="checkbox">
                                     @foreach ($services as $service)
                                         <input
@@ -149,6 +165,7 @@
                                         </label> <br>
                                     @endforeach
                                 </div>
+                                
                             </div>
 
 
@@ -163,6 +180,9 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @error('imagen')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                     <input type="file" name="file" id="imagen" class="form-control-file">
                                 </div> 
                             </div>  
@@ -176,7 +196,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <input type="number" name="precio" id="precio" placeholder="Valor en dólares" class="form-control texto" value="{{ old('precio', $room->precio) }}">
+                                    @error('precio')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
+                                    <input type="number" name="precio" id="precio" placeholder="Valor en dólares" class="form-control texto" value="{{ old('precio', $room->precio) }}"  min="0"  oninput="validity.valid||(value='');">
                                     
                                 </div>
                             </div>

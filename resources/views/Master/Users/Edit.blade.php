@@ -134,6 +134,11 @@
                                 <div class="for-group row">                                      
                                     <label for="rol" class="col-md-2 col-form-label text-md-right input-size">Rol:</label> 
                                     <div class="col-md-4">
+                                        @error('esAdmin')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                         <select name="esAdmin" id="rol" class="form-control form-control-lg texto input-size">                                            
                                             <option value="">Seleccione modo</option>
                                             <option value="si">Admin</option>

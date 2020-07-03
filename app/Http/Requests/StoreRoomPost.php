@@ -30,18 +30,22 @@ class StoreRoomPost extends FormRequest
      */
     public function rules()
     {
-        return [
-            'titulo' => 'required',
-            'slug' => '',
-            'direccion' => 'required',
-            'user_id'=>'',
-            'precio' => 'required',
+        $rules = [
+            'titulo' => 'required | min:3 | max:255',
+            'slug' => 'required',
+            'direccion' => 'required | min:3 | max:255',
+            'user_id'=>'required | integer',
+            'precio' => 'required | min:1 | max:999 | numeric',
             'detalles' => '',                      
-            'room_type_id'=>'',
-            'gender_id'=>'',
-            'characteristics_room_id'=>'',
-            'service_id'=>'',
-            'imagen' => 'mimes:jpeg,bmp,png|max:5120'
+            'room_type_id'=>'required | integer',
+            'gender_id'=>'required | integer',
+            'characteristics'=>'',
+            'services'=>'',            
+            'options'=>'required'
         ];
+        if ($this->get('file'))
+            $rules = array_merge($rules, ['file' => 'mimes:jpg,jpeg,png']);
+        
+        return $rules;
     }
 }

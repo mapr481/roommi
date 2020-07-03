@@ -18,7 +18,7 @@
       </v-toolbar-title>
   
       
-      <v-form action="./api/search" @submit="buscar()" v-if="collapseOn">
+      <v-form action="/api/search" @submit="buscar()" v-if="collapseOn">
         <v-text-field label="Buscar" class="mt-4 p-2" name="buscar" v-model="buscar">
 
         </v-text-field>

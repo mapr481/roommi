@@ -11,7 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="{{ asset('js/main.js') }}" defer></script>
+    <script src="{{ asset('js/main.js') }}"></script>
     <script src="{{ asset('vendor/owl.carousel/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('vendor/scrollreveal/scrollreveal.min.js') }}"></script>
    

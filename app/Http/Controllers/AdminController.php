@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Http\Requests\StoreRoomPost;
 use App\Http\Requests\StoreUserPost;
+use App\Http\Requests\UpdateRoomPost;
 use App\Models\Characteristics;
 use App\Models\Gender;
 use App\Models\Option;
@@ -73,12 +74,7 @@ class AdminController extends Controller
         return view('Master/Publication/Publication-User',["rooms" => $rooms, "convertidor" => $convertidor]);
     }
     
-
-    public function stats()
-    {
-        return view('Master/Stats');
-        
-    }
+    
    
     
 
@@ -115,13 +111,6 @@ class AdminController extends Controller
         return view('Master/Users/Edit',["user" =>$user]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(StoreUserPost $request, $id)
     {
         $user = User::findorfail($id);
@@ -193,7 +182,7 @@ class AdminController extends Controller
         $room->services()->sync($request->services);
         $room->characteristics()->sync($request->characteristics);
         $room->options()->sync($request->options); 
-        return redirect('ShowPublication')->with('status', 'Publicación editada correctamente');
+        return redirect('Publications')->with('status', 'Publicación editada correctamente');
     }
 
 
