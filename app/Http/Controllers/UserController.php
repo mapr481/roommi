@@ -9,6 +9,7 @@ use App\Models\Room;
 use App\Models\RoomType;
 use App\Models\Service;
 use App\Http\Requests\StoreRoomPost;
+use App\Http\Requests\StoreUserPost;
 use App\Models\User;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
@@ -106,7 +107,7 @@ class UserController extends Controller
         $convertidor = $data['USD']['promedio_real'];
 
         $id= Auth::user()->id;          
-        $rooms = Room::where('user_id', $id)->get();            
+        $rooms = Room::where('user_id', $id)->paginate(6);            
         return view('User/ListPublication',["rooms" => $rooms, "convertidor" => $convertidor]);
     }
 
@@ -114,6 +115,7 @@ class UserController extends Controller
     public function editpub($slug)
     { 
         $room = Room::where('slug', $slug)->first();  
+
         if (Auth::user()->id == $room->user_id){    
         $genders = Gender::all();
         $services = Service::all();
@@ -133,7 +135,14 @@ class UserController extends Controller
         }return redirect('/user/publication');
         
     }
-        
+
+    
+    public function update(StoreUserPost $request, $id)
+    {
+        $user = User::findorfail($id);
+        $user->update($request->validated()); 
+        return redirect('/user/view')->with('status', 'Usuario editado correctamente');
+    }
     
     public function updatepub(StoreRoomPost $request, $slug)
     { 

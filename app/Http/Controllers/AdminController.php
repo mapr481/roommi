@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Http\Requests\StoreRoomPost;
-use App\Http\Requests\StoreUserPost;
+use App\Http\Requests\StoreAdminUserPost;
 use App\Http\Requests\UpdateRoomPost;
 use App\Models\Characteristics;
 use App\Models\Gender;
@@ -48,7 +48,7 @@ class AdminController extends Controller
         $data = json_decode($utf8, true);        
         $convertidor = $data['USD']['promedio_real'];       
 
-        $rooms = Room::latest('id')->paginate(5);
+        $rooms = Room::latest('id')->paginate(6);
         
       
         return view('Master/Publication', compact('rooms', 'convertidor'))->with('i',(request()->input('page', 1)- 1)* 5);
@@ -110,12 +110,12 @@ class AdminController extends Controller
         $user = User::findorfail($id);        
         return view('Master/Users/Edit',["user" =>$user]);
     }
-
-    public function update(StoreUserPost $request, $id)
+    
+    public function update(StoreAdminUserPost $request, $id)
     {
         $user = User::findorfail($id);
         $user->update($request->validated()); 
-        return back()->with('status', 'Usuario editado correctamente');
+        return redirect('/admin/users')->with('status', 'Usuario editado correctamente');
     }
 
     /**
@@ -128,7 +128,7 @@ class AdminController extends Controller
     {
         $user = User::findorfail($id);
         $user-> delete();
-        return back('Publications')->with('status', 'Usuario eliminado correctamente');
+        return redirect('/admin/users')->with('status', 'Usuario eliminado correctamente');
     }
 
     /****************************************Publicaciones*****************************************/
@@ -182,7 +182,7 @@ class AdminController extends Controller
         $room->services()->sync($request->services);
         $room->characteristics()->sync($request->characteristics);
         $room->options()->sync($request->options); 
-        return redirect('Publications')->with('status', 'Publicación editada correctamente');
+        return redirect('/admin/view/list')->with('status', 'Publicación editada correctamente');
     }
 
 
@@ -191,7 +191,7 @@ class AdminController extends Controller
     {
         $room = Room::where('slug', $slug)->first();
         $room-> delete();
-        return redirect('/admin/view/list')->with('status', 'Usuario eliminado correctamente');
+        return redirect('/admin/view/list')->with('status', 'Publicación eliminado correctamente');
     }
 
 

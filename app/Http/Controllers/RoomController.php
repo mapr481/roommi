@@ -84,7 +84,7 @@ class RoomController extends Controller
       $room->save();
     }
 
-    return back()->with('status', 'Publicación creada correctamente');
+    return redirect('user/publication')->with('status', 'Publicación creada correctamente');
   }
 
   /**

@@ -34,7 +34,7 @@
                                     @error('titulo')
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
-                                    <input type="text" name="titulo" id="titulo" class="form-control form-control-lg texto" value="{{ old('titulo') }}">
+                                    <input type="text" name="titulo" id="titulo" class="form-control form-control-lg texto" value="{{ old('titulo') }}" required>
                                   
                                 </div>
                             </div>
@@ -51,7 +51,7 @@
                                     @error('direccion')
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
-                                    <input type="text" name="direccion" id="direccion" class="form-control form-control-lg texto" value="{{ old('direccion') }}">
+                                    <input type="text" name="direccion" id="direccion" class="form-control form-control-lg texto" value="{{ old('direccion') }}" required>
                                 </div>
                             </div>                      
                                                      
@@ -83,7 +83,7 @@
                                     @error('gender_id')
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
-                                    <select name="gender_id" id="genero" class="form-control texto input-size">
+                                    <select name="gender_id" id="genero" class="form-control texto input-size" required>
                                         <option value="">Seleccione género</option>
                                         @foreach ($genders as $gender)
                                             <option class="text-capitalize" value="{{ $gender->id }}">{{ $gender->nombre }}</option>
@@ -101,7 +101,7 @@
                                     @error('room_type_id')
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
-                                    <select name="room_type_id" id="tipos" class="form-control texto input-size">
+                                    <select name="room_type_id" id="tipos" class="form-control texto input-size" required>
                                         <option value="">Seleccione</option>
                                         @foreach ($types as $type)
                                             <option class="text-capitalize" value="{{ $type->id }}">{{ $type->nombre }}</option>
@@ -199,13 +199,13 @@
                                     @error('precio')
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
-                                    <input type="number" name="precio" id="precio" placeholder="Valor en dólares" class="form-control texto" value="{{ old('precio') }}" min="0"  oninput="validity.valid||(value='');">
+                                    <input type="number" name="precio" id="precio" placeholder="Valor en dólares" class="form-control texto" value="{{ old('precio') }}" min="0"  oninput="validity.valid||(value='');" required>
                                     
                                 </div>
                             </div>
 
                             <div class="row justify-content-center">
-                                <input type="submit" value="Enviar" class="btn boton titulo-size" pattern="^[0-9]+">
+                                <input type="submit" value="Enviar" class="btn boton titulo-size">
                             </div>
 
                         </form>

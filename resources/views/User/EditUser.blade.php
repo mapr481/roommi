@@ -45,7 +45,7 @@
                             </section>
                             
                             
-                            <form method="POST" action="{{ route("UpdateUser", $user->id) }}">
+                            <form method="POST" action="{{ route("UserUpdate", $user->id) }}">
                                 @method('PUT')
                                 @csrf
     
@@ -81,7 +81,7 @@
                                     <label for="cedula" class="col-md-2 col-form-label text-md-right input-size">{{ __('Cédula') }}</label>
     
                                     <div class="col-md-4">
-                                        <input id="cedula" placeholder="Ej: 12345678" type="text" class="form-control form-control-lg texto @error('cedula') is-invalid @enderror" name="cedula" value="{{ old('cedula', $user->cedula) }}" required autocomplete="cedula" autofocus>
+                                        <input id="cedula" placeholder="Ej: 12345678" type="number" class="form-control form-control-lg texto @error('cedula') is-invalid @enderror" name="cedula" value="{{ old('cedula', $user->cedula) }}" required autocomplete="cedula" autofocus  min="0"  oninput="validity.valid||(value='');">
     
                                         @error('cedula')
                                             <span class="invalid-feedback" role="alert">
@@ -109,7 +109,7 @@
                                     <label for="telefono"  class="col-md-2 col-form-label text-md-right input-size">{{ __('Teléfono') }}</label>
     
                                     <div class="col-md-4">
-                                        <input id="telefono" placeholder="Ej: 04141234567" type="text" class="form-control form-control-lg texto @error('telefono') is-invalid @enderror" name="telefono" value="{{ old('telefono', $user->telefono) }}" required autocomplete="telefono" autofocus>
+                                        <input id="telefono" placeholder="Ej: 04141234567" type="number" class="form-control form-control-lg texto @error('telefono') is-invalid @enderror" name="telefono" value="{{ old('telefono', $user->telefono) }}" required autocomplete="telefono" autofocus  min="0"  oninput="validity.valid||(value='');">
     
                                         @error('telefono')
                                             <span class="invalid-feedback" role="alert">

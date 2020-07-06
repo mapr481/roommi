@@ -30,7 +30,7 @@ class PublicationController extends Controller
         $data = json_decode($utf8, true);        
         $convertidor = $data['USD']['promedio_real'];
 
-        $rooms = Room::latest('id')->paginate(5);        
+        $rooms = Room::latest('id')->paginate(6);        
         return view('Dashboard/Publication-list', compact('rooms', 'convertidor'))->with('i',(request()->input('page', 1)- 1)* 5);
         
     }

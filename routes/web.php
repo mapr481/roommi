@@ -24,10 +24,11 @@ Route::group(['middleware' => 'disablepreventback'],function(){
 
     Route::get('/', 'PublicationController@home');
     
-	Auth::routes(['verify' => true]);
+    Auth::routes();
+    
     Route::resource('room', 'RoomController');
 
-    Route::resource('mail', 'MailController');
+    
 
     Route::get('/user/publication/{slug}', 'UserController@showpub')->name('ShowPub');    
     Route::get('/user/view', 'UserController@show')->name('ShowUser');    
@@ -38,6 +39,7 @@ Route::group(['middleware' => 'disablepreventback'],function(){
     Route::get('/user/publication/edit/{slug}','UserController@editpub')->name('PubEdit');
     Route::put('/user/publication/update/{slug}','UserController@updatepub')->name('PubUpdate');
     Route::get('/user/edit/{id}', 'UserController@edit')->name('UserEdit');
+    Route::put('/user/update/{id}', 'UserController@update')->name('UserUpdate');
     Route::resource('user', 'UserController');
 
     Route::get('/admin/view/list', 'AdminController@publications')->name('Publications');

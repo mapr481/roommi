@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreUserPost extends FormRequest
+class StoreAdminUserPost extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -30,7 +30,7 @@ class StoreUserPost extends FormRequest
             'nacimiento' => 'required', 'string','date', 'max:255',
             'telefono' => 'required', 'number', 'max:255',
             'email' => 'required', 'email','unique:users,email'.$this->user()->id,           
-            'esAdmin'=> '',
+            'esAdmin'=> 'required',
         ];
     }
 }

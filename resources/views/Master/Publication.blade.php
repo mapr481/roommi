@@ -89,7 +89,8 @@
                                 </div>
                             </div> 
                         @endforeach
-                    </div>  
+                    </div> 
+                    {!! $rooms->links() !!}   
                 </div>                                                              
             </section>
         </div>        

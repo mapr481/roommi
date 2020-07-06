@@ -38,7 +38,7 @@
                         <div class="row section-t3 ml-5">
                             <div class="col-sm-12">
                                 <div class="title-box-d">
-                                    <label for="precio" class="title-d">Iniciar sesión</label>
+                                    <label for="" class="title-d">Registro de usuario</label>
                                 </div>
                             </div>
                         </div>
@@ -80,7 +80,7 @@
                                     <label for="cedula" class="col-md-2 col-form-label text-md-right input-size">{{ __('Cédula') }}</label>
 
                                     <div class="col-md-4">
-                                        <input id="cedula" placeholder="Ej: 12345678" type="text" class="form-control texto @error('cedula') is-invalid @enderror" name="cedula" value="{{ old('cedula') }}" required autocomplete="cedula" autofocus>
+                                        <input id="cedula" placeholder="Ej: 12345678" type="number" class="form-control texto @error('cedula') is-invalid @enderror" name="cedula" value="{{ old('cedula') }}" required autocomplete="cedula" autofocus min="0"  oninput="validity.valid||(value='');">
 
                                         @error('cedula')
                                             <span class="invalid-feedback" role="alert">
@@ -108,7 +108,7 @@
                                     <label for="telefono"  class="col-md-2 col-form-label text-md-right input-size">{{ __('Teléfono') }}</label>
 
                                     <div class="col-md-4">
-                                        <input id="telefono" placeholder="Ej: 04141234567" type="text" class="form-control texto @error('telefono') is-invalid @enderror" name="telefono" value="{{ old('telefono') }}" required autocomplete="telefono" autofocus>
+                                        <input id="telefono" placeholder="Ej: 04141234567" type="number" class="form-control texto @error('telefono') is-invalid @enderror" name="telefono" value="{{ old('telefono') }}" required autocomplete="telefono" autofocus min="0"  oninput="validity.valid||(value='');">
 
                                         @error('telefono')
                                             <span class="invalid-feedback" role="alert">
